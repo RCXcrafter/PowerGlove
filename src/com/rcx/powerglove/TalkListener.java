@@ -45,12 +45,19 @@ public class TalkListener extends ListenerAdapter {
 
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
 			if (content.toLowerCase().contains("help")) {
+				event.getChannel().sendTyping().queue();
 				channel.sendMessage("Use: pow help\nfor a list of commands and other help.").queue();
 			} else if (content.toLowerCase().contains("hello")) {
+				event.getChannel().sendTyping().queue();
 				channel.sendMessage("Yes hello, this is Power GLove.").queue();
 			} else if (message.getGuild() != null){
 				message.addReaction(new EmoteImpl(440198177786953738l, (GuildImpl) event.getGuild())).queue();
 			}
+		}
+
+		if (content.toLowerCase().startsWith("poll:")) {
+			message.addReaction("👍").queue();
+			message.addReaction("👎").queue();
 		}
 	}
 }

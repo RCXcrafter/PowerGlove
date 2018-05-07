@@ -5,7 +5,6 @@ import java.util.Map;
 import com.rcx.powerglove.commands.Command;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class CommandListener extends ListenerAdapter {
@@ -28,8 +27,8 @@ public class CommandListener extends ListenerAdapter {
 		commands.get(arguments[0].toLowerCase()).execute(arguments, event);
 	}
 
-	@Override
+	/*@Override
 	public void onMessageReactionAdd(MessageReactionAddEvent event) {
 		System.out.println(event.getReactionEmote().getEmote().getAsMention());
-	}
+	}*/
 }
