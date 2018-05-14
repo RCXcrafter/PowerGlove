@@ -26,9 +26,4 @@ public class CommandListener extends ListenerAdapter {
 		event.getChannel().sendTyping().queue();
 		commands.get(arguments[0].toLowerCase()).execute(arguments, event);
 	}
-
-	/*@Override
-	public void onMessageReactionAdd(MessageReactionAddEvent event) {
-		System.out.println(event.getReactionEmote().getEmote().getAsMention());
-	}*/
 }

@@ -59,10 +59,9 @@ public class MakeMLG extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		//event.getChannel().sendMessage("mlg").queue();
 		User thisGuy = event.getAuthor();
 
-		if (arguments.length >1) {
+		if (arguments.length > 1) {
 			try {
 				thisGuy = event.getJDA().getUserById(arguments[1]);
 			} catch (NumberFormatException e) {}
@@ -79,19 +78,6 @@ public class MakeMLG extends Command {
 			avatar.deleteOnExit();
 			try {
 				FileUtils.copyURLToFile(new URL(url), avatar);
-
-				//final Img< UnsignedByteType > img = new ArrayImgFactory< UnsignedByteType >()
-				//.create( new long[] { 400, 320 }, new UnsignedByteType() );
-				//Image avatr = Image.;
-				//final ImagePlus imp = new Opener().openImage( avatar.getAbsolutePath() );
-				//final ImagePlus imp = new ImagePlus();
-				//Overlay lay = new Overlay() ;
-				//lay.setFillColor(new Color(0xEFCB28));
-				//imp.setOverlay(lay);
-
-				//imp.show();
-				//imp.setImage((Image) img.);
-				//ImageIO.write((RenderedImage) imp.getImage(), "png", avatar);
 
 				BufferedImage vatar = ImageIO.read(avatar);
 				BufferedImage combined = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
