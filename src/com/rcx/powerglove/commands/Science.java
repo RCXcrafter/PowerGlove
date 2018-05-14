@@ -3,7 +3,6 @@ package com.rcx.powerglove.commands;
 import java.util.Random;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Science extends Command {
@@ -62,14 +61,6 @@ public class Science extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		//Message message = event.getMessage();
-		//String content = message.getContentRaw(); 
-		// getContentRaw() is an atomic getter
-		// getContentDisplay() is a lazy getter which modifies the content for e.g. console view (strip discord formatting)
-		//System.out.println(content);
-		MessageChannel channel = event.getChannel();
-		//channel.sendMessage("Pong!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
-		//channel.sendFile(sciencepics[new Random().nextInt(sciencepics.length)]).queue();
-		channel.sendMessage(new EmbedBuilder().setImage(sciencepics[new Random().nextInt(sciencepics.length)]).setColor(0x419399).build()).queue();
+		event.getChannel().sendMessage(new EmbedBuilder().setImage(sciencepics[new Random().nextInt(sciencepics.length)]).setColor(0x419399).build()).queue();
 	}
 }

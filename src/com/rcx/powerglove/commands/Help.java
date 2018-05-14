@@ -38,7 +38,8 @@ public class Help extends Command {
 			"We found an octagon",
 			"Numbers are hard",
 			"You got to flip it turn-ways",
-			"knock knock it's knuckles"
+			"Knock knock it's knuckles",
+			"It's so bad"
 	};
 	
 	String avatarUrl = "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png";

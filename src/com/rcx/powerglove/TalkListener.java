@@ -51,13 +51,17 @@ public class TalkListener extends ListenerAdapter {
 				event.getChannel().sendTyping().queue();
 				channel.sendMessage("Yes hello, this is Power GLove.").queue();
 			} else if (message.getGuild() != null){
-				message.addReaction(new EmoteImpl(440198177786953738l, (GuildImpl) event.getGuild())).queue();
+				message.addReaction(new EmoteImpl(445609116337963008l, (GuildImpl) event.getGuild())).queue();
 			}
 		}
 
 		if (content.toLowerCase().startsWith("poll:")) {
 			message.addReaction("👍").queue();
 			message.addReaction("👎").queue();
+		}
+		
+		if (content.toLowerCase().contains("that was easy")) {
+			message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) event.getGuild())).queue();
 		}
 	}
 }

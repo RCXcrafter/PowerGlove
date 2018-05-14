@@ -24,3 +24,4 @@ gradlew.bat
 gradlew
 gradle/
 SecretStuff.java
+src/com/rcx/powerglove/SecretListener.java

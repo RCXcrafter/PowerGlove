@@ -20,7 +20,7 @@ public class PowerGlove {
 		CommandListener.commands.put("help", new Help());
 		CommandListener.commands.put("science", new Science());
 		CommandListener.commands.put("type", new Empty());
-		CommandListener.commands.put("info", new CommandSimpleString("This bot is made by <:RCXpick:426056904230305792> RCXcrafter#3845\nYou can join RCXcrafter's server here: https://discord.gg/SthsknG\nYou can add this bot to your own server here: https://discordapp.com/api/oauth2/authorize?client_id=439435998078959616&permissions=37223488&scope=bot"));
+		CommandListener.commands.put("info", new CommandSimpleString("This bot is made by <:rcxpick:445610943112806400> RCXcrafter#3845\nYou can join RCXcrafter's server here: https://discord.gg/SthsknG\nYou can add this bot to your own server here: https://discordapp.com/api/oauth2/authorize?client_id=439435998078959616&permissions=37223488&scope=bot"));
 		CommandListener.commands.put("anthem", new CommandSimpleString("All rise for the official power glove anthem.\nhttps://soundcloud.com/knifepartyinc/knife-party-power-glove"));
 		CommandListener.commands.put("mlg", new MakeMLG());
 		CommandListener.commands.put("smiles", new RenderSmiles());
