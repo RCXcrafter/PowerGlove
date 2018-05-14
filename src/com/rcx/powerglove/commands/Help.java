@@ -46,16 +46,16 @@ public class Help extends Command {
 	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, avatarUrl).setThumbnail(avatarUrl).appendDescription(
 			"Prefix = " + CommandListener.prefix													
 			+"\nHere's a list of all the commands:\n"
-			+ "\n• **help:** Displays this list, helpful isn't it?"
-			+ "\n• **science:** Posts a science related picture."
-			+ "\n• **type:** Makes the bot start typing."
-			+ "\n• **info:** Gives some info about this bot."
-			+ "\n• **anthem:** Posts the theme song of this bot."
-			+ "\n• **mlg:** Make someone (or yourself) mlg."
-			+ "\n• **smiles:** Give it a SMILES formula and it will draw the molecule for you. https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system"
+			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
+			+ "\n\u2022 **science:** Posts a science related picture."
+			+ "\n\u2022 **type:** Makes the bot start typing."
+			+ "\n\u2022 **info:** Gives some info about this bot."
+			+ "\n\u2022 **anthem:** Posts the theme song of this bot."
+			+ "\n\u2022 **mlg:** Make someone (or yourself) mlg."
+			+ "\n\u2022 **smiles:** Give it a SMILES formula and it will draw the molecule for you. https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system"
 			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-			+ "\n• **disgusting:** Insert your own text into the absolutely disgusting meme."
-			+ "\n• **dong:** Convert text into expand dong text.");
+			+ "\n\u2022 **disgusting:** Insert your own text into the absolutely disgusting meme."
+			+ "\n\u2022 **dong:** Convert text into expand dong text.");
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {

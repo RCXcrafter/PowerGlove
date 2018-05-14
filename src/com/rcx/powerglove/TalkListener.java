@@ -13,7 +13,7 @@ public class TalkListener extends ListenerAdapter {
 
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		if (event.getAuthor().isBot() && CommandListener.onlyTalkToPeople || event.getAuthor().getId() == "439435998078959616")
+		if ((event.getAuthor().isBot() && CommandListener.onlyTalkToPeople) || event.getAuthor().getId().equals("439435998078959616"))
 			return;
 		// We don't want to respond to bot accounts, or ourself
 		Message message = event.getMessage();
@@ -49,15 +49,15 @@ public class TalkListener extends ListenerAdapter {
 				channel.sendMessage("Use: pow help\nfor a list of commands and other help.").queue();
 			} else if (content.toLowerCase().contains("hello")) {
 				event.getChannel().sendTyping().queue();
-				channel.sendMessage("Yes hello, this is Power GLove.").queue();
+				channel.sendMessage("Yes hello, this is Power Glove.").queue();
 			} else if (message.getGuild() != null){
 				message.addReaction(new EmoteImpl(440198177786953738l, (GuildImpl) event.getGuild())).queue();
 			}
 		}
 
 		if (content.toLowerCase().startsWith("poll:")) {
-			message.addReaction("👍").queue();
-			message.addReaction("👎").queue();
+			message.addReaction("\uD83DuDC4D").queue();
+			message.addReaction("\uD83DuDC4E").queue();
 		}
 	}
 }
