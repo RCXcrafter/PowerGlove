@@ -8,11 +8,18 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class PowerGlove {
 
+	static int shardAmount = 1;
+	static JDA[] shards = new JDA[shardAmount];
+
 	public static void main(String[] arguments) throws Exception {
-		JDA api = new JDABuilder(AccountType.BOT).setToken(SecretStuff.tokenPowerGlove).buildAsync();
+		JDABuilder api = new JDABuilder(AccountType.BOT).setToken(SecretStuff.tokenPowerGlove);
 		api.addEventListener(new CommandListener());
 		api.addEventListener(new TalkListener());
-		api.getPresence().setGame(Game.playing("with power"));
+
+		for (int i = 0; i < shardAmount; i++) {
+			shards[i] = api.useSharding(i, shardAmount).buildBlocking();
+			shards[i].getPresence().setGame(Game.playing("with power"));
+		}
 
 		SecretStuff.secretMethod();
 
