@@ -6,7 +6,6 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 
@@ -16,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+
 public class MakeMLG extends Command {
 
 	BufferedImage rainbow;
@@ -70,52 +70,45 @@ public class MakeMLG extends Command {
 				thisGuy = event.getJDA().getUserById(arguments[1].substring(2, arguments[1].length()-1));
 		}
 
-		File avatar;
+		File avatar = null;
 		String url = thisGuy.getAvatarUrl() + "?size=1024";
 
 		try {
 			avatar = File.createTempFile("avatar", url.substring(url.lastIndexOf("."), url.lastIndexOf("?")));
-			avatar.deleteOnExit();
-			try {
-				FileUtils.copyURLToFile(new URL(url), avatar);
+			FileUtils.copyURLToFile(new URL(url), avatar);
 
-				BufferedImage vatar = ImageIO.read(avatar);
-				BufferedImage combined = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
-				Graphics g = combined.getGraphics();
-				g.drawImage(rainbow, 0, 0, null);
-				g.drawImage(vatar.getScaledInstance(600, 600, 0), 0, 0, null);
-				g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
-				g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
-				g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
-				g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
-				g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
-				g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
-				g.drawImage(guns, 0, 0, null);
-				addRotOverlay(g, dew, rand.nextInt(600-dew.getWidth()), rand.nextInt(600-dew.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, doritos, rand.nextInt(600-doritos.getWidth()), rand.nextInt(600-doritos.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, explosion, rand.nextInt(600-explosion.getWidth()), rand.nextInt(600-explosion.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, faze, rand.nextInt(600-faze.getWidth()), rand.nextInt(600-faze.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, frog, rand.nextInt(600-frog.getWidth()), rand.nextInt(600-frog.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, illuminati, rand.nextInt(600-illuminati.getWidth()), rand.nextInt(600-illuminati.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, lenny, rand.nextInt(600-lenny.getWidth()), rand.nextInt(600-lenny.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, mlg, rand.nextInt(600-mlg.getWidth()), rand.nextInt(600-mlg.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, sample, rand.nextInt(600-sample.getWidth()), rand.nextInt(600-sample.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, sanic, rand.nextInt(600-sanic.getWidth()), rand.nextInt(600-sanic.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, weed, rand.nextInt(600-weed.getWidth()), rand.nextInt(600-weed.getHeight()), rand.nextInt(360));
-				addRotOverlay(g, shades, 109, 64, rand.nextInt(70)-35);
+			BufferedImage vatar = ImageIO.read(avatar);
+			BufferedImage combined = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
+			Graphics g = combined.getGraphics();
+			g.drawImage(rainbow, 0, 0, null);
+			g.drawImage(vatar.getScaledInstance(600, 600, 0), 0, 0, null);
+			g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
+			g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
+			g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
+			g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
+			g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
+			g.drawImage(hitmarker, rand.nextInt(600-hitmarker.getWidth()), rand.nextInt(600-hitmarker.getHeight()), null);
+			g.drawImage(guns, 0, 0, null);
+			addRotOverlay(g, dew, rand.nextInt(600-dew.getWidth()), rand.nextInt(600-dew.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, doritos, rand.nextInt(600-doritos.getWidth()), rand.nextInt(600-doritos.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, explosion, rand.nextInt(600-explosion.getWidth()), rand.nextInt(600-explosion.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, faze, rand.nextInt(600-faze.getWidth()), rand.nextInt(600-faze.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, frog, rand.nextInt(600-frog.getWidth()), rand.nextInt(600-frog.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, illuminati, rand.nextInt(600-illuminati.getWidth()), rand.nextInt(600-illuminati.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, lenny, rand.nextInt(600-lenny.getWidth()), rand.nextInt(600-lenny.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, mlg, rand.nextInt(600-mlg.getWidth()), rand.nextInt(600-mlg.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, sample, rand.nextInt(600-sample.getWidth()), rand.nextInt(600-sample.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, sanic, rand.nextInt(600-sanic.getWidth()), rand.nextInt(600-sanic.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, weed, rand.nextInt(600-weed.getWidth()), rand.nextInt(600-weed.getHeight()), rand.nextInt(360));
+			addRotOverlay(g, shades, 109, 64, rand.nextInt(70)-35);
 
-				ImageIO.write(combined, "PNG", avatar);
-				event.getChannel().sendFile(avatar).queue();
-				g.dispose();
-				avatar.delete();
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+			ImageIO.write(combined, "PNG", avatar);
+			event.getChannel().sendFile(avatar).queue();
+			g.dispose();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		avatar.delete();
 	}
 
 	void addRotOverlay (Graphics g, BufferedImage img, int x, int y, int rot) {

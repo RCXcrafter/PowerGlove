@@ -2,7 +2,8 @@ package com.rcx.powerglove.commands;
 
 import java.util.Random;
 
-import com.rcx.powerglove.CommandListener;
+import com.rcx.powerglove.PowerGlove;
+
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -45,7 +46,7 @@ public class Help extends Command {
 	String avatarUrl = "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png";
 	
 	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, avatarUrl).setThumbnail(avatarUrl).appendDescription(
-			"Prefix = " + CommandListener.prefix													
+			"Prefix = " + PowerGlove.prefix													
 			+"\nHere's a list of all the commands:\n"
 			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
 			+ "\n\u2022 **science:** Posts a science related picture."

@@ -26,8 +26,9 @@ public class AbsolutelyDisgusting extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
+		File picture = null;
 		try {
-			File picture = File.createTempFile("disgusting", ".png");
+			picture = File.createTempFile("disgusting", ".png");
 			if (arguments.length < 2) {
 				ImageIO.write(background, "PNG", picture);
 				event.getChannel().sendFile(picture).queue();
@@ -48,10 +49,10 @@ public class AbsolutelyDisgusting extends Command {
 			ImageIO.write(combined, "PNG", picture);
 			event.getChannel().sendFile(picture).queue();
 			g.dispose();
-			picture.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		picture.delete();
 	}
 
 	public List<BufferedImage> convert(String text) {

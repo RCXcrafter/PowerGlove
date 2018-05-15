@@ -8,17 +8,29 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class PowerGlove {
 
-	static int shardAmount = 1;
-	static JDA[] shards = new JDA[shardAmount];
+	public static int shardAmount = 0;
+	public static String token = "insert token";
+	public static String prefix = "pow";
+	public static Boolean onlyTalkToPeople = true;
+
+	public static JDA[] shards = null;
+	public static JDA pane = null;
 
 	public static void main(String[] arguments) throws Exception {
+		readConfigs();
 		JDABuilder api = new JDABuilder(AccountType.BOT).setToken(SecretStuff.tokenPowerGlove);
 		api.addEventListener(new CommandListener());
 		api.addEventListener(new TalkListener());
 
-		for (int i = 0; i < shardAmount; i++) {
-			shards[i] = api.useSharding(i, shardAmount).buildBlocking();
-			shards[i].getPresence().setGame(Game.playing("with power"));
+		if (shardAmount == 0) {
+			pane = api.buildAsync();
+			pane.getPresence().setGame(Game.playing("with power"));
+		} else {
+			shards = new JDA[shardAmount];
+			for (int i = 0; i < shardAmount; i++) {
+				shards[i] = api.useSharding(i, shardAmount).buildAsync();
+				shards[i].getPresence().setGame(Game.playing("with power"));
+			}
 		}
 
 		SecretStuff.secretMethod();
@@ -33,5 +45,12 @@ public class PowerGlove {
 		CommandListener.commands.put("smiles", new RenderSmiles());
 		CommandListener.commands.put("disgusting", new AbsolutelyDisgusting());
 		CommandListener.commands.put("dong", new DongFont());
+	}
+
+	public static void readConfigs() {
+		shardAmount = 1;
+		token = "insert token";
+		prefix = "pow";
+		onlyTalkToPeople = true;
 	}
 }

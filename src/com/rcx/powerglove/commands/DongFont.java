@@ -29,8 +29,9 @@ public class DongFont extends Command {
 			return;
 		}
 
+		File picture = null;
 		try {
-			File picture = File.createTempFile("expand", ".png");
+			picture = File.createTempFile("expand", ".png");
 
 			List<List<BufferedImage>> texts = convert(event.getMessage().getContentRaw().substring(9));
 			int width = 0;
@@ -52,10 +53,10 @@ public class DongFont extends Command {
 			ImageIO.write(combined, "PNG", picture);
 			event.getChannel().sendFile(picture).queue();
 			g.dispose();
-			picture.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		picture.delete();
 	}
 
 	public List<List<BufferedImage>> convert(String text) {

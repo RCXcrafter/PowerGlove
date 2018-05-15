@@ -26,22 +26,24 @@ public class RenderSmiles extends Command {
 			return;
 		}
 
+		File picture = null;
 		try {
 			try {
-				File picture = File.createTempFile("molecule", ".png");
+				picture = File.createTempFile("molecule", ".png");
 				IAtomContainer mol = sp.parseSmiles(arguments[1]);
 				try {
 					String inchi = InChIGeneratorFactory.getInstance().getInChIGenerator(mol).getInchi();
-					inchi = inchi.substring(inchi.indexOf("/") + 1);
-					if (inchi.indexOf("/") != -1)
-						inchi = inchi.substring(0, inchi.indexOf("/"));
-					mol.setTitle(subscriptNumbers(inchi));
+					if (inchi != null) {
+						if (inchi.indexOf("/") + 1 > 1)
+							inchi = inchi.substring(inchi.indexOf("/") + 1);
+						if (inchi.indexOf("/") != -1)
+							inchi = inchi.substring(0, inchi.indexOf("/"));
+						mol.setTitle(subscriptNumbers(inchi));
+					}
 					dptgen.depict(mol).writeTo("png", picture);
 					event.getChannel().sendFile(picture).queue();
-					picture.delete();
 				} catch (CDKException | IOException e) {
 					e.printStackTrace();
-					picture.delete();
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -49,19 +51,20 @@ public class RenderSmiles extends Command {
 		} catch (InvalidSmilesException e) {
 			event.getChannel().sendMessage("Invalid SMILES syntax :(\n```" + e.getMessage() + "```").queue();
 		}
+		picture.delete();
 	}
 
 	public static String subscriptNumbers(String str) {
-		str = str.replaceAll("0", "₀");
-		str = str.replaceAll("1", "₁");
-		str = str.replaceAll("2", "₂");
-		str = str.replaceAll("3", "₃");
-		str = str.replaceAll("4", "₄");
-		str = str.replaceAll("5", "₅");
-		str = str.replaceAll("6", "₆");
-		str = str.replaceAll("7", "₇");
-		str = str.replaceAll("8", "₈");
-		str = str.replaceAll("9", "₉");
+		str = str.replaceAll("0", "\u2080");
+		str = str.replaceAll("1", "\u2081");
+		str = str.replaceAll("2", "\u2082");
+		str = str.replaceAll("3", "\u2083");
+		str = str.replaceAll("4", "\u2084");
+		str = str.replaceAll("5", "\u2085");
+		str = str.replaceAll("6", "\u2086");
+		str = str.replaceAll("7", "\u2087");
+		str = str.replaceAll("8", "\u2088");
+		str = str.replaceAll("9", "\u2089");
 		return str;
 	}
 }

@@ -13,7 +13,7 @@ public class TalkListener extends ListenerAdapter {
 
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		if ((event.getAuthor().isBot() && CommandListener.onlyTalkToPeople) || event.getAuthor().getId().equals("439435998078959616"))
+		if ((event.getAuthor().isBot() && PowerGlove.onlyTalkToPeople) || event.getAuthor().getId().equals("439435998078959616"))
 			return;
 		// We don't want to respond to bot accounts, or ourself
 		Message message = event.getMessage();
