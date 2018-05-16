@@ -25,3 +25,6 @@ gradlew
 gradle/
 SecretStuff.java
 SecretListener.java
+*.class
+config.json
+serversettings.json

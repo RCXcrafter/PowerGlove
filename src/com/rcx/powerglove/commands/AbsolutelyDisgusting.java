@@ -36,9 +36,13 @@ public class AbsolutelyDisgusting extends Command {
 				return;
 			}
 
+			String textString = "";
+			for (int i = 1; i < arguments.length; i++)
+				textString += " " + arguments[i];
+
 			BufferedImage combined = new BufferedImage(600, 450, BufferedImage.TYPE_INT_ARGB);
 			Graphics g = combined.getGraphics();
-			List<BufferedImage> text = convert(event.getMessage().getContentRaw().substring(15));
+			List<BufferedImage> text = convert(textString);
 			int x = 134;
 
 			g.drawImage(background, 0, 0, null);
