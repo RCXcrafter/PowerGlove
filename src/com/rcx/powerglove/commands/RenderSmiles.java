@@ -22,7 +22,7 @@ public class RenderSmiles extends Command {
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		if (arguments.length < 2) {
-			event.getChannel().sendMessage("Add a SMILES formula for this to work.").queue();
+			event.getChannel().sendMessage("\u26A0 Add a SMILES formula for this to work.").queue();
 			return;
 		}
 
@@ -49,7 +49,7 @@ public class RenderSmiles extends Command {
 				e1.printStackTrace();
 			}
 		} catch (InvalidSmilesException e) {
-			event.getChannel().sendMessage("Invalid SMILES syntax :(\n```" + e.getMessage() + "```").queue();
+			event.getChannel().sendMessage("\u26A0 Invalid SMILES syntax :(\n```" + e.getMessage() + "```").queue();
 		}
 		picture.delete();
 	}

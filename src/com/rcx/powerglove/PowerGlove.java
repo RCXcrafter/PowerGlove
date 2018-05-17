@@ -16,7 +16,6 @@ public class PowerGlove {
 	public static int shardAmount = 0;
 	public static String token = "insert token";
 	public static String prefix = "pow ";
-	public static Boolean onlyTalkToPeople = true;
 
 	public static Settings settings;
 	public static JDA[] shards = null;
@@ -67,23 +66,13 @@ public class PowerGlove {
 		config.putIfAbsent("options", new JSONObject());
 		JSONObject options = (JSONObject) config.get("options");
 
-		//System.out.println(obj);
-		//System.out.println(config);
-
-		/*JSONArray arr = config.getJSONArray("posts");
-		for (int i = 0; i < arr.length(); i++) {
-		    String post_id = arr.getJSONObject(i).getString("post_id");
-		}*/
-
 		options.putIfAbsent("shardAmount", Integer.toString(shardAmount));
 		options.putIfAbsent("token", token);
 		options.putIfAbsent("prefix", prefix);
-		options.putIfAbsent("onlyTalkToPeople", Boolean.toString(onlyTalkToPeople));
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
 		token = (String) options.get("token");
 		prefix = (String) options.get("prefix");
-		onlyTalkToPeople = Boolean.parseBoolean((String) options.get("onlyTalkToPeople"));
 
 		FileWriter file = new FileWriter("config.json");
 		file.write(new org.json.JSONObject(config.toJSONString()).toString(4));

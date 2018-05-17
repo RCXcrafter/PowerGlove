@@ -25,7 +25,7 @@ public class DongFont extends Command {
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		if (arguments.length < 2) {
-			event.getChannel().sendMessage("Insert text to convert.").queue();
+			event.getChannel().sendMessage("\u26A0 Insert text to convert.").queue();
 			return;
 		}
 
@@ -33,7 +33,10 @@ public class DongFont extends Command {
 		try {
 			picture = File.createTempFile("expand", ".png");
 
-			List<List<BufferedImage>> texts = convert(event.getMessage().getContentRaw().substring(9));
+			String message = event.getMessage().getContentRaw();
+			message = message.substring(message.indexOf("dong") + 5);
+
+			List<List<BufferedImage>> texts = convert(message);
 			int width = 0;
 			for (List<BufferedImage> text : texts){
 				width = Math.max(text.size(), width);
