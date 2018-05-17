@@ -46,7 +46,7 @@ public class Help extends Command {
 	String avatarUrl = "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png";
 	
 	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, avatarUrl).setThumbnail(avatarUrl).appendDescription(
-			"Prefix = " + PowerGlove.prefix													
+			"Prefix = \"" + PowerGlove.prefix + "\""
 			+"\nHere's a list of all the commands:\n"
 			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
 			+ "\n\u2022 **settings:** Change the settings for this server."
@@ -58,7 +58,11 @@ public class Help extends Command {
 			+ "\n\u2022 **smiles [smiles]:** Give it a SMILES formula and it will draw the molecule for you. https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system"
 			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 			+ "\n\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
-			+ "\n\u2022 **dong [text]:** Convert text into expand dong text.");
+			+ "\n\u2022 **dong [text]:** Convert text into expand dong text."
+			+ "\n\nThis bot will also respond to certain key phrases/words:\n"
+			+ "\nIf you say \"delete this message\", your message will be deleted."
+			+ "\nSay \"des\", and your sentence will be finished."
+			+ "\nStart your message with \"poll:\" to start a poll.");
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
