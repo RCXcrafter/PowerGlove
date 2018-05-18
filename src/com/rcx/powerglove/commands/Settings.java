@@ -3,7 +3,9 @@ package com.rcx.powerglove.commands;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,8 +13,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.rcx.powerglove.PowerGlove;
+
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.MessageEmbed;
+import net.dv8tion.jda.core.entities.impl.GuildImpl;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Settings extends Command {
@@ -36,6 +42,19 @@ public class Settings extends Command {
 		}
 
 		config.putIfAbsent("default", new JSONObject());
+
+		List<String> servers = new ArrayList<String>();
+
+		if (PowerGlove.shardAmount == 0)
+			PowerGlove.pane.getGuilds().forEach(guild->servers.add(guild.getId()));
+		else
+			for (JDA shard : PowerGlove.shards)
+				shard.getGuilds().forEach(guild->servers.add(guild.getId()));
+
+		for (String serverID : (Set<String>) config.keySet()) {
+			if (!serverID.equals("default") && !servers.contains(serverID) )
+				config.remove(serverID);
+		}
 
 		reloadSettings();
 	}
