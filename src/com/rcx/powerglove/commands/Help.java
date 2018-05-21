@@ -42,7 +42,11 @@ public class Help extends Command {
 			"Knock knock it's knuckles",
 			"It's so bad",
 			"Thank you for helping us help you help us all",
-			"Redesign your logo"
+			"Redesign your logo",
+			"<a:rcxsword:445609872210264066>",
+			"Awesomazing",
+			"I can feel the power",
+			"I have the power"
 	};
 	
 	String avatarUrl = "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png";
@@ -60,7 +64,8 @@ public class Help extends Command {
 			+ "\n\u2022 **smiles [smiles]:** Give it a SMILES formula and it will draw the molecule for you. https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system"
 			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 			+ "\n\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
-			+ "\n\u2022 **dong [text]:** Convert text into expand dong text.\n"
+			+ "\n\u2022 **dong [text]:** Convert text into expand dong text."
+			+ "\n\u2022 **talk:** Make the bot start or stop talking in the current channel.\n"
 			+ "\nThis bot will also respond to certain key phrases/words:"
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
 			+ "\n\u2022 Say \"des\", and your sentence will be finished."

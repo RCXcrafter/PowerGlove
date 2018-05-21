@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
 import com.rcx.powerglove.commands.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -24,7 +25,6 @@ public class PowerGlove {
 	public static void main(String[] args) throws Exception {
 		if (readConfigs())
 			return;
-		settings = new Settings();
 		JDABuilder api = new JDABuilder(AccountType.BOT).setToken(token);
 		api.addEventListener(new CommandListener());
 		api.addEventListener(new TalkListener());
@@ -42,6 +42,7 @@ public class PowerGlove {
 
 		SecretStuff.secretMethod();
 
+		settings = new Settings();
 		System.setProperty("http.agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36");
 		CommandListener.commands.put("help", new Help());
 		CommandListener.commands.put("settings", settings);
@@ -53,6 +54,7 @@ public class PowerGlove {
 		CommandListener.commands.put("smiles", new RenderSmiles());
 		CommandListener.commands.put("disgusting", new AbsolutelyDisgusting());
 		CommandListener.commands.put("dong", new DongFont());
+		CommandListener.commands.put("talk", new Talk());
 	}
 
 	@SuppressWarnings("unchecked")
