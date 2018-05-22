@@ -48,10 +48,8 @@ public class Help extends Command {
 			"I can feel the power",
 			"I have the power"
 	};
-	
-	String avatarUrl = "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png";
-	
-	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, avatarUrl).setThumbnail(avatarUrl).appendDescription(
+
+	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(
 			"Prefix = \"" + PowerGlove.prefix + "\""
 			+"\nHere's a list of all the commands:\n"
 			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"

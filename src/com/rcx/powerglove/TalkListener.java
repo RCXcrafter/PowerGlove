@@ -12,7 +12,7 @@ import com.rcx.powerglove.commands.Settings.Setting;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.impl.EmoteImpl;
-import net.dv8tion.jda.core.entities.impl.JDAImpl;
+import net.dv8tion.jda.core.entities.impl.GuildImpl;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -32,19 +32,17 @@ public class TalkListener extends ListenerAdapter {
 
 		String mentions = content;
 		while (mentions.contains("<@") && mentions.contains(">")) {
-			if (mentions.indexOf("<@") > mentions.indexOf(">")) {
-				mentions = mentions.substring(mentions.indexOf(">") + 1);
-				continue;
-			}
-			String ping = mentions.substring(mentions.indexOf("<@") + 2, mentions.indexOf(">"));
-			ping = ping.replace("!", "");
-			if (Afk.afkPeople.containsKey(ping)) {
-				String reason = Afk.afkPeople.get(ping);
-				String person = event.getGuild().getMemberById(ping).getEffectiveName();
-				if (reason.equals("afk"))
-					channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
-				else
-					channel.sendMessage(person + " is currently AFK: " + reason).complete().delete().queueAfter(10, TimeUnit.SECONDS);
+			if (mentions.indexOf("<@") < mentions.indexOf(">")) {
+				String ping = mentions.substring(mentions.indexOf("<@") + 2, mentions.indexOf(">"));
+				ping = ping.replace("!", "");
+				if (Afk.afkPeople.containsKey(ping)) {
+					String reason = Afk.afkPeople.get(ping);
+					String person = event.getGuild().getMemberById(ping).getEffectiveName();
+					if (reason.equals("afk"))
+						channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
+					else
+						channel.sendMessage(person + " is currently AFK: " + reason).complete().delete().queueAfter(10, TimeUnit.SECONDS);
+				}
 			}
 			mentions = mentions.substring(mentions.indexOf(">") + 1);
 		}
@@ -99,7 +97,7 @@ public class TalkListener extends ListenerAdapter {
 				event.getChannel().sendTyping().queue();
 				channel.sendMessage("Yes hello, this is Power Glove.").queue();
 			} else if (message.getGuild() != null){
-				message.addReaction(new EmoteImpl(445609116337963008l, (JDAImpl) event.getJDA())).queue();
+				message.addReaction(new EmoteImpl(445609116337963008l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 			}
 		}
 
@@ -109,15 +107,15 @@ public class TalkListener extends ListenerAdapter {
 		}
 
 		if (content.toLowerCase().contains("that was easy")) {
-			message.addReaction(new EmoteImpl(445609298366824459l, (JDAImpl) event.getJDA())).queue();
+			message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 		}
 
 		if (content.toLowerCase().contains("power")) {
-			message.addReaction(new EmoteImpl(447839588002824192l, (JDAImpl) event.getJDA())).queue();
+			message.addReaction(new EmoteImpl(447839588002824192l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 		}
 
 		if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
-			message.addReaction(new EmoteImpl(445609116145287169l, (JDAImpl) event.getJDA())).queue();
+			message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 		}
 	}
 }

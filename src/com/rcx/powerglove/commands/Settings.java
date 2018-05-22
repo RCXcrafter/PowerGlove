@@ -24,9 +24,8 @@ public class Settings extends Command {
 
 	public static Map<String, Setting> settings = new HashMap<String, Setting>();
 	static JSONObject config;
-	String avatarUrl = "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png";
 
-	MessageEmbed embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Settings", null, avatarUrl).setThumbnail(avatarUrl).appendDescription(
+	MessageEmbed embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Settings", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(
 			"Here's a list of all the settings:\n"
 					+ "\n\u2022 **prefix [prefix] [space]:** Add an alternate prefix for the bot to use. If you want to have a space between the prefix and the command, add \"space\" as the second argument"
 					+ "\n\u2022 **talktobots [true/false]:** If the bot should respond to other bots. default: false"
