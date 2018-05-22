@@ -36,8 +36,8 @@ public class AbsolutelyDisgusting extends Command {
 				return;
 			}
 
-			String textString = "";
-			for (int i = 1; i < arguments.length; i++)
+			String textString = arguments[1];
+			for (int i = 2; i < arguments.length; i++)
 				textString += " " + arguments[i];
 
 			BufferedImage combined = new BufferedImage(600, 450, BufferedImage.TYPE_INT_ARGB);

@@ -55,6 +55,7 @@ public class PowerGlove {
 		CommandListener.commands.put("disgusting", new AbsolutelyDisgusting());
 		CommandListener.commands.put("dong", new DongFont());
 		CommandListener.commands.put("talk", new Talk());
+		CommandListener.commands.put("afk", new Afk());
 	}
 
 	@SuppressWarnings("unchecked")
