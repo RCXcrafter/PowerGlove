@@ -2,6 +2,7 @@ package com.rcx.powerglove.commands;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -14,13 +15,14 @@ public class Afk extends Command {
 		String afkReason;
 		if (arguments.length < 2) {
 			afkReason = "afk";
-			event.getChannel().sendMessage(event.getAuthor().getName() + "is now AFK").queue();
+			event.getChannel().sendMessage(event.getAuthor().getName() + " is now AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
 		} else {
 			afkReason = arguments[1];
 			for (int i = 2; i < arguments.length; i++)
 				afkReason += " " + arguments[i];
-			event.getChannel().sendMessage(event.getAuthor().getName() + "is now AFK: " + afkReason).queue();
+			event.getChannel().sendMessage(event.getAuthor().getName() + " is now AFK: " + afkReason).complete().delete().queueAfter(10, TimeUnit.SECONDS);
 		}
+		event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
 		if (afkPeople.containsKey(event.getAuthor().getId()))
 			afkPeople.remove(event.getAuthor().getId());
 		afkPeople.put(event.getAuthor().getId(), afkReason);

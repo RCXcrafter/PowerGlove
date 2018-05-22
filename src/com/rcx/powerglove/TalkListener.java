@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import com.google.code.chatterbotapi.ChatterBotSession;
+import com.rcx.powerglove.commands.Afk;
 import com.rcx.powerglove.commands.Settings;
 import com.rcx.powerglove.commands.Settings.Setting;
 
@@ -13,6 +14,7 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.impl.EmoteImpl;
 import net.dv8tion.jda.core.entities.impl.JDAImpl;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class TalkListener extends ListenerAdapter {
@@ -27,7 +29,30 @@ public class TalkListener extends ListenerAdapter {
 		Message message = event.getMessage();
 		String content = message.getContentRaw();
 		MessageChannel channel = event.getChannel();
-		//System.out.println(content);
+
+		String mentions = content;
+		while (mentions.contains("<@") && mentions.contains(">")) {
+			if (mentions.indexOf("<@") > mentions.indexOf(">")) {
+				mentions = mentions.substring(mentions.indexOf(">") + 1);
+				continue;
+			}
+			String ping = mentions.substring(mentions.indexOf("<@") + 2, mentions.indexOf(">"));
+			ping = ping.replace("!", "");
+			if (Afk.afkPeople.containsKey(ping)) {
+				String reason = Afk.afkPeople.get(ping);
+				String person = event.getGuild().getMemberById(ping).getEffectiveName();
+				if (reason.equals("afk"))
+					channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
+				else
+					channel.sendMessage(person + " is currently AFK: " + reason).complete().delete().queueAfter(10, TimeUnit.SECONDS);
+			}
+			mentions = mentions.substring(mentions.indexOf(">") + 1);
+		}
+
+		if (Afk.afkPeople.containsKey(message.getAuthor().getId()) && !content.startsWith(PowerGlove.prefix + "afk") && !content.startsWith(settings.prefix + "afk")) {
+			Afk.afkPeople.remove(message.getAuthor().getId());
+			channel.sendMessage("You are no longer AFK, " + message.getAuthor().getName()).complete().delete().queueAfter(10, TimeUnit.SECONDS);
+		}
 
 		if (chats.containsKey(event.getGuild().getId()  + " " + channel.getId())) {
 			if (content.startsWith(PowerGlove.prefix) && content.length() > PowerGlove.prefix.length() || content.startsWith(settings.prefix) && content.length() > settings.prefix.length())
@@ -43,10 +68,13 @@ public class TalkListener extends ListenerAdapter {
 
 		if (content.toLowerCase().equals("delete this message")) {
 			event.getChannel().sendTyping().queue();
-			//channel.sendMessage("Alright, if that's what you want").queue();
-			//Long myMessage = channel.getLatestMessageIdLong();
-			channel.deleteMessageById(message.getId()).queueAfter(10, TimeUnit.SECONDS);
-			//channel.deleteMessageById(myMessage).queue();
+			try {
+				message.delete().queueAfter(10, TimeUnit.SECONDS);
+				channel.sendMessage("Alright, if that's what you want.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
+				event.getChannel().sendTyping().queue();
+			} catch (InsufficientPermissionException e) {
+				channel.sendMessage("I'm sorry, I just can't.").queue();
+			}
 		}
 
 		if (content.toLowerCase().endsWith("des")) {
