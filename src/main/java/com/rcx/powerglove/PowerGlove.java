@@ -3,6 +3,10 @@ package com.rcx.powerglove;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.discordbots.api.client.DiscordBotListAPI;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -12,16 +16,20 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.entities.Guild;
 
 public class PowerGlove {
 
 	public static int shardAmount = 0;
 	public static String token = "insert token";
+	public static String dblToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static Settings settings;
 	public static JDA[] shards = null;
 	public static JDA pane = null;
+	public static DiscordBotListAPI dbl = null;
+	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
 		if (readConfigs())
@@ -33,11 +41,15 @@ public class PowerGlove {
 		if (shardAmount == 0) {
 			pane = api.buildBlocking();
 			pane.getPresence().setGame(Game.playing("with power"));
+			for (Guild server : pane.getGuilds())
+				servers.put(server.getId(), server);
 		} else {
 			shards = new JDA[shardAmount];
 			for (int i = 0; i < shardAmount; i++) {
 				shards[i] = api.useSharding(i, shardAmount).buildBlocking();
 				shards[i].getPresence().setGame(Game.playing("with power"));
+				for (Guild server : shards[i].getGuilds())
+					servers.put(server.getId(), server);
 			}
 		}
 
@@ -61,6 +73,11 @@ public class PowerGlove {
 		CommandListener.commands.put("dong", new DongFont());
 		CommandListener.commands.put("talk", new Talk());
 		CommandListener.commands.put("afk", new Afk());
+
+		if (!dblToken.equals("insert token")) {
+			dbl = new DiscordBotListAPI.Builder().token(dblToken).build();
+			dbl.setStats("439435998078959616", PowerGlove.servers.size());
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -77,10 +94,12 @@ public class PowerGlove {
 		options.putIfAbsent("shardAmount", Integer.toString(shardAmount));
 		options.putIfAbsent("token", token);
 		options.putIfAbsent("prefix", prefix);
+		options.putIfAbsent("dblToken", dblToken);
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
 		token = (String) options.get("token");
 		prefix = (String) options.get("prefix");
+		dblToken = (String) options.get("dblToken");
 
 		FileWriter file = new FileWriter("config.json");
 		file.write(new org.json.JSONObject(config.toJSONString()).toString(4));
