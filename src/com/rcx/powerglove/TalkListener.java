@@ -75,6 +75,10 @@ public class TalkListener extends ListenerAdapter {
 			}
 		}
 
+		if (content.toLowerCase().startsWith("ninja:")) {
+			message.delete().queue();
+		}
+
 		if (content.toLowerCase().endsWith("des")) {
 			event.getChannel().sendTyping().queue();
 			channel.sendMessage("pa").queue();
