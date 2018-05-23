@@ -17,8 +17,8 @@ public class AbsolutelyDisgusting extends Command {
 
 	public AbsolutelyDisgusting() {
 		try {
-			font = ImageIO.read(new File("src/assets/absolutely disgusting/font.png"));
-			background = ImageIO.read(new File("src/assets/absolutely disgusting/absolutely empty template.png"));
+			font = ImageIO.read(getClass().getClassLoader().getResource("assets/absolutely disgusting/font.png"));
+			background = ImageIO.read(getClass().getClassLoader().getResource("assets/absolutely disgusting/absolutely empty template.png"));
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

@@ -37,21 +37,21 @@ public class MakeMLG extends Command {
 
 	public MakeMLG () {
 		try {
-			rainbow = ImageIO.read(new File("src/assets/mlg overlays/rainbow.png"));
-			guns = ImageIO.read(new File("src/assets/mlg overlays/guns.png"));
-			hitmarker = ImageIO.read(new File("src/assets/mlg overlays/hitmarker.png"));
-			shades = ImageIO.read(new File("src/assets/mlg overlays/shades.png"));
-			dew = ImageIO.read(new File("src/assets/mlg overlays/dew.png"));
-			doritos = ImageIO.read(new File("src/assets/mlg overlays/doritos.png"));
-			explosion = ImageIO.read(new File("src/assets/mlg overlays/explosion.png"));
-			faze = ImageIO.read(new File("src/assets/mlg overlays/faze.png"));
-			frog = ImageIO.read(new File("src/assets/mlg overlays/frog.png"));
-			illuminati = ImageIO.read(new File("src/assets/mlg overlays/illuminati.png"));
-			lenny = ImageIO.read(new File("src/assets/mlg overlays/lenny.png"));
-			mlg = ImageIO.read(new File("src/assets/mlg overlays/mlg.png"));
-			sample = ImageIO.read(new File("src/assets/mlg overlays/sample.png"));
-			sanic = ImageIO.read(new File("src/assets/mlg overlays/sanic.png"));
-			weed = ImageIO.read(new File("src/assets/mlg overlays/weed.png"));
+			rainbow = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/rainbow.png"));
+			guns = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/guns.png"));
+			hitmarker = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/hitmarker.png"));
+			shades = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/shades.png"));
+			dew = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/dew.png"));
+			doritos = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/doritos.png"));
+			explosion = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/explosion.png"));
+			faze = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/faze.png"));
+			frog = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/frog.png"));
+			illuminati = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/illuminati.png"));
+			lenny = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/lenny.png"));
+			mlg = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/mlg.png"));
+			sample = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/sample.png"));
+			sanic = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/sanic.png"));
+			weed = ImageIO.read(getClass().getClassLoader().getResource("assets/mlg overlays/weed.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

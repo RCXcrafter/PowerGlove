@@ -16,7 +16,7 @@ public class DongFont extends Command {
 
 	public DongFont() {
 		try {
-			font = ImageIO.read(new File("src/assets/dongfont/font.png"));
+			font = ImageIO.read(getClass().getClassLoader().getResource("assets/dongfont/font.png"));
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
