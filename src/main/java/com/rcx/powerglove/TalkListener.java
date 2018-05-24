@@ -110,7 +110,7 @@ public class TalkListener extends ListenerAdapter {
 			message.addReaction("\uD83DuDC4E").queue();
 		}
 
-		if (content.toLowerCase().contains("that was easy")) {
+		/*if (content.toLowerCase().contains("that was easy")) {
 			message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 		}
 
@@ -120,6 +120,6 @@ public class TalkListener extends ListenerAdapter {
 
 		if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
 			message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
-		}
+		}*/
 	}
 }

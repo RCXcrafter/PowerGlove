@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.discordbots.api.client.DiscordBotListAPI;
 import org.json.simple.JSONObject;
@@ -21,6 +23,7 @@ import net.dv8tion.jda.core.entities.Guild;
 public class PowerGlove {
 
 	public static int shardAmount = 0;
+	public static Boolean autoShutdown = true;
 	public static String token = "insert token";
 	public static String dblToken = "insert token";
 	public static String prefix = "pow ";
@@ -73,11 +76,20 @@ public class PowerGlove {
 		CommandListener.commands.put("dong", new DongFont());
 		CommandListener.commands.put("talk", new Talk());
 		CommandListener.commands.put("afk", new Afk());
+		CommandListener.commands.put("stop", new Exit());
 
 		if (!dblToken.equals("insert token")) {
 			dbl = new DiscordBotListAPI.Builder().token(dblToken).build();
 			dbl.setStats("439435998078959616", PowerGlove.servers.size());
 		}
+
+		if (autoShutdown)
+			Executors.newScheduledThreadPool(1).schedule(new Runnable() {
+				public void run() {
+					System.out.println("shutting down");
+					System.exit(0);
+				}
+			}, 1, TimeUnit.DAYS);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -95,11 +107,13 @@ public class PowerGlove {
 		options.putIfAbsent("token", token);
 		options.putIfAbsent("prefix", prefix);
 		options.putIfAbsent("dblToken", dblToken);
+		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
 		token = (String) options.get("token");
 		prefix = (String) options.get("prefix");
 		dblToken = (String) options.get("dblToken");
+		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
 		file.write(new org.json.JSONObject(config.toJSONString()).toString(4));
