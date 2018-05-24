@@ -1,8 +1,11 @@
 package com.rcx.powerglove;
 
+import java.io.DataOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -26,12 +29,14 @@ public class PowerGlove {
 	public static Boolean autoShutdown = true;
 	public static String token = "insert token";
 	public static String dblToken = "insert token";
+	public static String dBotsToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static Settings settings;
 	public static JDA[] shards = null;
 	public static JDA pane = null;
 	public static DiscordBotListAPI dbl = null;
+	public static URLConnection dBots;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
@@ -83,6 +88,15 @@ public class PowerGlove {
 			dbl.setStats("439435998078959616", PowerGlove.servers.size());
 		}
 
+		if (!dBotsToken.equals("insert token")) {
+			dBots = new URL("https://bots.discord.pw/api/bots/439435998078959616/stats").openConnection();
+			dBots.setRequestProperty("Content-Type", "application/json");
+			dBots.setRequestProperty("Authorization", dBotsToken);
+			dBots.setDoInput(true);
+			dBots.connect();
+			postDBotsStats();
+		}
+
 		if (autoShutdown)
 			Executors.newScheduledThreadPool(1).schedule(new Runnable() {
 				public void run() {
@@ -107,17 +121,32 @@ public class PowerGlove {
 		options.putIfAbsent("token", token);
 		options.putIfAbsent("prefix", prefix);
 		options.putIfAbsent("dblToken", dblToken);
+		options.putIfAbsent("dBotsToken", dBotsToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
 		token = (String) options.get("token");
 		prefix = (String) options.get("prefix");
 		dblToken = (String) options.get("dblToken");
+		dBotsToken = (String) options.get("dBotsToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
 		file.write(new org.json.JSONObject(config.toJSONString()).toString(4));
 		file.close();
 		return token.equals("insert token");
+	}
+
+	@SuppressWarnings("unchecked")
+	public static void postDBotsStats() {
+		try {
+			DataOutputStream wr = new DataOutputStream (dBots.getOutputStream());
+			JSONObject put = new JSONObject();
+			put.put("server_count", Integer.toString(PowerGlove.servers.size()));
+			wr.writeBytes(put.toJSONString());
+			wr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

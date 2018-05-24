@@ -44,6 +44,8 @@ public class CommandListener extends ListenerAdapter {
 		PowerGlove.servers.put(event.getGuild().getId(), event.getGuild());
 		if (!PowerGlove.dbl.equals(null))
 			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
+		if (!PowerGlove.dBotsToken.equals("insert token"))
+			PowerGlove.postDBotsStats();
 	}
 
 	@Override
@@ -52,5 +54,7 @@ public class CommandListener extends ListenerAdapter {
 		PowerGlove.servers.remove(event.getGuild().getId());
 		if (!PowerGlove.dbl.equals(null))
 			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
+		if (!PowerGlove.dBotsToken.equals("insert token"))
+			PowerGlove.postDBotsStats();
 	}
 }
