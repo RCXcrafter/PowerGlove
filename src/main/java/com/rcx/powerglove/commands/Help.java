@@ -67,7 +67,7 @@ public class Help extends Command {
 			+ "\n\u2022 **afk: [optional reason]** Set yourself away from keyboard (globally).\n"
 			+ "\nThis bot will also respond to certain key phrases/words:"
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
-			+ "\n\u2022 Say \"des\", and your sentence will be finished."
+			//+ "\n\u2022 Say \"des\", and your sentence will be finished."
 			+ "\n\u2022 Start your message with \"poll:\" to start a poll."
 			+ "\n\u2022 Start your message with \"ninja:\" to have it deleted right after you post it so that only really fast people can read it.");
 

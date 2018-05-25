@@ -79,7 +79,7 @@ public class TalkListener extends ListenerAdapter {
 			message.delete().queue();
 		}
 
-		if (content.toLowerCase().endsWith("des")) {
+		/*if (content.toLowerCase().endsWith("des")) {
 			event.getChannel().sendTyping().queue();
 			channel.sendMessage("pa").queue();
 			event.getChannel().sendTyping().queue();
@@ -90,11 +90,11 @@ public class TalkListener extends ListenerAdapter {
 				e.printStackTrace();
 			}
 			System.out.println(channel.getMessageById(channel.getLatestMessageId()).complete().getContentRaw());
-			if (!channel.getMessageById(channel.getLatestMessageId()).complete().getContentRaw().contains("cito"))*/
-		}
+			if (!channel.getMessageById(channel.getLatestMessageId()).complete().getContentRaw().contains("cito"))* /
+		}*/
 
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
-			if (content.toLowerCase().contains("help")) {
+			if (content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
 				event.getChannel().sendTyping().queue();
 				channel.sendMessage("Use: pow help\nfor a list of commands and other help.").queue();
 			} else if (content.toLowerCase().contains("hello")) {
