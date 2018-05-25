@@ -38,6 +38,7 @@ public class TalkListener extends ListenerAdapter {
 				if (Afk.afkPeople.containsKey(ping)) {
 					String reason = Afk.afkPeople.get(ping);
 					String person = event.getGuild().getMemberById(ping).getEffectiveName();
+					channel.sendTyping().queue();
 					if (reason.equals("afk"))
 						channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
 					else
@@ -49,6 +50,7 @@ public class TalkListener extends ListenerAdapter {
 
 		if (Afk.afkPeople.containsKey(message.getAuthor().getId()) && !content.startsWith(PowerGlove.prefix + "afk") && !content.startsWith(settings.prefix + "afk")) {
 			Afk.afkPeople.remove(message.getAuthor().getId());
+			channel.sendTyping().queue();
 			channel.sendMessage("You are no longer AFK, " + message.getAuthor().getName()).complete().delete().queueAfter(10, TimeUnit.SECONDS);
 		}
 
@@ -56,8 +58,8 @@ public class TalkListener extends ListenerAdapter {
 			if (content.startsWith(PowerGlove.prefix) && content.length() > PowerGlove.prefix.length() || content.startsWith(settings.prefix) && content.length() > settings.prefix.length())
 				return;
 			try {
-				event.getChannel().sendTyping().queue();
-				channel.sendMessage(chats.get(event.getGuild().getId()  + " " + channel.getId()).think(content).replace("<br> ", "\n")).queue();
+				channel.sendTyping().queue();
+				channel.sendMessage(chats.get(event.getGuild().getId()  + " " + channel.getId()).think(content).replace("<br> ", "\n")).queueAfter(2, TimeUnit.SECONDS);
 				return;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -65,11 +67,11 @@ public class TalkListener extends ListenerAdapter {
 		}
 
 		if (content.toLowerCase().equals("delete this message")) {
-			event.getChannel().sendTyping().queue();
+			channel.sendTyping().queue();
 			try {
 				message.delete().queueAfter(10, TimeUnit.SECONDS);
 				channel.sendMessage("Alright, if that's what you want.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
-				event.getChannel().sendTyping().queue();
+				channel.sendTyping().queue();
 			} catch (InsufficientPermissionException e) {
 				channel.sendMessage("I'm sorry, I just can't.").queue();
 			}
@@ -80,9 +82,9 @@ public class TalkListener extends ListenerAdapter {
 		}
 
 		/*if (content.toLowerCase().endsWith("des")) {
-			event.getChannel().sendTyping().queue();
+			channel.sendTyping().queue();
 			channel.sendMessage("pa").queue();
-			event.getChannel().sendTyping().queue();
+			channel.sendTyping().queue();
 			channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
 			/*try {
 				Thread.sleep(1000);
@@ -95,10 +97,10 @@ public class TalkListener extends ListenerAdapter {
 
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
 			if (content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
-				event.getChannel().sendTyping().queue();
+				channel.sendTyping().queue();
 				channel.sendMessage("Use: pow help\nfor a list of commands and other help.").queue();
 			} else if (content.toLowerCase().contains("hello")) {
-				event.getChannel().sendTyping().queue();
+				channel.sendTyping().queue();
 				channel.sendMessage("Yes hello, this is Power Glove.").queue();
 			} else if (message.getGuild() != null){
 				message.addReaction(new EmoteImpl(445609116337963008l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
