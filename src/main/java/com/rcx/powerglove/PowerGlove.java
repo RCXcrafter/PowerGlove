@@ -92,7 +92,8 @@ public class PowerGlove {
 			dBots = new URL("https://bots.discord.pw/api/bots/439435998078959616/stats").openConnection();
 			dBots.setRequestProperty("Content-Type", "application/json");
 			dBots.setRequestProperty("Authorization", dBotsToken);
-			dBots.setDoInput(true);
+			dBots.setDoOutput(true);
+			//dBots.setDoInput(true);
 			dBots.connect();
 			postDBotsStats();
 		}
@@ -145,6 +146,15 @@ public class PowerGlove {
 			put.put("server_count", Integer.toString(PowerGlove.servers.size()));
 			wr.writeBytes(put.toJSONString());
 			wr.close();
+			
+			/*DataInputStream rd = new DataInputStream (dBots.getInputStream());
+			BufferedReader d = new BufferedReader(new InputStreamReader(rd));
+			String line;
+			while ((line = d.readLine()) != null)
+				System.out.println(line);
+			d.close();
+			rd.close();
+			System.out.println("test");*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
