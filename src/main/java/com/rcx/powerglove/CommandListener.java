@@ -42,7 +42,7 @@ public class CommandListener extends ListenerAdapter {
 	public void onGuildJoin(GuildJoinEvent event) {
 		PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Added to server: " + event.getGuild().getName() + " " + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.put(event.getGuild().getId(), event.getGuild());
-		if (!PowerGlove.dbl.equals(null))
+		if (!PowerGlove.dblToken.equals("insert token"))
 			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
 		if (!PowerGlove.dBotsToken.equals("insert token"))
 			PowerGlove.postDBotsStats();
@@ -52,7 +52,7 @@ public class CommandListener extends ListenerAdapter {
 	public void onGuildLeave(GuildLeaveEvent event) {
 		PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Removed from server: " + event.getGuild().getName() + " "  + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.remove(event.getGuild().getId());
-		if (!PowerGlove.dbl.equals(null))
+		if (!PowerGlove.dblToken.equals("insert token"))
 			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
 		if (!PowerGlove.dBotsToken.equals("insert token"))
 			PowerGlove.postDBotsStats();

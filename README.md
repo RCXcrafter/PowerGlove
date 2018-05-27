@@ -25,6 +25,5 @@ Example: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C
 
 This bot will also respond to certain key phrases/words:  
 • If you say "delete this message", your message will be deleted.  
-• Say "des", and your sentence will be finished.  
 • Start your message with "poll:" to start a poll.  
 • Start your message with "ninja:" to have it deleted right after you post it so that only really fast people can read it.  

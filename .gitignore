@@ -28,3 +28,4 @@ SecretListener.java
 *.class
 config.json
 serversettings.json
+powerglove.jar
