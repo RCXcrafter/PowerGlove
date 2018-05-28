@@ -2,7 +2,7 @@
 Source code for Power Glove the discord bot
 
 
-This is just another randomn stuff bot but I try to only add things that other bots don't have.  
+This is just another random stuff bot but I try to only add things that other bots don't have.  
 [Join the support server](https://discord.gg/SthsknG)  
 [Add the bot to your own server](https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352)  
 
