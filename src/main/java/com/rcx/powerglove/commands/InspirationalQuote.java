@@ -23,7 +23,24 @@ public class InspirationalQuote extends Command {
 			"Welcome to the internet, I will be your guide.",
 			"Vroom vroom.",
 			"This statement is false.",
-			"Thank you for helping us help you help us all."
+			"Thank you for helping us help you help us all.",
+			"And now for something completely different.",
+			"I like dank memes and I can not lie.",
+			"Just, do it!",
+			"How do you tame a horse in minecraft?",
+			"What would happen if you throw a jar of mayonaise into a black hole?",
+			"You're kid now, you're a squid now, you're kid now, you're a squid now, you're kid now, you're a squid now.",
+			"This, is, spartaaaaaaaaaa!",
+			"Sus.",
+			"Honk!",
+			"It's amazing!",
+			"And that's why you never walk sideways on a gravel path.",
+			"I'm you from the future! Whatever you do, don't spill that coffee!",
+			"What does the fox say?",
+			"Authentic, organic, natural.",
+			"You tried.",
+			"Yabadabadoo!",
+			"Skreeonk!"
 	};
 
 	String[] people = {
@@ -53,7 +70,7 @@ public class InspirationalQuote extends Command {
 			"Julius Ceasar",
 			"Arnold Schwarzenegger",
 			"John Cena",
-			"Mario",
+			"Mario Jumpman",
 			"Isaac Newton"
 	};
 
