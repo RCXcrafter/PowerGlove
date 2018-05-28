@@ -6,7 +6,7 @@ This is just another randomn stuff bot but I try to only add things that other b
 [Join the support server](https://discord.gg/SthsknG)  
 [Add the bot to your own server](https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352)  
 
-[![Discord Bots](https://discordbots.org/api/widget/439435998078959616.svg)](https://discordbots.org/bot/439435998078959616)
+[![Discord Bots](https://discordbots.org/api/widget/439435998078959616.svg?usernamecolor=419399&topcolor=000000&middlecolor=ADADAD&highlightcolor=000000&certifiedcolor=419399)](https://discordbots.org/bot/439435998078959616)
 
 Commands & features:  
 • **help:** Displays a list of commands and features.  
