@@ -82,6 +82,7 @@ public class PowerGlove {
 		CommandListener.commands.put("talk", new Talk());
 		CommandListener.commands.put("afk", new Afk());
 		CommandListener.commands.put("stop", new Exit());
+		CommandListener.commands.put("quote", new InspirationalQuote());
 
 		if (!dblToken.equals("insert token")) {
 			dbl = new DiscordBotListAPI.Builder().token(dblToken).build();

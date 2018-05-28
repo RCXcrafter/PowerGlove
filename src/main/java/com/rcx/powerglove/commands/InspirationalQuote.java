@@ -13,7 +13,17 @@ public class InspirationalQuote extends Command {
 			"How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
 			"A bear is not a penguin.",
 			"One plus one equals window.",
-			""
+			"Haha what.",
+			"Des, pa, cito.",
+			"One day, someone wil qoute me.",
+			"The problem with qoutes on the internet is that you can't always rely on thier accuracy.",
+			"Everything has an end, but a sausage has two.",
+			"Something wonderful is about to happy.",
+			"What did he mean by this?",
+			"Welcome to the internet, I will be your guide.",
+			"Vroom vroom.",
+			"This statement is false.",
+			"Thank you for helping us help you help us all."
 	};
 
 	String[] people = {
@@ -32,20 +42,24 @@ public class InspirationalQuote extends Command {
 			"Kanye West",
 			"Twilight Sparkle",
 			"Rob Swire",
+			"Gareth McGrillen",
 			"Darth Vader",
 			"Markus Persson",
 			"Steve Jobs",
-			"Nobody Ever",
+			"No one Ever",
 			"Gabe Newell",
 			"Mata Nui",
 			"Adolf Hitler",
 			"Julius Ceasar",
-			"Arnold Schwarzenegger"
+			"Arnold Schwarzenegger",
+			"John Cena",
+			"Mario",
+			"Isaac Newton"
 	};
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		event.getChannel().sendMessage("\"" + quotes[rand.nextInt(quotes.length)]
-				+ "\"\n-" + people[rand.nextInt(people.length)] + " " + (1000 + rand.nextInt(2000))).queue();
+		event.getChannel().sendMessage("*\"" + quotes[rand.nextInt(quotes.length)]
+				+ "\"*\n-" + people[rand.nextInt(people.length)] + ", " + (1100 + rand.nextInt(1000))).queue();
 	}
 }
