@@ -1,5 +1,5 @@
-# PowerGlove
-Source code for Power Glove the discord bot
+# Power Glove
+Source code for Power Glove the discord bot.
 
 
 This is just another random stuff bot but I try to only add things that other bots don't have.  
@@ -28,3 +28,6 @@ This bot will also respond to certain key phrases/words:
 • If you say "delete this message", your message will be deleted.  
 • Start your message with "poll:" to start a poll.  
 • Start your message with "ninja:" to have it deleted right after you post it so that only really fast people can read it.  
+
+
+If you have any suggestions or questions, feel free to make an issue on github or tell me in my server.  
