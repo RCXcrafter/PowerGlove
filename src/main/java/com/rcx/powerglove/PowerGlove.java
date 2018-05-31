@@ -83,6 +83,8 @@ public class PowerGlove {
 		CommandListener.commands.put("afk", new Afk());
 		CommandListener.commands.put("stop", new Exit());
 		CommandListener.commands.put("quote", new InspirationalQuote());
+		CommandListener.commands.put("mastermind", new Mastermind());
+		CommandListener.commands.put("guess", new MastermindGuess());
 
 		if (!dblToken.equals("insert token")) {
 			dbl = new DiscordBotListAPI.Builder().token(dblToken).build();
@@ -147,7 +149,7 @@ public class PowerGlove {
 			put.put("server_count", Integer.toString(PowerGlove.servers.size()));
 			wr.writeBytes(put.toJSONString());
 			wr.close();
-			
+
 			/*DataInputStream rd = new DataInputStream (dBots.getInputStream());
 			BufferedReader d = new BufferedReader(new InputStreamReader(rd));
 			String line;
