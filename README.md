@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/RCXcrafter/PowerGlove/master/power%20glove.png" height="200" width="200">
+
 # Power Glove
 Source code for Power Glove the discord bot.
 
