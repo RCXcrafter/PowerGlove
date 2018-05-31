@@ -24,7 +24,9 @@ public class Mastermind extends Command {
 	String[] standard = "\uD83C\uDF4A \uD83D\uDD35 \uD83D\uDD34 \uD83D\uDCC0 \uD83C\uDFBE \uD83D\uDE08".split(" ");
 
 	MessageEmbed embed = new EmbedBuilder().setColor(0x419399).setAuthor("Mastermind", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(
-			"How to use this command:\n"
+			"[Rules of mastermind](https://en.wikipedia.org/w/index.php?title=Mastermind&oldid=838132629#Gameplay_and_rules)"
+			+ "\nAll games automatically end after 10 minutes of inactivity.\n"
+			+ "\nHow to use this command:\n"
 			+ "\n**mastermind [start/stop] [codesize] [turns] [digits]:**"
 			+ "\n If you leave out any of the arguments, it will use the default"
 			+ "\n\u2022 **[start/stop]** Start or stop a game"
@@ -133,7 +135,7 @@ public class Mastermind extends Command {
 				public void run() {
 					games.remove(id);
 				}
-			}, 5, TimeUnit.MINUTES);
+			}, 10, TimeUnit.MINUTES);
 		}
 	}
 }

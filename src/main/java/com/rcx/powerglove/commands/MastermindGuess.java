@@ -129,7 +129,7 @@ public class MastermindGuess extends Command {
 				public void run() {
 					Mastermind.games.remove(game.id);
 				}
-			}, 5, TimeUnit.MINUTES);
+			}, 10, TimeUnit.MINUTES);
 		}
 	}
 }

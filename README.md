@@ -24,6 +24,8 @@ Commands & features:
 |**dong [text]**|Convert text into expand dong text.|
 |**talk**|Make the bot start or stop talking in the current channel.|
 |**afk [optional reason]**|Set yourself away from keyboard (globally).|
+|**quote**|Post an inspirational quote by a famous person.|
+|**mastermind**|Play a nice game of mastermind against the bot.|
 
 
 This bot will also respond to certain key phrases/words:  
