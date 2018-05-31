@@ -10,7 +10,7 @@ This is just another random stuff bot but I try to only add things that other bo
 
 Commands & features:  
 
-|Command|Explamation|
+|Command [argument]|Explamation|
 |:-----------:|-------------|
 |**help**|Displays a list of commands and features.|
 |**settings**|Change the settings for this server.|
