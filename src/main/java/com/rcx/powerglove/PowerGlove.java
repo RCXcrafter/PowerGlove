@@ -35,6 +35,8 @@ public class PowerGlove {
 	public static String dBotsToken = "insert token";
 	public static String bots4DToken = "insert token";
 	public static String dServToken = "insert token";
+	public static String botListToken = "insert token";
+	public static String botWorldToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static Settings settings;
@@ -44,6 +46,8 @@ public class PowerGlove {
 	public static HttpURLConnection dBots;
 	public static HttpURLConnection bots4D;
 	public static HttpURLConnection dServ;
+	public static HttpURLConnection botList;
+	public static HttpURLConnection botWorld;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
@@ -101,6 +105,10 @@ public class PowerGlove {
 			bots4D = makeConnection("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken);
 		if (!dServToken.equals("insert token"))
 			dServ = makeConnection("https://discord.services/api/bots/439435998078959616", dServToken);
+		if (!botListToken.equals("insert token"))
+			botList = makeConnection("https://botlist.space/api/bots/439435998078959616", botListToken);
+		if (!botWorldToken.equals("insert token"))
+			botWorld = makeConnection("https://discordbot.world/api/bot/439435998078959616/stats", botWorldToken);
 		updateAllStats();
 
 		if (autoShutdown)
@@ -130,6 +138,8 @@ public class PowerGlove {
 		options.putIfAbsent("dBotsToken", dBotsToken);
 		options.putIfAbsent("bots4DToken", bots4DToken);
 		options.putIfAbsent("dServToken", dServToken);
+		options.putIfAbsent("botListToken", botListToken);
+		options.putIfAbsent("botWorldToken", botWorldToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -139,6 +149,8 @@ public class PowerGlove {
 		dBotsToken = (String) options.get("dBotsToken");
 		bots4DToken = (String) options.get("bots4DToken");
 		dServToken = (String) options.get("dServToken");
+		botListToken = (String) options.get("botListToken");
+		botWorldToken = (String) options.get("botWorldToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -156,6 +168,10 @@ public class PowerGlove {
 			postGuildCount(bots4D, "count");
 		if (!dServToken.equals("insert token"))
 			postGuildCount(dServ, "guild_count");
+		if (!botListToken.equals("insert token"))
+			postGuildCount(botList, "server_count");
+		if (!botWorldToken.equals("insert token"))
+			postGuildCount(botWorld, "guild_count");
 	}
 	
 	public static HttpURLConnection makeConnection(String url, String token) {
