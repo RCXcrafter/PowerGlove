@@ -33,6 +33,8 @@ public class PowerGlove {
 	public static String token = "insert token";
 	public static String dblToken = "insert token";
 	public static String dBotsToken = "insert token";
+	public static String bots4DToken = "insert token";
+	public static String dServToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static Settings settings;
@@ -40,6 +42,8 @@ public class PowerGlove {
 	public static JDA pane = null;
 	public static DiscordBotListAPI dbl = null;
 	public static HttpURLConnection dBots;
+	public static HttpURLConnection bots4D;
+	public static HttpURLConnection dServ;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
@@ -89,22 +93,15 @@ public class PowerGlove {
 		CommandListener.commands.put("mastermind", new Mastermind());
 		CommandListener.commands.put("guess", new MastermindGuess());
 
-		if (!dblToken.equals("insert token")) {
+		if (!dblToken.equals("insert token"))
 			dbl = new DiscordBotListAPI.Builder().token(dblToken).build();
-			dbl.setStats("439435998078959616", PowerGlove.servers.size());
-		}
-
-		if (!dBotsToken.equals("insert token")) {
-			dBots = (HttpURLConnection) new URL("https://bots.discord.pw/api/bots/439435998078959616/stats").openConnection();
-			dBots.setRequestProperty("User-Agent", "PowerGlove");
-			dBots.setRequestProperty("Content-Type", "application/json");
-			dBots.setRequestProperty("Authorization", dBotsToken);
-			dBots.setRequestMethod("POST");
-			dBots.setDoOutput(true);
-			dBots.setDoInput(true);
-			dBots.connect();
-			postDBotsStats();
-		}
+		if (!dBotsToken.equals("insert token"))
+			dBots = makeConnection("https://bots.discord.pw/api/bots/439435998078959616/stats", dBotsToken);
+		if (!bots4DToken.equals("insert token"))
+			bots4D = makeConnection("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken);
+		if (!dServToken.equals("insert token"))
+			dServ = makeConnection("https://discord.services/api/bots/439435998078959616", dServToken);
+		updateAllStats();
 
 		if (autoShutdown)
 			Executors.newScheduledThreadPool(1).schedule(new Runnable() {
@@ -131,6 +128,8 @@ public class PowerGlove {
 		options.putIfAbsent("prefix", prefix);
 		options.putIfAbsent("dblToken", dblToken);
 		options.putIfAbsent("dBotsToken", dBotsToken);
+		options.putIfAbsent("bots4DToken", bots4DToken);
+		options.putIfAbsent("dServToken", dServToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -138,6 +137,8 @@ public class PowerGlove {
 		prefix = (String) options.get("prefix");
 		dblToken = (String) options.get("dblToken");
 		dBotsToken = (String) options.get("dBotsToken");
+		bots4DToken = (String) options.get("bots4DToken");
+		dServToken = (String) options.get("dServToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -145,17 +146,45 @@ public class PowerGlove {
 		file.close();
 		return token.equals("insert token");
 	}
+	
+	public static void updateAllStats() {
+		if (!PowerGlove.dblToken.equals("insert token"))
+			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
+		if (!PowerGlove.dBotsToken.equals("insert token"))
+			postGuildCount(dBots, "server_count");
+		if (!bots4DToken.equals("insert token"))
+			postGuildCount(bots4D, "count");
+		if (!dServToken.equals("insert token"))
+			postGuildCount(dServ, "guild_count");
+	}
+	
+	public static HttpURLConnection makeConnection(String url, String token) {
+		HttpURLConnection connection = null;
+		try {
+			connection = (HttpURLConnection) new URL(url).openConnection();
+			connection.setRequestProperty("User-Agent", "PowerGlove");
+			connection.setRequestProperty("Content-Type", "application/json");
+			connection.setRequestProperty("Authorization", token);
+			connection.setRequestMethod("POST");
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			connection.connect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return connection;
+	}
 
 	@SuppressWarnings("unchecked")
-	public static void postDBotsStats() {
+	public static void postGuildCount(HttpURLConnection site, String countName) {
 		try {
-			DataOutputStream wr = new DataOutputStream (dBots.getOutputStream());
+			DataOutputStream wr = new DataOutputStream (site.getOutputStream());
 			JSONObject put = new JSONObject();
-			put.put("server_count", Integer.toString(PowerGlove.servers.size()));
+			put.put(countName, Integer.toString(PowerGlove.servers.size()));
 			wr.writeBytes(put.toJSONString());
 			wr.close();
 
-			DataInputStream rd = new DataInputStream (dBots.getInputStream());
+			DataInputStream rd = new DataInputStream (site.getInputStream());
 			BufferedReader d = new BufferedReader(new InputStreamReader(rd));
 			String line;
 			while ((line = d.readLine()) != null)
