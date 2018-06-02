@@ -1,11 +1,14 @@
 package com.rcx.powerglove;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -36,7 +39,7 @@ public class PowerGlove {
 	public static JDA[] shards = null;
 	public static JDA pane = null;
 	public static DiscordBotListAPI dbl = null;
-	public static URLConnection dBots;
+	public static HttpURLConnection dBots;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
@@ -92,11 +95,13 @@ public class PowerGlove {
 		}
 
 		if (!dBotsToken.equals("insert token")) {
-			dBots = new URL("https://bots.discord.pw/api/bots/439435998078959616/stats").openConnection();
+			dBots = (HttpURLConnection) new URL("https://bots.discord.pw/api/bots/439435998078959616/stats").openConnection();
+			dBots.setRequestProperty("User-Agent", "PowerGlove");
 			dBots.setRequestProperty("Content-Type", "application/json");
 			dBots.setRequestProperty("Authorization", dBotsToken);
+			dBots.setRequestMethod("POST");
 			dBots.setDoOutput(true);
-			//dBots.setDoInput(true);
+			dBots.setDoInput(true);
 			dBots.connect();
 			postDBotsStats();
 		}
@@ -150,14 +155,13 @@ public class PowerGlove {
 			wr.writeBytes(put.toJSONString());
 			wr.close();
 
-			/*DataInputStream rd = new DataInputStream (dBots.getInputStream());
+			DataInputStream rd = new DataInputStream (dBots.getInputStream());
 			BufferedReader d = new BufferedReader(new InputStreamReader(rd));
 			String line;
 			while ((line = d.readLine()) != null)
 				System.out.println(line);
 			d.close();
 			rd.close();
-			System.out.println("test");*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
