@@ -37,6 +37,7 @@ public class PowerGlove {
 	public static String dServToken = "insert token";
 	public static String botListToken = "insert token";
 	public static String botWorldToken = "insert token";
+	public static String dListToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static Settings settings;
@@ -48,6 +49,7 @@ public class PowerGlove {
 	public static HttpURLConnection dServ;
 	public static HttpURLConnection botList;
 	public static HttpURLConnection botWorld;
+	public static HttpURLConnection dList;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
@@ -109,6 +111,12 @@ public class PowerGlove {
 			botList = makeConnection("https://botlist.space/api/bots/439435998078959616", botListToken);
 		if (!botWorldToken.equals("insert token"))
 			botWorld = makeConnection("https://discordbot.world/api/bot/439435998078959616/stats", botWorldToken);
+		if (!dListToken.equals("insert token")) {
+			dList = makeConnection("https://discordbot.world/api/bot/439435998078959616/stats", dListToken);
+			dList.setRequestProperty("token", dListToken);
+			dList.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		}
+		System.out.println("Posting server count...");
 		updateAllStats();
 
 		if (autoShutdown)
@@ -140,6 +148,7 @@ public class PowerGlove {
 		options.putIfAbsent("dServToken", dServToken);
 		options.putIfAbsent("botListToken", botListToken);
 		options.putIfAbsent("botWorldToken", botWorldToken);
+		options.putIfAbsent("dListToken", dListToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -151,6 +160,7 @@ public class PowerGlove {
 		dServToken = (String) options.get("dServToken");
 		botListToken = (String) options.get("botListToken");
 		botWorldToken = (String) options.get("botWorldToken");
+		dListToken = (String) options.get("dListToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -172,6 +182,23 @@ public class PowerGlove {
 			postGuildCount(botList, "server_count");
 		if (!botWorldToken.equals("insert token"))
 			postGuildCount(botWorld, "guild_count");
+		if (!dListToken.equals("insert token")) {
+			try {
+				DataOutputStream wr = new DataOutputStream (dList.getOutputStream());
+				wr.writeBytes("token=" + dListToken + "&servers=" + PowerGlove.servers.size());
+				wr.close();
+
+				DataInputStream rd = new DataInputStream (dList.getInputStream());
+				BufferedReader d = new BufferedReader(new InputStreamReader(rd));
+				String line;
+				while ((line = d.readLine()) != null)
+					System.out.println(line);
+				d.close();
+				rd.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static HttpURLConnection makeConnection(String url, String token) {
