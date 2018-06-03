@@ -174,12 +174,21 @@ public class PowerGlove {
 			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
 		if (!PowerGlove.dBotsToken.equals("insert token"))
 			postGuildCount(dBots, "server_count");
-		if (!bots4DToken.equals("insert token"))
+		if (!bots4DToken.equals("insert token")) {
 			postGuildCount(bots4D, "count");
-		if (!dServToken.equals("insert token"))
+			bots4D.disconnect();
+			bots4D = makeConnection("https://discord.services/api/bots/439435998078959616", bots4DToken);
+		}
+		if (!dServToken.equals("insert token")) {
 			postGuildCount(dServ, "guild_count");
-		if (!botListToken.equals("insert token"))
+			dServ.disconnect();
+			dServ = makeConnection("https://discord.services/api/bots/439435998078959616", dServToken);
+		}
+		if (!botListToken.equals("insert token")) {
 			postGuildCount(botList, "server_count");
+			botList.disconnect();
+			botList = makeConnection("https://discord.services/api/bots/439435998078959616", botListToken);
+		}
 		if (!botWorldToken.equals("insert token"))
 			postGuildCount(botWorld, "guild_count");
 		if (!dListToken.equals("insert token")) {

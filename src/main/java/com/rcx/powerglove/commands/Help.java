@@ -6,6 +6,7 @@ import com.rcx.powerglove.PowerGlove;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class Help extends Command {
 
@@ -75,6 +76,10 @@ public class Help extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		event.getChannel().sendMessage(embed.setTitle(powerQuote[new Random().nextInt(powerQuote.length)]).build()).queue();
+		try {
+			event.getChannel().sendMessage(embed.setTitle(powerQuote[new Random().nextInt(powerQuote.length)]).build()).queue();
+		} catch (InsufficientPermissionException e) {
+			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + new String(embed.getDescriptionBuilder())).queue();
+		}
 	}
 }

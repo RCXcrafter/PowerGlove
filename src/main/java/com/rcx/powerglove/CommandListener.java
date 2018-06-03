@@ -18,7 +18,7 @@ public class CommandListener extends ListenerAdapter {
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		Setting settings = Settings.settings.getOrDefault(event.getGuild().getId(), Settings.settings.get("default"));
-		if ((event.getAuthor().isBot() && !settings.talktobots) || event.getAuthor().getId().equals("439435998078959616"))
+		if (event.getAuthor().isFake() || (event.getAuthor().isBot() && !settings.talktobots) || event.getAuthor().getId().equals("439435998078959616"))
 			return;
 		String message = event.getMessage().getContentRaw();
 		String[] arguments = {"bluh"};

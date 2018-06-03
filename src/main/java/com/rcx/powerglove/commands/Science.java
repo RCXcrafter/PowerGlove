@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class Science extends Command {
 
@@ -61,6 +62,10 @@ public class Science extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		event.getChannel().sendMessage(new EmbedBuilder().setImage(sciencepics[new Random().nextInt(sciencepics.length)]).setColor(0x419399).build()).queue();
+		try {
+			event.getChannel().sendMessage(new EmbedBuilder().setImage(sciencepics[new Random().nextInt(sciencepics.length)]).setColor(0x419399).build()).queue();
+		} catch (InsufficientPermissionException e) {
+			event.getChannel().sendMessage(sciencepics[new Random().nextInt(sciencepics.length)]).queue();
+		}
 	}
 }
