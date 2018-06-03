@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.discordbots.api.client.DiscordBotListAPI;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -37,19 +36,11 @@ public class PowerGlove {
 	public static String dServToken = "insert token";
 	public static String botListToken = "insert token";
 	public static String botWorldToken = "insert token";
-	public static String dListToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static Settings settings;
 	public static JDA[] shards = null;
 	public static JDA pane = null;
-	public static DiscordBotListAPI dbl = null;
-	public static HttpURLConnection dBots;
-	public static HttpURLConnection bots4D;
-	public static HttpURLConnection dServ;
-	public static HttpURLConnection botList;
-	public static HttpURLConnection botWorld;
-	public static HttpURLConnection dList;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
@@ -99,23 +90,6 @@ public class PowerGlove {
 		CommandListener.commands.put("mastermind", new Mastermind());
 		CommandListener.commands.put("guess", new MastermindGuess());
 
-		if (!dblToken.equals("insert token"))
-			dbl = new DiscordBotListAPI.Builder().token(dblToken).build();
-		if (!dBotsToken.equals("insert token"))
-			dBots = makeConnection("https://bots.discord.pw/api/bots/439435998078959616/stats", dBotsToken);
-		if (!bots4DToken.equals("insert token"))
-			bots4D = makeConnection("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken);
-		if (!dServToken.equals("insert token"))
-			dServ = makeConnection("https://discord.services/api/bots/439435998078959616", dServToken);
-		if (!botListToken.equals("insert token"))
-			botList = makeConnection("https://botlist.space/api/bots/439435998078959616", botListToken);
-		if (!botWorldToken.equals("insert token"))
-			botWorld = makeConnection("https://discordbot.world/api/bot/439435998078959616/stats", botWorldToken);
-		if (!dListToken.equals("insert token")) {
-			dList = makeConnection("https://discordbot.world/api/bot/439435998078959616/stats", dListToken);
-			dList.setRequestProperty("token", dListToken);
-			dList.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-		}
 		updateAllStats();
 
 		if (autoShutdown)
@@ -147,7 +121,6 @@ public class PowerGlove {
 		options.putIfAbsent("dServToken", dServToken);
 		options.putIfAbsent("botListToken", botListToken);
 		options.putIfAbsent("botWorldToken", botWorldToken);
-		options.putIfAbsent("dListToken", dListToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -159,7 +132,6 @@ public class PowerGlove {
 		dServToken = (String) options.get("dServToken");
 		botListToken = (String) options.get("botListToken");
 		botWorldToken = (String) options.get("botWorldToken");
-		dListToken = (String) options.get("dListToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -170,70 +142,36 @@ public class PowerGlove {
 	
 	public static void updateAllStats() {
 		System.out.println("Posting server count...");
-		if (!PowerGlove.dblToken.equals("insert token"))
-			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
-		if (!PowerGlove.dBotsToken.equals("insert token"))
-			postGuildCount(dBots, "server_count");
-		if (!bots4DToken.equals("insert token")) {
-			postGuildCount(bots4D, "count");
-			bots4D.disconnect();
-			bots4D = makeConnection("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken);
-		}
-		if (!dServToken.equals("insert token")) {
-			postGuildCount(dServ, "guild_count");
-			dServ.disconnect();
-			dServ = makeConnection("https://discord.services/api/bots/439435998078959616", dServToken);
-		}
-		if (!botListToken.equals("insert token")) {
-			postGuildCount(botList, "server_count");
-			botList.disconnect();
-			botList = makeConnection("https://botlist.space/api/bots/439435998078959616", botListToken);
-		}
+		if (!dblToken.equals("insert token"))
+			postGuildCount("https://discordbots.org/api/bots/439435998078959616/stats", dblToken, "server_count");
+		if (!dBotsToken.equals("insert token"))
+			postGuildCount("https://bots.discord.pw/api/bots/439435998078959616/stats", dBotsToken, "server_count");
+		if (!bots4DToken.equals("insert token"))
+			postGuildCount("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken, "count");
+		if (!dServToken.equals("insert token"))
+			postGuildCount("https://discord.services/api/bots/439435998078959616", dServToken, "guild_count");
+		if (!botListToken.equals("insert token"))
+			postGuildCount("https://botlist.space/api/bots/439435998078959616", botListToken, "server_count");
 		if (!botWorldToken.equals("insert token"))
-			postGuildCount(botWorld, "guild_count");
-		if (!dListToken.equals("insert token")) {
-			try {
-				DataOutputStream wr = new DataOutputStream (dList.getOutputStream());
-				wr.writeBytes("token=" + dListToken + "&servers=" + PowerGlove.servers.size());
-				wr.close();
-
-				DataInputStream rd = new DataInputStream (dList.getInputStream());
-				BufferedReader d = new BufferedReader(new InputStreamReader(rd));
-				String line;
-				while ((line = d.readLine()) != null)
-					System.out.println(line);
-				d.close();
-				rd.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", botWorldToken, "guild_count");
 		System.out.println("Server count posted.");
-	}
-	
-	public static HttpURLConnection makeConnection(String url, String token) {
-		HttpURLConnection connection = null;
-		try {
-			connection = (HttpURLConnection) new URL(url).openConnection();
-			connection.setRequestProperty("User-Agent", "PowerGlove");
-			connection.setRequestProperty("Content-Type", "application/json");
-			connection.setRequestProperty("Authorization", token);
-			connection.setRequestMethod("POST");
-			connection.setDoOutput(true);
-			connection.setDoInput(true);
-			connection.connect();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return connection;
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void postGuildCount(HttpURLConnection site, String countName) {
+	public static void postGuildCount(String url, String webToken, String countName) {
 		try {
+			HttpURLConnection site = (HttpURLConnection) new URL(url).openConnection();
+			site.setRequestProperty("User-Agent", "PowerGlove");
+			site.setRequestProperty("Content-Type", "application/json");
+			site.setRequestProperty("Authorization", webToken);
+			site.setRequestMethod("POST");
+			site.setDoOutput(true);
+			site.setDoInput(true);
+			site.connect();
+			
 			DataOutputStream wr = new DataOutputStream (site.getOutputStream());
 			JSONObject put = new JSONObject();
-			put.put(countName, Integer.toString(PowerGlove.servers.size()));
+			put.put(countName, Integer.toString(servers.size()));
 			wr.writeBytes(put.toJSONString());
 			wr.close();
 
@@ -244,8 +182,10 @@ public class PowerGlove {
 				System.out.println(line);
 			d.close();
 			rd.close();
+			site.disconnect();
 		} catch (Exception e) {
-			e.printStackTrace();
+			if (!url.equals("https://discordbots.org/api/bots/439435998078959616/stats"))
+				e.printStackTrace();
 		}
 	}
 }
