@@ -177,7 +177,7 @@ public class PowerGlove {
 		if (!bots4DToken.equals("insert token")) {
 			postGuildCount(bots4D, "count");
 			bots4D.disconnect();
-			bots4D = makeConnection("https://discord.services/api/bots/439435998078959616", bots4DToken);
+			bots4D = makeConnection("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken);
 		}
 		if (!dServToken.equals("insert token")) {
 			postGuildCount(dServ, "guild_count");
@@ -187,7 +187,7 @@ public class PowerGlove {
 		if (!botListToken.equals("insert token")) {
 			postGuildCount(botList, "server_count");
 			botList.disconnect();
-			botList = makeConnection("https://discord.services/api/bots/439435998078959616", botListToken);
+			botList = makeConnection("https://botlist.space/api/bots/439435998078959616", botListToken);
 		}
 		if (!botWorldToken.equals("insert token"))
 			postGuildCount(botWorld, "guild_count");
@@ -208,6 +208,7 @@ public class PowerGlove {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("Server count posted.");
 	}
 	
 	public static HttpURLConnection makeConnection(String url, String token) {
