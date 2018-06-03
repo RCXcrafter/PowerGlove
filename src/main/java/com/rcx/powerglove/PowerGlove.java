@@ -116,7 +116,6 @@ public class PowerGlove {
 			dList.setRequestProperty("token", dListToken);
 			dList.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		}
-		System.out.println("Posting server count...");
 		updateAllStats();
 
 		if (autoShutdown)
@@ -170,6 +169,7 @@ public class PowerGlove {
 	}
 	
 	public static void updateAllStats() {
+		System.out.println("Posting server count...");
 		if (!PowerGlove.dblToken.equals("insert token"))
 			PowerGlove.dbl.setStats("439435998078959616", PowerGlove.servers.size());
 		if (!PowerGlove.dBotsToken.equals("insert token"))
