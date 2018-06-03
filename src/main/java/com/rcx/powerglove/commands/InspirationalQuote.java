@@ -40,7 +40,17 @@ public class InspirationalQuote extends Command {
 			"Authentic, organic, natural.",
 			"You tried.",
 			"Yabadabadoo!",
-			"Skreeonk!"
+			"Skreeonk!",
+			"Kill you're selve.",
+			"Oh no! He's dead!",
+			"The sky is not blue.",
+			"Your time is up, my time is now.",
+			"If water flows down, how can clouds form? Checkmate flat-earthers.",
+			"Now that's what I call a brick.",
+			"And that's only when you don't even turn the lights on, imagine what would happen if you do.",
+			"Air like that is unreal, it doesn't even happen (most of the time).",
+			"It's dangerous to go alone, take this.",
+			"Whoah dude."
 	};
 
 	String[] people = {

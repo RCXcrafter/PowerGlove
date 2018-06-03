@@ -46,7 +46,8 @@ public class Help extends Command {
 			"<a:rcxsword:445609872210264066>",
 			"Awesomazing",
 			"I can feel the power",
-			"I have the power"
+			"I have the power",
+			"Pa pa pa pa pa power"
 	};
 
 	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(
@@ -59,14 +60,14 @@ public class Help extends Command {
 			+ "\n\u2022 **info:** Gives some info about this bot."
 			+ "\n\u2022 **anthem:** Posts the theme song of this bot."
 			+ "\n\u2022 **mlg [user]:** Make someone (or yourself) mlg."
-			+ "\n\u2022 **smiles [smiles]:** Give it a SMILES formula and it will draw the molecule for you. [Wikipedia: SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system)"
+			+ "\n\u2022 **smiles [smiles]:** Give it a SMILES formula and it will draw the molecule for you (reaction smiles are also supported). [Wikipedia: SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system)"
 			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 			+ "\n\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
 			+ "\n\u2022 **dong [text]:** Convert text into expand dong text."
 			+ "\n\u2022 **talk:** Make the bot start or stop talking in the current channel."
 			+ "\n\u2022 **afk: [optional reason]** Set yourself away from keyboard (globally)."
 			+ "\n\u2022 **quote:** Post an inspirational quote by a famous person."
-			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot\n"
+			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot.\n"
 			+ "\nThis bot will also respond to certain key phrases/words:"
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
 			//+ "\n\u2022 Say \"des\", and your sentence will be finished."

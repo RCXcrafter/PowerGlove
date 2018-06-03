@@ -9,6 +9,7 @@ import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.exception.InvalidSmilesException;
 import org.openscience.cdk.inchi.InChIGeneratorFactory;
 import org.openscience.cdk.interfaces.IAtomContainer;
+import org.openscience.cdk.interfaces.IReaction;
 import org.openscience.cdk.silent.SilentChemObjectBuilder;
 import org.openscience.cdk.smiles.SmilesParser;
 
@@ -30,9 +31,22 @@ public class RenderSmiles extends Command {
 		try {
 			try {
 				picture = File.createTempFile("molecule", ".png");
-				IAtomContainer mol = sp.parseSmiles(arguments[1]);
+				String smiles = arguments[1];
+				for (int i = 2; i < arguments.length; i++)
+					smiles += " " + arguments[i];
+
+				boolean reaction = smiles.contains(">");
+				IAtomContainer mol = null;
+				IReaction rec = null;
+				if (reaction) {
+					rec = sp.parseReactionSmiles(smiles);
+				} else {
+					mol = sp.parseSmiles(smiles);
+				}
 				try {
-					String inchi = InChIGeneratorFactory.getInstance().getInChIGenerator(mol).getInchi();
+					String inchi = null;
+					if (!reaction)
+						inchi = InChIGeneratorFactory.getInstance().getInChIGenerator(mol).getInchi();
 					if (inchi != null) {
 						if (inchi.indexOf("/") + 1 > 1)
 							inchi = inchi.substring(inchi.indexOf("/") + 1);
@@ -40,7 +54,11 @@ public class RenderSmiles extends Command {
 							inchi = inchi.substring(0, inchi.indexOf("/"));
 						mol.setTitle(subscriptNumbers(inchi));
 					}
-					dptgen.depict(mol).writeTo("png", picture);
+
+					if (reaction)
+						dptgen.depict(rec).writeTo("png", picture);
+					else
+						dptgen.depict(mol).writeTo("png", picture);
 					event.getChannel().sendFile(picture).queue();
 				} catch (CDKException | IOException e) {
 					e.printStackTrace();
