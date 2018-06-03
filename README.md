@@ -8,7 +8,13 @@ This is just another random stuff bot but I try to only add things that other bo
 [Join the support server](https://discord.gg/SthsknG)  
 [Add the bot to your own server](https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352)  
 
-[![Discord Bots](https://discordbots.org/api/widget/439435998078959616.svg?usernamecolor=419399&topcolor=333333&middlecolor=A0A0A0&highlightcolor=333333&certifiedcolor=419399)](https://discordbots.org/bot/439435998078959616) [![Bots for Discord](https://botsfordiscord.com/api/v1/bots/439435998078959616/embed.svg)](https://botsfordiscord.com/bot/439435998078959616)
+[![Power Glove on discordbots.org](https://discordbots.org/api/widget/439435998078959616.svg?usernamecolor=419399&topcolor=333333&middlecolor=A0A0A0&highlightcolor=333333&certifiedcolor=419399)](https://discordbots.org/bot/439435998078959616)  
+[![Power Glove on botsfordiscord.com](https://botsfordiscord.com/api/v1/bots/439435998078959616/embed.svg)](https://botsfordiscord.com/bot/439435998078959616)  
+[Power Glove on bots.discord.pw](https://bots.discord.pw/bots/439435998078959616)  
+[Power Glove on botlist.space](https://botlist.space/view/439435998078959616)  
+[Power Glove on discordbot.world](https://discordbot.world/bot/439435998078959616)  
+[Power Glove on discord.services](https://discord.services/bots) (it's somewhere in that list)  
+
 
 Commands & features:  
 
