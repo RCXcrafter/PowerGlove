@@ -19,6 +19,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class Settings extends Command {
 
@@ -65,7 +66,11 @@ public class Settings extends Command {
 		}
 
 		if (arguments.length < 2) {
-			event.getChannel().sendMessage(embed).queue();
+			try {
+				event.getChannel().sendMessage(embed).queue();
+			} catch (InsufficientPermissionException e) {
+				event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + embed.getDescription()).queue();
+			}
 			return;
 		}
 
