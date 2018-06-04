@@ -81,20 +81,6 @@ public class TalkListener extends ListenerAdapter {
 			message.delete().queue();
 		}
 
-		/*if (content.toLowerCase().endsWith("des")) {
-			channel.sendTyping().queue();
-			channel.sendMessage("pa").queue();
-			channel.sendTyping().queue();
-			channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
-			/*try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println(channel.getMessageById(channel.getLatestMessageId()).complete().getContentRaw());
-			if (!channel.getMessageById(channel.getLatestMessageId()).complete().getContentRaw().contains("cito"))* /
-		}*/
-
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
 			if (content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
 				channel.sendTyping().queue();
@@ -112,16 +98,25 @@ public class TalkListener extends ListenerAdapter {
 			message.addReaction("\uD83DuDC4E").queue();
 		}
 
-		/*if (content.toLowerCase().contains("that was easy")) {
-			message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
-		}
+		if (settings.eastereggs) {
+			if (content.toLowerCase().endsWith("des")) {
+				channel.sendTyping().queue();
+				channel.sendMessage("pa").queue();
+				channel.sendTyping().queue();
+				channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
+			}
 
-		if (content.toLowerCase().contains("power")) {
-			message.addReaction(new EmoteImpl(447839588002824192l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
-		}
+			if (content.toLowerCase().contains("that was easy")) {
+				message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+			}
 
-		if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
-			message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
-		}*/
+			if (content.toLowerCase().contains("power")) {
+				message.addReaction(new EmoteImpl(447839588002824192l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+			}
+
+			if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
+				message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+			}
+		}
 	}
 }

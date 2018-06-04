@@ -30,6 +30,7 @@ public class Settings extends Command {
 			"Here's a list of all the settings:\n"
 					+ "\n\u2022 **prefix [prefix] [space]:** Add an alternate prefix for the bot to use. If you want to have a space between the prefix and the command, add \"space\" as the second argument"
 					+ "\n\u2022 **talktobots [true/false]:** If the bot should respond to other bots. default: false"
+					+ "\n\u2022 **eastereggs [true/false]:** Enable or disable some dumb easter eggs, these could get annoying over time. default: false"
 					+ "\n\u2022 **reset [setting name or \"all\"]:** Reset a specific setting or all of them.").build();
 
 	@SuppressWarnings("unchecked")
@@ -88,6 +89,11 @@ public class Settings extends Command {
 				changeSetting("talktobots", arguments[2], event);
 			else
 				event.getChannel().sendMessage("\u26A0 Setting can only be true or false.").queue();
+		} else if (arguments[1].equals("eastereggs")) {
+			if (arguments[2].equals("true") || arguments[2].equals("false"))
+				changeSetting("eastereggs", arguments[2], event);
+			else
+				event.getChannel().sendMessage("\u26A0 Setting can only be true or false.").queue();
 		} else if (arguments[1].equals("reset")) {
 			String serverID = event.getGuild().getId();
 			if (arguments[2].equals("all")) {
@@ -141,8 +147,9 @@ public class Settings extends Command {
 				if (serverID.equals("default")) {
 					server.putIfAbsent("prefix", "pow ");
 					server.putIfAbsent("talktobots", Boolean.toString(false));
+					server.putIfAbsent("eastereggs", Boolean.toString(false));
 				}
-				settings.put(serverID, new Setting((String) server.getOrDefault("prefix", "pow "), Boolean.parseBoolean((String) server.getOrDefault("talktobots", "false"))));
+				settings.put(serverID, new Setting((String) server.getOrDefault("prefix", "pow "), Boolean.parseBoolean((String) server.getOrDefault("talktobots", "false")), Boolean.parseBoolean((String) server.getOrDefault("eastereggs", "false"))));
 			}
 			fileWriter.write(new org.json.JSONObject(config.toJSONString()).toString(4));
 			fileWriter.close();
@@ -154,10 +161,12 @@ public class Settings extends Command {
 	public class Setting {
 		public String prefix;
 		public boolean talktobots;
+		public boolean eastereggs;
 
-		public Setting(String prefix, boolean talktobots) {
+		public Setting(String prefix, boolean talktobots, boolean eastereggs) {
 			this.prefix = prefix;
 			this.talktobots = talktobots;
+			this.eastereggs = eastereggs;
 		}
 	}
 }
