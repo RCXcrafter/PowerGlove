@@ -23,9 +23,9 @@ public class CommandListener extends ListenerAdapter {
 		String message = event.getMessage().getContentRaw();
 		String[] arguments = {"bluh"};
 
-		if (message.startsWith(PowerGlove.prefix) && message.length() > PowerGlove.prefix.length()) {
+		if (message.toLowerCase().startsWith(PowerGlove.prefix) && message.length() > PowerGlove.prefix.length()) {
 			arguments = message.substring(PowerGlove.prefix.length()).split(" ");
-		} else if (message.startsWith(settings.prefix) && message.length() > settings.prefix.length()) {
+		} else if (message.toLowerCase().startsWith(settings.prefix) && message.length() > settings.prefix.length()) {
 			if (!message.contains(" "))
 				arguments[0] = message.substring(settings.prefix.length());
 			else
