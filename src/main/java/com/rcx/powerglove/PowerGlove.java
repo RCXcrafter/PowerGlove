@@ -59,10 +59,9 @@ public class PowerGlove {
 
 		SecretStuff.secretMethod();
 
-		settings = new Settings();
 		System.setProperty("http.agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36");
 		CommandListener.commands.put("help", new Help());
-		CommandListener.commands.put("settings", settings);
+		CommandListener.commands.put("settings", new Settings());
 		CommandListener.commands.put("science", new Science());
 		CommandListener.commands.put("type", new Empty());
 		CommandListener.commands.put("info", new CommandSimpleEmbed(new EmbedBuilder().setColor(0x419399).setAuthor("Info", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(

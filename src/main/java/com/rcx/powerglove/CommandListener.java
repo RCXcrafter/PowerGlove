@@ -35,7 +35,7 @@ public class CommandListener extends ListenerAdapter {
 		if (!commands.containsKey(arguments[0].toLowerCase()))
 			return;
 		event.getChannel().sendTyping().complete();
-		commands.get(arguments[0].toLowerCase()).execute(arguments, event);
+		commands.get(arguments[0].toLowerCase()).execute(arguments, event, settings);
 	}
 
 	@Override

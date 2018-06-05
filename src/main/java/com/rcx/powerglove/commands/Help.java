@@ -3,6 +3,7 @@ package com.rcx.powerglove.commands;
 import java.util.Random;
 
 import com.rcx.powerglove.PowerGlove;
+import com.rcx.powerglove.commands.Settings.Setting;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -50,9 +51,8 @@ public class Help extends Command {
 			"I have the power",
 			"Pa pa pa pa pa power"
 	};
-
-	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(
-			"Prefix = \"" + PowerGlove.prefix + "\""
+	
+	String description = "Prefix = \"" + PowerGlove.prefix + "\""
 			+"\nHere's a list of all the commands:\n"
 			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
 			+ "\n\u2022 **settings:** Change the settings for this server."
@@ -73,10 +73,17 @@ public class Help extends Command {
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
 			//+ "\n\u2022 Say \"des\", and your sentence will be finished."
 			+ "\n\u2022 Start your message with \"poll:\" to start a poll."
-			+ "\n\u2022 Start your message with \"ninja:\" to have it deleted right after you post it so that only really fast people can read it.");
+			+ "\n\u2022 Start your message with \"ninja:\" to have it deleted right after you post it so that only really fast people can read it.";
+
+	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png");
+			
 
 	@Override
-	public void execute(String[] arguments, MessageReceivedEvent event) {
+	public void execute(String[] arguments, MessageReceivedEvent event, Setting settings) {
+		if (settings.prefix.equals("pow "))
+			embed.appendDescription(description);
+		else
+			embed.appendDescription("Prefix for this server = \"" + settings.prefix + "\"\n" + description);
 		try {
 			event.getChannel().sendMessage(embed.setTitle(powerQuote[new Random().nextInt(powerQuote.length)]).build()).queue();
 		} catch (InsufficientPermissionException e) {
