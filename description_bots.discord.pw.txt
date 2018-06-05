@@ -28,6 +28,7 @@
 	color: #419399 !important;
 	}
 </style>
+<a style="position: absolute; right: 120px; top: 10px;" class="button is-primary" href="https://discord.gg/SthsknG">Support server</a>
 <p>This is just another random stuff bot but I try to only add things that other bots don't have.</p>
 <br>
 	<p>Commands &amp; features:  </p>
