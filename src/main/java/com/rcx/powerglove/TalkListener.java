@@ -54,12 +54,16 @@ public class TalkListener extends ListenerAdapter {
 			channel.sendMessage("You are no longer AFK, " + message.getAuthor().getName()).complete().delete().queueAfter(10, TimeUnit.SECONDS);
 		}
 
-		if (chats.containsKey(event.getGuild().getId()  + " " + channel.getId())) {
+		if (chats.containsKey(event.getGuild().getId() + " " + channel.getId())) {
 			if (content.startsWith(PowerGlove.prefix) && content.length() > PowerGlove.prefix.length() || content.startsWith(settings.prefix) && content.length() > settings.prefix.length())
 				return;
 			try {
 				channel.sendTyping().queue();
-				channel.sendMessage(chats.get(event.getGuild().getId()  + " " + channel.getId()).think(content).replace("<br> ", "\n")).queueAfter(2, TimeUnit.SECONDS);
+				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).think(content).replace("<br> ", "\n").replace("ust surf somewhere else", "eez fine");
+				channel.sendMessage(response).queueAfter(1, TimeUnit.SECONDS);
+				String said = response.toLowerCase();
+				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine"))
+					chats.remove(event.getGuild().getId() + " " + channel.getId());
 				return;
 			} catch (Exception e) {
 				e.printStackTrace();

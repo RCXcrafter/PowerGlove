@@ -28,7 +28,7 @@ public class Talk extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		String id = event.getGuild().getId()  + " " + event.getChannel().getId();
+		String id = event.getGuild().getId() + " " + event.getChannel().getId();
 		if (TalkListener.chats.containsKey(id)) {
 			event.getChannel().sendMessage("Alright, I'll stop talking.").queue();
 			TalkListener.chats.remove(id);
