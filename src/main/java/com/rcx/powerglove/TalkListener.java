@@ -107,15 +107,15 @@ public class TalkListener extends ListenerAdapter {
 			}
 
 			if (content.toLowerCase().contains("that was easy")) {
-				message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+				message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 
 			if (content.toLowerCase().contains("power")) {
-				message.addReaction(new EmoteImpl(447839588002824192l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+				message.addReaction(new EmoteImpl(447839588002824192l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 
 			if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
-				message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+				message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 		}
 	}

@@ -18,10 +18,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.rcx.powerglove.commands.*;
-import net.dv8tion.jda.core.AccountType;
+
+import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.JDA.Status;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.Guild;
 
@@ -39,30 +41,20 @@ public class PowerGlove {
 	public static String prefix = "pow ";
 
 	public static Settings settings;
-	public static JDA[] shards = null;
-	public static JDA pane = null;
+	public static ShardManager api = null;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
 	public static void main(String[] args) throws Exception {
 		if (readConfigs())
 			return;
-		JDABuilder api = new JDABuilder(AccountType.BOT).setToken(token);
+		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setGame(Game.playing("with power")).build();
 		api.addEventListener(new CommandListener());
 		api.addEventListener(new TalkListener());
 
-		if (shardAmount == 0) {
-			pane = api.buildBlocking();
-			pane.getPresence().setGame(Game.playing("with power"));
-			for (Guild server : pane.getGuilds())
+		for (JDA shard : api.getShards()) {
+			while (!shard.getStatus().equals(Status.CONNECTED)) {}
+			for (Guild server : shard.getGuilds())
 				servers.put(server.getId(), server);
-		} else {
-			shards = new JDA[shardAmount];
-			for (int i = 0; i < shardAmount; i++) {
-				shards[i] = api.useSharding(i, shardAmount).buildBlocking();
-				shards[i].getPresence().setGame(Game.playing("with power"));
-				for (Guild server : shards[i].getGuilds())
-					servers.put(server.getId(), server);
-			}
 		}
 
 		SecretStuff.secretMethod();

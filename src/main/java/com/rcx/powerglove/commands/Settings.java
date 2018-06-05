@@ -3,9 +3,7 @@ package com.rcx.powerglove.commands;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,10 +14,11 @@ import org.json.simple.parser.ParseException;
 import com.rcx.powerglove.PowerGlove;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.core.utils.PermissionUtil;
 
 public class Settings extends Command {
 
@@ -43,16 +42,8 @@ public class Settings extends Command {
 
 		config.putIfAbsent("default", new JSONObject());
 
-		List<String> servers = new ArrayList<String>();
-
-		if (PowerGlove.shardAmount == 0)
-			PowerGlove.pane.getGuilds().forEach(guild->servers.add(guild.getId()));
-		else
-			for (JDA shard : PowerGlove.shards)
-				shard.getGuilds().forEach(guild->servers.add(guild.getId()));
-
 		for (String serverID : (Set<String>) config.keySet()) {
-			if (!serverID.equals("default") && !servers.contains(serverID) )
+			if (!serverID.equals("default") && !PowerGlove.servers.containsKey(serverID) )
 				config.remove(serverID);
 		}
 
@@ -61,8 +52,8 @@ public class Settings extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		if (!event.getAuthor().equals(event.getGuild().getOwner().getUser())) {
-			event.getChannel().sendMessage("\u26A0 Only the owner of this server can change the settings.").queue();
+		if (!PermissionUtil.checkPermission(event.getGuild().getMember(event.getAuthor()), Permission.MANAGE_SERVER)) {
+			event.getChannel().sendMessage("\u26A0 Only users with the \"Manage Server\" permission can change the settings.").queue();
 			return;
 		}
 
