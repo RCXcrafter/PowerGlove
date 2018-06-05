@@ -40,7 +40,6 @@ public class PowerGlove {
 	public static String botWorldToken = "insert token";
 	public static String prefix = "pow ";
 
-	public static Settings settings;
 	public static ShardManager api = null;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
 
@@ -52,7 +51,9 @@ public class PowerGlove {
 		api.addEventListener(new TalkListener());
 
 		for (JDA shard : api.getShards()) {
-			while (!shard.getStatus().equals(Status.CONNECTED)) {}
+			while (shard.getStatus().ordinal() < Status.CONNECTED.ordinal()) {
+				Thread.sleep(50);
+			}
 			for (Guild server : shard.getGuilds())
 				servers.put(server.getId(), server);
 		}
