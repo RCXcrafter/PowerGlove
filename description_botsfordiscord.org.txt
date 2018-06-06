@@ -14,6 +14,16 @@
 	th, strong {
 	color: #C0C0C0 !important;
 	}
+	.row>#cardbtn2 {
+	visibility: hidden;
+	position: relative;
+	}
+	.row>#cardbtn2:after {
+	visibility: visible;
+	position: absolute;
+	left: 16px;
+	content: 'Github' !important;
+	}
 </style>
 <br>
 <p>This is just another random stuff bot but I try to only add things that other bots don't have.</p>

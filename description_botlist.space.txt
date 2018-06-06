@@ -11,7 +11,7 @@
 	background-color: rgba(0, 0, 0, 0.75);
 	}
 </style>
-
+<a class="button is-outlined is-transparent margin-right-20" href="https://github.com/RCXcrafter/PowerGlove" style="position: absolute; left: 430px; top: 437px;">Github</a>
 <p>This is just another random stuff bot but I try to only add things that other bots don't have.</p>
 <br>
 	<p>Commands &amp; features:  </p>
