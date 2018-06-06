@@ -47,8 +47,6 @@ public class PowerGlove {
 		if (readConfigs())
 			return;
 		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setGame(Game.playing("with power")).build();
-		api.addEventListener(new CommandListener());
-		api.addEventListener(new TalkListener());
 
 		for (JDA shard : api.getShards()) {
 			while (shard.getStatus().ordinal() < Status.CONNECTED.ordinal()) {
@@ -81,6 +79,9 @@ public class PowerGlove {
 		CommandListener.commands.put("quote", new InspirationalQuote());
 		CommandListener.commands.put("mastermind", new Mastermind());
 		CommandListener.commands.put("guess", new MastermindGuess());
+
+		api.addEventListener(new CommandListener());
+		api.addEventListener(new TalkListener());
 
 		updateAllStats();
 

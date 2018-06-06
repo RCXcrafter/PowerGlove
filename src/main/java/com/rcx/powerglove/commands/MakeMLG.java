@@ -66,7 +66,9 @@ public class MakeMLG extends Command {
 				thisGuy = event.getJDA().getUserById(arguments[1]);
 			} catch (NumberFormatException e) {}
 
-			if (arguments[1].startsWith("<@"))
+			if (arguments[1].startsWith("<@!"))
+				thisGuy = event.getJDA().getUserById(arguments[1].substring(3, arguments[1].length()-1));
+			else if (arguments[1].startsWith("<@"))
 				thisGuy = event.getJDA().getUserById(arguments[1].substring(2, arguments[1].length()-1));
 		}
 
