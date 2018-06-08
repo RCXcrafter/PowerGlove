@@ -26,14 +26,18 @@ public class CommandListener extends ListenerAdapter {
 		if (message.toLowerCase().startsWith(PowerGlove.prefix) && message.length() > PowerGlove.prefix.length()) {
 			arguments = message.substring(PowerGlove.prefix.length()).split(" ");
 		} else if (message.toLowerCase().startsWith(settings.prefix) && message.length() > settings.prefix.length()) {
-			if (!message.contains(" "))
-				arguments[0] = message.substring(settings.prefix.length());
-			else
+			if (message.contains(" "))
 				arguments = message.substring(settings.prefix.length()).split(" ");
-		} else
+			else
+				arguments[0] = message.substring(settings.prefix.length());
+		} else {
+			TalkListener.onMessageReceived(event, settings);
 			return;
-		if (!commands.containsKey(arguments[0].toLowerCase()))
+		}
+		if (!commands.containsKey(arguments[0].toLowerCase())) {
+			TalkListener.onMessageReceived(event, settings);
 			return;
+		}
 		event.getChannel().sendTyping().complete();
 		commands.get(arguments[0].toLowerCase()).execute(arguments, event, settings);
 	}

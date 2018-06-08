@@ -81,7 +81,6 @@ public class PowerGlove {
 		CommandListener.commands.put("guess", new MastermindGuess());
 
 		api.addEventListener(new CommandListener());
-		api.addEventListener(new TalkListener());
 
 		updateAllStats();
 

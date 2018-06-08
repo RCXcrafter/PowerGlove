@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.google.code.chatterbotapi.ChatterBotSession;
 import com.rcx.powerglove.commands.Afk;
-import com.rcx.powerglove.commands.Settings;
 import com.rcx.powerglove.commands.Settings.Setting;
 
 import net.dv8tion.jda.core.entities.Message;
@@ -15,17 +14,12 @@ import net.dv8tion.jda.core.entities.impl.EmoteImpl;
 import net.dv8tion.jda.core.entities.impl.GuildImpl;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class TalkListener extends ListenerAdapter {
+public class TalkListener {
 
 	public static Map<String, ChatterBotSession> chats = new HashMap<String, ChatterBotSession>();
 
-	@Override
-	public void onMessageReceived(MessageReceivedEvent event) {
-		Setting settings = Settings.settings.getOrDefault(event.getGuild().getId(), Settings.settings.get("default"));
-		if (event.getAuthor().isFake() || (event.getAuthor().isBot() && !settings.talktobots) || event.getAuthor().getId().equals("439435998078959616"))
-			return;
+	public static void onMessageReceived(MessageReceivedEvent event, Setting settings) {
 		Message message = event.getMessage();
 		String content = message.getContentRaw();
 		MessageChannel channel = event.getChannel();
@@ -55,14 +49,15 @@ public class TalkListener extends ListenerAdapter {
 		}
 
 		if (chats.containsKey(event.getGuild().getId() + " " + channel.getId())) {
-			if (content.startsWith(PowerGlove.prefix) && content.length() > PowerGlove.prefix.length() || content.startsWith(settings.prefix) && content.length() > settings.prefix.length())
-				return;
 			try {
 				channel.sendTyping().queue();
-				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).think(content).replace("<br> ", "\n").replace("ust surf somewhere else", "eez fine");
+				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).think(content);
+				if (response.equals(""))
+					response = "I have nothing to say to that";
+				response = response.replace("<br> ", "\n").replace("ust surf somewhere else", "eez fine");
 				channel.sendMessage(response).queueAfter(1, TimeUnit.SECONDS);
 				String said = response.toLowerCase();
-				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine"))
+				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later"))
 					chats.remove(event.getGuild().getId() + " " + channel.getId());
 				return;
 			} catch (Exception e) {
