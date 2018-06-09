@@ -36,7 +36,7 @@ public class DongFont extends Command {
 			String message = event.getMessage().getContentRaw();
 			message = message.substring(message.indexOf("dong") + 5);
 
-			List<List<BufferedImage>> texts = convert(message);
+			List<List<BufferedImage>> texts = convert(message.toLowerCase());
 			int width = 0;
 			for (List<BufferedImage> text : texts){
 				width = Math.max(text.size(), width);

@@ -75,23 +75,23 @@ public class Settings extends Command {
 			return;
 		}
 
-		if (arguments[1].equals("prefix")) {
-			if (arguments.length > 3 && arguments[3].equals("space"))
+		if (arguments[1].toLowerCase().equals("prefix")) {
+			if (arguments.length > 3 && arguments[3].toLowerCase().equals("space"))
 				arguments[2] += " ";
-			changeSetting("prefix", arguments[2], event);
+			changeSetting("prefix", arguments[2].toLowerCase(), event);
 		} else if (arguments[1].equals("talktobots")) {
-			if (arguments[2].equals("true") || arguments[2].equals("false"))
-				changeSetting("talktobots", arguments[2], event);
+			if (arguments[2].toLowerCase().equals("true") || arguments[2].toLowerCase().equals("false"))
+				changeSetting("talktobots", arguments[2].toLowerCase(), event);
 			else
 				event.getChannel().sendMessage("\u26A0 Setting can only be true or false.").queue();
-		} else if (arguments[1].equals("eastereggs")) {
-			if (arguments[2].equals("true") || arguments[2].equals("false"))
-				changeSetting("eastereggs", arguments[2], event);
+		} else if (arguments[1].toLowerCase().equals("eastereggs")) {
+			if (arguments[2].toLowerCase().equals("true") || arguments[2].toLowerCase().equals("false"))
+				changeSetting("eastereggs", arguments[2].toLowerCase(), event);
 			else
 				event.getChannel().sendMessage("\u26A0 Setting can only be true or false.").queue();
-		} else if (arguments[1].equals("reset")) {
+		} else if (arguments[1].toLowerCase().equals("reset")) {
 			String serverID = event.getGuild().getId();
-			if (arguments[2].equals("all")) {
+			if (arguments[2].toLowerCase().equals("all")) {
 				if (!config.containsKey(serverID)) {
 					event.getChannel().sendMessage("\u26A0 No settings could be found for this server.").queue();
 					return;
@@ -104,14 +104,14 @@ public class Settings extends Command {
 					return;
 				}
 				JSONObject server = (JSONObject) config.get(serverID);
-				if (!server.containsKey(arguments[2])) {
+				if (!server.containsKey(arguments[2].toLowerCase())) {
 					event.getChannel().sendMessage("\u26A0 That setting does not exist or it has already been reset.").queue();
 					return;
 				}
-				server.remove(arguments[2]);
+				server.remove(arguments[2].toLowerCase());
 				if (server.keySet().isEmpty())
 					config.remove(serverID);
-				event.getChannel().sendMessage("\u2705 Setting \"" + arguments[2] + "\" has been reset.").queue();
+				event.getChannel().sendMessage("\u2705 Setting \"" + arguments[2].toLowerCase() + "\" has been reset.").queue();
 			}
 			reloadSettings();
 		} else {

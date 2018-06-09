@@ -42,7 +42,7 @@ public class AbsolutelyDisgusting extends Command {
 
 			BufferedImage combined = new BufferedImage(600, 450, BufferedImage.TYPE_INT_ARGB);
 			Graphics g = combined.getGraphics();
-			List<BufferedImage> text = convert(textString);
+			List<BufferedImage> text = convert(textString.toLowerCase());
 			int x = 134;
 
 			g.drawImage(background, 0, 0, null);

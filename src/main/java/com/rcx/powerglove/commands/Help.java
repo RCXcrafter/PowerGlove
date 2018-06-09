@@ -52,9 +52,10 @@ public class Help extends Command {
 			"Pa pa pa pa pa power"
 	};
 	
-	String description = "Prefix = \"" + PowerGlove.prefix + "\""
-			+"\nHere's a list of all the commands:\n"
-			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
+	String description = "Prefix = \"" + PowerGlove.prefix + "\"";
+
+	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").addField("Here's a list of all the commands:",
+			"\u2022 **help:** Displays this list, helpful isn't it?"
 			+ "\n\u2022 **settings:** Change the settings for this server."
 			+ "\n\u2022 **science:** Posts a science related picture."
 			+ "\n\u2022 **type:** Makes the bot start typing."
@@ -62,21 +63,18 @@ public class Help extends Command {
 			+ "\n\u2022 **anthem:** Posts the theme song of this bot."
 			+ "\n\u2022 **mlg [user]:** Make someone (or yourself) mlg."
 			+ "\n\u2022 **smiles [smiles]:** Give it a SMILES formula and it will draw the molecule for you (reaction smiles are also supported). [Wikipedia: SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system)"
-			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-			+ "\n\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
+			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C", false).addField("",
+			"\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
 			+ "\n\u2022 **dong [text]:** Convert text into expand dong text."
 			+ "\n\u2022 **talk:** Make the bot start or stop talking in the current channel."
 			+ "\n\u2022 **afk: [optional reason]** Set yourself away from keyboard (globally)."
 			+ "\n\u2022 **quote:** Post an inspirational quote by a famous person."
-			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot.\n"
-			+ "\nThis bot will also respond to certain key phrases/words:"
+			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot.\n", false).addField("",
+			"\nThis bot will also respond to certain key phrases/words:"
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
 			//+ "\n\u2022 Say \"des\", and your sentence will be finished."
 			+ "\n\u2022 Start your message with \"poll:\" to start a poll."
-			+ "\n\u2022 Start your message with \"ninja:\" to have it deleted right after you post it so that only really fast people can read it.";
-
-	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png");
-			
+			+ "\n\u2022 Start your message with \"ninja:\" to have it deleted right after you post it so that only really fast people can read it.", false);
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event, Setting settings) {
