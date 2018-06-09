@@ -39,6 +39,10 @@ public class DongFont extends Command {
 			List<List<BufferedImage>> texts = convert(message.toLowerCase());
 			int width = 0;
 			for (List<BufferedImage> text : texts){
+				if (text.isEmpty()) {
+					event.getChannel().sendMessage("\u26A0 Only alphanumeric characters work here.").queue();
+					return;
+				}
 				width = Math.max(text.size(), width);
 			}
 			BufferedImage combined = new BufferedImage(width * 63, texts.size() * 72, BufferedImage.TYPE_INT_ARGB);

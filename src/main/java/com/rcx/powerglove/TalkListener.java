@@ -56,8 +56,8 @@ public class TalkListener {
 					response = "I have nothing to say to that.";
 				response = response.replaceAll("<br> ", "\n").replaceAll("ust surf somewhere else", "eez fine");
 				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
-				if (!nickname.equals(null))
-					response = response.replaceAll("Power Glove", nickname);
+				if (nickname != null)
+					response =response.replaceAll("Power Glove", nickname);
 				channel.sendMessage(response).queueAfter(1, TimeUnit.SECONDS);
 				String said = response.toLowerCase();
 				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later"))
