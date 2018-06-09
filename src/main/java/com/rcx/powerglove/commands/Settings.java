@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,11 +42,14 @@ public class Settings extends Command {
 		}
 
 		config.putIfAbsent("default", new JSONObject());
+		Set<String> goneServers = new HashSet<String>();
 
 		for (String serverID : (Set<String>) config.keySet()) {
 			if (!serverID.equals("default") && !PowerGlove.servers.containsKey(serverID) )
-				config.remove(serverID);
+				goneServers.add(serverID);
 		}
+		for (String serverID : goneServers)
+			config.remove(serverID);
 
 		reloadSettings();
 	}
