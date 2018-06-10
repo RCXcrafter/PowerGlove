@@ -58,6 +58,10 @@ public class TalkListener {
 				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
 				if (nickname != null)
 					response =response.replaceAll("Power Glove", nickname);
+				if (response.length() <= 2000) {
+					response = "I don't say this often, but I'm done talking for now.";
+					chats.remove(event.getGuild().getId() + " " + channel.getId());
+				}
 				channel.sendMessage(response).queueAfter(1, TimeUnit.SECONDS);
 				String said = response.toLowerCase();
 				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later"))
@@ -96,8 +100,8 @@ public class TalkListener {
 		}
 
 		if (content.toLowerCase().startsWith("poll:")) {
-			message.addReaction("\uD83DuDC4D").queue();
-			message.addReaction("\uD83DuDC4E").queue();
+			message.addReaction("\uD83D\uDC4D").queue();
+			message.addReaction("\uD83D\uDC4E").queue();
 		}
 
 		if (settings.eastereggs) {
