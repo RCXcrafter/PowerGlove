@@ -58,7 +58,7 @@ public class TalkListener {
 				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
 				if (nickname != null)
 					response =response.replaceAll("Power Glove", nickname);
-				if (response.length() <= 2000) {
+				if (response.length() > 2000) {
 					response = "I don't say this often, but I'm done talking for now.";
 					chats.remove(event.getGuild().getId() + " " + channel.getId());
 				}
