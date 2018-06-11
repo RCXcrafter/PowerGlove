@@ -10,6 +10,7 @@ import com.rcx.powerglove.commands.Settings.Setting;
 
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.entities.impl.EmoteImpl;
 import net.dv8tion.jda.core.entities.impl.GuildImpl;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -24,22 +25,17 @@ public class TalkListener {
 		String content = message.getContentRaw();
 		MessageChannel channel = event.getChannel();
 
-		String mentions = content;
-		while (mentions.contains("<@") && mentions.contains(">")) {
-			if (mentions.indexOf("<@") < mentions.indexOf(">")) {
-				String ping = mentions.substring(mentions.indexOf("<@") + 2, mentions.indexOf(">"));
-				ping = ping.replace("!", "");
-				if (Afk.afkPeople.containsKey(ping)) {
-					String reason = Afk.afkPeople.get(ping);
-					String person = event.getGuild().getMemberById(ping).getEffectiveName();
-					channel.sendTyping().queue();
-					if (reason.equals("afk"))
-						channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
-					else
-						channel.sendMessage(person + " is currently AFK: " + reason).complete().delete().queueAfter(10, TimeUnit.SECONDS);
-				}
+		for (User mention : message.getMentionedUsers()) {
+			String ping = mention.getId();
+			if (Afk.afkPeople.containsKey(ping)) {
+				String reason = Afk.afkPeople.get(ping);
+				String person = event.getGuild().getMember(mention).getEffectiveName();
+				channel.sendTyping().queue();
+				if (reason.equals("afk"))
+					channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
+				else
+					channel.sendMessage(person + " is currently AFK: " + reason).complete().delete().queueAfter(10, TimeUnit.SECONDS);
 			}
-			mentions = mentions.substring(mentions.indexOf(">") + 1);
 		}
 
 		if (Afk.afkPeople.containsKey(message.getAuthor().getId()) && !content.startsWith(PowerGlove.prefix + "afk") && !content.startsWith(settings.prefix + "afk")) {
@@ -57,7 +53,7 @@ public class TalkListener {
 				response = response.replaceAll("<br> ", "\n").replaceAll("ust surf somewhere else", "eez fine");
 				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
 				if (nickname != null)
-					response =response.replaceAll("Power Glove", nickname);
+					response = response.replaceAll("Power Glove", nickname);
 				if (response.length() > 2000) {
 					response = "I don't say this often, but I'm done talking for now.";
 					chats.remove(event.getGuild().getId() + " " + channel.getId());
@@ -94,6 +90,12 @@ public class TalkListener {
 			} else if (content.toLowerCase().contains("hello")) {
 				channel.sendTyping().queue();
 				channel.sendMessage("Yes hello, this is Power Glove.").queue();
+			} else if (content.toLowerCase().contains("pet")) {
+				channel.sendTyping().queue();
+				channel.sendMessage("I'm not your pet.").queue();
+			} else if (content.toLowerCase().contains("pat")) {
+				channel.sendTyping().queue();
+				channel.sendMessage("That better be a pat on the shoulder or the back, I do not allow pats on my head.").queue();
 			} else if (message.getGuild() != null){
 				message.addReaction(new EmoteImpl(445609116337963008l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 			}
