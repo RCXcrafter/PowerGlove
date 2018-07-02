@@ -23,7 +23,9 @@ public class MastermindGuess extends Command {
 
 		Mastermind.MasterMindGame game = Mastermind.games.get(gameID);
 		if (guess.length != game.codeSize) {
-			event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
+			try {
+				event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
+			} catch (Exception e) {}
 			event.getChannel().sendMessage("\u26A0 Your guess is not the same length as the code, it should be " + game.codeSize + " long.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
 			return;
 		}
@@ -77,13 +79,17 @@ public class MastermindGuess extends Command {
 				}
 			}
 			if (!match) {
-				event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
+				try {
+					event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
+				} catch (Exception e) {}
 				event.getChannel().sendMessage("\u26A0 \"" + digit + "\" is not valid, try again.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
 				return;
 			}
 		}
 
-		event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
+		try {
+			event.getMessage().delete().queueAfter(10, TimeUnit.SECONDS);
+		} catch (Exception e) {}
 		game.guesses.add(guess);
 
 		int blackPins = 0;
