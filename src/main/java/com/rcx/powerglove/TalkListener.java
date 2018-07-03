@@ -29,7 +29,11 @@ public class TalkListener {
 			String ping = mention.getId();
 			if (Afk.afkPeople.containsKey(ping)) {
 				String reason = Afk.afkPeople.get(ping);
-				String person = event.getGuild().getMember(mention).getEffectiveName();
+				String person;
+				if (event.getGuild().isMember(mention))
+					person = event.getGuild().getMember(mention).getEffectiveName();
+				else
+					person = mention.getName();
 				channel.sendTyping().queue();
 				if (reason.equals("afk"))
 					channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);

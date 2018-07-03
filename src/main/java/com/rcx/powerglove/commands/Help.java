@@ -78,14 +78,16 @@ public class Help extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event, Setting settings) {
+		EmbedBuilder newEmbed = new EmbedBuilder(embed);
+
 		if (settings.prefix.equals("pow "))
-			embed.appendDescription(description);
+			newEmbed.appendDescription(description);
 		else
-			embed.appendDescription("Prefix for this server = \"" + settings.prefix + "\"\n" + description);
+			newEmbed.appendDescription("Prefix for this server = \"" + settings.prefix + "\"\n" + description);
 		try {
-			event.getChannel().sendMessage(embed.setTitle(powerQuote[new Random().nextInt(powerQuote.length)]).build()).queue();
+			event.getChannel().sendMessage(newEmbed.setTitle(powerQuote[new Random().nextInt(powerQuote.length)]).build()).queue();
 		} catch (InsufficientPermissionException e) {
-			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + new String(embed.getDescriptionBuilder())).queue();
+			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + new String(newEmbed.getDescriptionBuilder())).queue();
 		}
 	}
 }
