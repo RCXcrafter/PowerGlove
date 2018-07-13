@@ -80,6 +80,7 @@ public class PowerGlove {
 		CommandListener.commands.put("quote", new InspirationalQuote());
 		CommandListener.commands.put("mastermind", new Mastermind());
 		CommandListener.commands.put("guess", new MastermindGuess());
+		CommandListener.commands.put("nsfw", new Nsfw());
 
 		api.addEventListener(new CommandListener());
 
