@@ -182,8 +182,7 @@ public class PowerGlove {
 			rd.close();
 			site.disconnect();
 		} catch (Exception e) {
-			if (!url.equals("https://discordbots.org/api/bots/439435998078959616/stats"))
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }

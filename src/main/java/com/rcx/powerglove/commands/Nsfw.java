@@ -2,6 +2,7 @@ package com.rcx.powerglove.commands;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -11,8 +12,6 @@ import java.util.Random;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-import com.rcx.powerglove.PowerGlove;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -46,16 +45,24 @@ public class Nsfw extends Command {
 			event.getChannel().sendMessage("This command can only be used in channels marked as NSFW.").queue();
 			return;
 		}
+		boolean dBotsVote = getDBotsVote(event.getAuthor().getId());
+		boolean listcordVote = false;
 		JSONObject user = getListcordVote(event.getAuthor().getId());
 		if (user != null) {
 			Timestamp stamp = new Timestamp(Calendar.getInstance().getTime().getTime());
 			Timestamp stamp2 = new Timestamp((long) user.get("nextVote"));
 			if (stamp.before(stamp2)) {
-				event.getChannel().sendMessage(message[rand.nextInt(message.length)]).queue();
-				return;
+				listcordVote = true;
 			}
 		}
-		event.getChannel().sendMessage("Please vote for Power Glove on listcord to get access to this command\nhttps://listcord.com/bot/439435998078959616").queue();
+		if (dBotsVote && listcordVote)
+			event.getChannel().sendMessage(message[rand.nextInt(message.length)]).queue();
+		else if (!dBotsVote && listcordVote)
+			event.getChannel().sendMessage("Please vote for Power Glove on Discord Bots to get access to this command\nhttps://discordbots.org/bot/439435998078959616/vote").queue();
+		else if (dBotsVote && !listcordVote)
+			event.getChannel().sendMessage("Please vote for Power Glove on Listcord to get access to this command\nhttps://listcord.com/bot/439435998078959616").queue();
+		else
+			event.getChannel().sendMessage("Please vote for Power Glove on Discord Bots and Listcord to get access to this command\nhttps://discordbots.org/bot/439435998078959616/vote\nhttps://listcord.com/bot/439435998078959616").queue();
 	}
 
 	public JSONObject getListcordVote(String id) {
@@ -63,7 +70,6 @@ public class Nsfw extends Command {
 			HttpURLConnection site = (HttpURLConnection) new URL("https://listcord.com/api/bot/439435998078959616/votes/" + id).openConnection();
 			site.setRequestProperty("User-Agent", "PowerGlove");
 			site.setRequestProperty("Content-Type", "application/json");
-			site.setRequestProperty("Authorization", PowerGlove.listcordToken);
 			site.setRequestMethod("GET");
 			site.setDoOutput(true);
 			site.setDoInput(true);
@@ -75,7 +81,6 @@ public class Nsfw extends Command {
 			String lines = "";
 			while ((line = d.readLine()) != null) {
 				lines += line;
-				System.out.println(line);
 			}
 			d.close();
 			rd.close();
@@ -83,6 +88,34 @@ public class Nsfw extends Command {
 			return (JSONObject) new JSONParser().parse(lines);
 		} catch (Exception e) {
 			return null;
+		}
+	}
+
+	public boolean getDBotsVote(String id) {
+		try {
+			HttpURLConnection site = (HttpURLConnection) new URL("https://discordbots.org/api/bots/439435998078959616/check?userId=" + id).openConnection();
+			site.setRequestProperty("User-Agent", "PowerGlove");
+			site.setRequestProperty("Content-Type", "application/json");
+			site.setRequestMethod("GET");
+			site.setDoOutput(true);
+			site.setDoInput(true);
+			site.connect();
+			
+			InputStream rad = site.getInputStream();
+			DataInputStream rd = new DataInputStream (rad);
+			BufferedReader d = new BufferedReader(new InputStreamReader(rd));
+			String line;
+			String lines = "";
+			while ((line = d.readLine()) != null) {
+				lines += line;
+			}
+			d.close();
+			rd.close();
+			site.disconnect();
+			return  (Long) ((JSONObject) new JSONParser().parse(lines)).get("voted") == 1L;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }
