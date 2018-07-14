@@ -159,7 +159,6 @@ public class PowerGlove {
 	public static void postGuildCount(String url, String webToken, String countName) {
 		try {
 			HttpURLConnection site = (HttpURLConnection) new URL(url).openConnection();
-			site.setRequestProperty("User-Agent", "PowerGlove");
 			site.setRequestProperty("Content-Type", "application/json");
 			site.setRequestProperty("Authorization", webToken);
 			site.setRequestMethod("POST");

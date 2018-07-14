@@ -13,6 +13,8 @@ import java.util.Random;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.rcx.powerglove.PowerGlove;
+
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Nsfw extends Command {
@@ -94,10 +96,9 @@ public class Nsfw extends Command {
 	public boolean getDBotsVote(String id) {
 		try {
 			HttpURLConnection site = (HttpURLConnection) new URL("https://discordbots.org/api/bots/439435998078959616/check?userId=" + id).openConnection();
-			site.setRequestProperty("User-Agent", "PowerGlove");
 			site.setRequestProperty("Content-Type", "application/json");
+			site.setRequestProperty("Authorization", PowerGlove.dblToken);
 			site.setRequestMethod("GET");
-			site.setDoOutput(true);
 			site.setDoInput(true);
 			site.connect();
 			
