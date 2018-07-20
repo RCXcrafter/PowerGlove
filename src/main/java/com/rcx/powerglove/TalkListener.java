@@ -34,7 +34,7 @@ public class TalkListener {
 					person = event.getGuild().getMember(mention).getEffectiveName();
 				else
 					person = mention.getName();
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				if (reason.equals("afk"))
 					channel.sendMessage(person + " is currently AFK.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
 				else
@@ -44,13 +44,13 @@ public class TalkListener {
 
 		if (Afk.afkPeople.containsKey(message.getAuthor().getId()) && !content.startsWith(PowerGlove.prefix + "afk") && !content.startsWith(settings.prefix + "afk")) {
 			Afk.afkPeople.remove(message.getAuthor().getId());
-			channel.sendTyping().queue();
+			channel.sendTyping().complete();
 			channel.sendMessage("You are no longer AFK, " + message.getAuthor().getName()).complete().delete().queueAfter(10, TimeUnit.SECONDS);
 		}
 
 		if (chats.containsKey(event.getGuild().getId() + " " + channel.getId())) {
 			try {
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).think(content);
 				if (response.equals(""))
 					response = "I have nothing to say to that.";
@@ -73,32 +73,35 @@ public class TalkListener {
 		}
 
 		if (content.toLowerCase().equals("delete this message")) {
-			channel.sendTyping().queue();
+			channel.sendTyping().complete();
 			try {
 				message.delete().queueAfter(10, TimeUnit.SECONDS);
 				channel.sendMessage("Alright, if that's what you want.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 			} catch (InsufficientPermissionException e) {
 				channel.sendMessage("I'm sorry, I just can't.").queue();
 			}
 		}
 
 		if (content.toLowerCase().startsWith("ninja:")) {
-			message.delete().queue();
+			try {
+				message.delete().queue();
+			} catch (InsufficientPermissionException e) {
+			}
 		}
 
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
 			if (content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				channel.sendMessage("Use: pow help\nfor a list of commands and other help.").queue();
 			} else if (content.toLowerCase().contains("hello")) {
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				channel.sendMessage("Yes hello, this is Power Glove.").queue();
 			} else if (content.toLowerCase().contains("pet")) {
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				channel.sendMessage("I'm not your pet.").queue();
 			} else if (content.toLowerCase().contains("pat")) {
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				channel.sendMessage("That better be a pat on the shoulder or the back, I do not allow pats on my head.").queue();
 			} else if (message.getGuild() != null){
 				message.addReaction(new EmoteImpl(445609116337963008l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
@@ -112,9 +115,9 @@ public class TalkListener {
 
 		if (settings.eastereggs) {
 			if (content.toLowerCase().endsWith("des")) {
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				channel.sendMessage("pa").queue();
-				channel.sendTyping().queue();
+				channel.sendTyping().complete();
 				channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
 			}
 
