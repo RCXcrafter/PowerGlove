@@ -31,6 +31,7 @@ Commands & features:
 |**afk [optional reason]**|Set yourself away from keyboard (globally).|
 |**quote**|Post an inspirational quote by a famous person.|
 |**mastermind**|Play a nice game of mastermind against the bot.|
+|**nsfw**|Post some hot ~~garbage~~ naked people.|
 
 
 This bot will also respond to certain key phrases/words:  

@@ -93,7 +93,7 @@ This is just another random stuff bot but I try to only add things that other bo
 
 
 Commands & features:  
-|Command [argument]|Explamation|
+|Command [argument]|Explanation|
 |:-----------:|-------------|
 |**help**|Displays a list of commands and features.|
 |**settings**|Change the settings for this server.|

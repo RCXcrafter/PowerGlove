@@ -36,7 +36,7 @@
 		<thead>
 			<tr>
 				<th style="text-align:center">Command [argument]</th>
-				<th>Explamation</th>
+				<th>Explanation</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -124,6 +124,12 @@
 						<strong>mastermind</strong>
 					</td>
 					<td>Play a nice game of mastermind against the bot.</td>
+				</tr>
+				<tr>
+					<td style="text-align:center">
+						<strong>nsfw</strong>
+					</td>
+					<td>Post some hot <s>garbage</s> naked people.</td>
 				</tr>
 			</tbody>
 		</table>
