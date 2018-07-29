@@ -39,6 +39,7 @@ public class PowerGlove {
 	public static String botListToken = "insert token";
 	public static String botWorldToken = "insert token";
 	public static String listcordToken = "insert token";
+	public static String botsOnDToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -116,6 +117,7 @@ public class PowerGlove {
 		options.putIfAbsent("botListToken", botListToken);
 		options.putIfAbsent("botWorldToken", botWorldToken);
 		options.putIfAbsent("listcordToken", listcordToken);
+		options.putIfAbsent("botsOnDToken", botsOnDToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -128,6 +130,7 @@ public class PowerGlove {
 		botListToken = (String) options.get("botListToken");
 		botWorldToken = (String) options.get("botWorldToken");
 		listcordToken = (String) options.get("listcordToken");
+		botsOnDToken = (String) options.get("botsOnDToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -152,6 +155,8 @@ public class PowerGlove {
 			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", botWorldToken, "guild_count");
 		if (!listcordToken.equals("insert token"))
 			postGuildCount("https://listcord.com/api/bot/439435998078959616/guilds", listcordToken, "guilds");
+		if (!botsOnDToken.equals("insert token"))
+			postGuildCount("https://bots.ondiscord.xyz/bot-api/bots/439435998078959616/guilds", botsOnDToken, "guildCount");
 		System.out.println("Server count posted.");
 	}
 
