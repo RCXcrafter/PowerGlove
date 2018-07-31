@@ -8,7 +8,7 @@ This is just another random stuff bot but I try to only add things that other bo
 [Join the support server](https://discord.gg/SthsknG)  
 [Add the bot to your own server](https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352)  
 
-[![Power Glove on botsfordiscord.com](https://botsfordiscord.com/api/v1/bots/439435998078959616/embed.svg)](https://botsfordiscord.com/bot/439435998078959616)  
+[![Power Glove on botsfordiscord.com](https://botsfordiscord.com/api/v1/bots/439435998078959616/embed?theme=dark)](https://botsfordiscord.com/bot/439435998078959616)  
 [![Power Glove on bots.ondiscord.xyz](https://bots.ondiscord.xyz/bots/439435998078959616/embed?theme=dark&showGuilds=true)](https://bots.ondiscord.xyz/bots/439435998078959616)  
 [![Power Glove on discordbots.org](https://discordbots.org/api/widget/439435998078959616.svg?usernamecolor=419399&topcolor=333333&middlecolor=A0A0A0&highlightcolor=333333&certifiedcolor=419399)](https://discordbots.org/bot/439435998078959616)  
 [Power Glove on bots.discord.pw](https://bots.discord.pw/bots/439435998078959616)  
@@ -20,7 +20,7 @@ This is just another random stuff bot but I try to only add things that other bo
 
 Commands & features:  
 
-|Command [argument]|Explamation|
+|Command [argument]|Explanation|
 |:-----------:|-------------|
 |**help**|Displays a list of commands and features.|
 |**settings**|Change the settings for this server.|
@@ -29,7 +29,7 @@ Commands & features:
 |**info**|Gives some info about this bot.|
 |**anthem**|Posts the theme song of this bot.|
 |**mlg [user]**|Make someone (or yourself) mlg.|
-|**smiles [smiles]**|Give it a SMILES formula and it will draw the molecule for you (reaction smiles are also supported). [Wikipedia: SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) </br> Example: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C|
+|**smiles [smiles]**|Give it a SMILES formula and it will draw the molecule for you (reaction smiles are also supported). [Wikipedia: SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) <br> Example: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C|
 |**disgusting [text]**|Insert your own text into the absolutely disgusting meme.|
 |**dong [text]**|Convert text into expand dong text.|
 |**talk**|Make the bot start or stop talking in the current channel.|
