@@ -87,6 +87,7 @@ public class TalkListener {
 			try {
 				message.delete().queue();
 			} catch (InsufficientPermissionException e) {
+				channel.sendMessage("You'll have to delete that one yourself, I don't have permission to do it.").queue();
 			}
 		}
 
