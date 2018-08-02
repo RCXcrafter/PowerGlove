@@ -16,6 +16,7 @@ This is just another random stuff bot but I try to only add things that other bo
 [Power Glove on botlist.space](https://botlist.space/view/439435998078959616)  
 [Power Glove on discordbot.world](https://discordbot.world/bot/439435998078959616)  
 [Power Glove on discordbots.group](https://discordbots.group/bot/439435998078959616)  
+[Power Glove on discordbots.co.uk](https://discordbots.co.uk/bots/439435998078959616/)  
 [Power Glove on discord.services](https://discord.services/bots) (it's somewhere in that list)  
 [Power Glove on listcord.com](https://listcord.com/bot/439435998078959616)  
 
