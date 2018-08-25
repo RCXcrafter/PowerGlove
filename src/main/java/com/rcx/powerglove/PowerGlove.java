@@ -42,6 +42,7 @@ public class PowerGlove {
 	public static String botsOnDToken = "insert token";
 	public static String dBotsGroupToken = "insert token";
 	public static String boatsClubToken = "insert token";
+	public static String dbl2Token = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -122,6 +123,7 @@ public class PowerGlove {
 		options.putIfAbsent("botsOnDToken", botsOnDToken);
 		options.putIfAbsent("dBotsGroupToken", dBotsGroupToken);
 		options.putIfAbsent("boatsClubToken", boatsClubToken);
+		options.putIfAbsent("dbl2Token", dbl2Token);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -137,6 +139,7 @@ public class PowerGlove {
 		botsOnDToken = (String) options.get("botsOnDToken");
 		dBotsGroupToken = (String) options.get("dBotsGroupToken");
 		boatsClubToken = (String) options.get("boatsClubToken");
+		dbl2Token = (String) options.get("dbl2Token");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -167,6 +170,8 @@ public class PowerGlove {
 			postGuildCount("https://discordbots.group/api/bot/439435998078959616", dBotsGroupToken, "count");
 		if (!boatsClubToken.equals("insert token"))
 			postGuildCount("https://discordboats.club/api/public/bot/stats", boatsClubToken, "server_count");
+		if (!dbl2Token.equals("insert token"))
+			postGuildCount("https://discordbotlist.com/api/bots/439435998078959616/stats", dbl2Token, "guilds");
 		System.out.println("Server count posted.");
 	}
 
@@ -183,6 +188,8 @@ public class PowerGlove {
 			
 			DataOutputStream wr = new DataOutputStream (site.getOutputStream());
 			JSONObject put = new JSONObject();
+			if (url.equals("https://discordbotlist.com/api/bots/439435998078959616/stats"))
+				put.put("shard_id", Integer.toString(0));
 			put.put(countName, Integer.toString(servers.size()));
 			wr.writeBytes(put.toJSONString());
 			wr.close();
