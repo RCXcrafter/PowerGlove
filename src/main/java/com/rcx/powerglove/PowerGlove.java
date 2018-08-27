@@ -43,6 +43,8 @@ public class PowerGlove {
 	public static String dBotsGroupToken = "insert token";
 	public static String boatsClubToken = "insert token";
 	public static String dbl2Token = "insert token";
+	public static String dbBotsToken = "insert token";
+	public static String ddBotsToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -124,6 +126,8 @@ public class PowerGlove {
 		options.putIfAbsent("dBotsGroupToken", dBotsGroupToken);
 		options.putIfAbsent("boatsClubToken", boatsClubToken);
 		options.putIfAbsent("dbl2Token", dbl2Token);
+		options.putIfAbsent("dbBotsToken", dbBotsToken);
+		options.putIfAbsent("ddBotsToken", ddBotsToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -140,6 +144,8 @@ public class PowerGlove {
 		dBotsGroupToken = (String) options.get("dBotsGroupToken");
 		boatsClubToken = (String) options.get("boatsClubToken");
 		dbl2Token = (String) options.get("dbl2Token");
+		dbBotsToken = (String) options.get("dbBotsToken");
+		ddBotsToken = (String) options.get("ddBotsToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -172,6 +178,10 @@ public class PowerGlove {
 			postGuildCount("https://discordboats.club/api/public/bot/stats", boatsClubToken, "server_count");
 		if (!dbl2Token.equals("insert token"))
 			postGuildCount("https://discordbotlist.com/api/bots/439435998078959616/stats", dbl2Token, "guilds");
+		if (!dbBotsToken.equals("insert token"))
+			postGuildCount("https://discordsbestbots.xyz/api/bots/439435998078959616", dbBotsToken, "guilds");
+		if (!ddBotsToken.equals("insert token"))
+			postGuildCount("https://bots-discord.tk/bots/439435998078959616/stats", ddBotsToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 
@@ -190,6 +200,8 @@ public class PowerGlove {
 			JSONObject put = new JSONObject();
 			if (url.equals("https://discordbotlist.com/api/bots/439435998078959616/stats"))
 				put.put("shard_id", Integer.toString(0));
+			if (url.equals("https://bots-discord.tk/bots/439435998078959616/stats") || url.equals("https://discordsbestbots.xyz/api/bots/439435998078959616"))
+				put.put("shards", api.getShardsTotal());
 			put.put(countName, Integer.toString(servers.size()));
 			wr.writeBytes(put.toJSONString());
 			wr.close();
