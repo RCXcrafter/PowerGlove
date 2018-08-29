@@ -87,6 +87,7 @@ public class PowerGlove {
 		CommandListener.commands.put("mastermind", new Mastermind());
 		CommandListener.commands.put("guess", new MastermindGuess());
 		CommandListener.commands.put("nsfw", new Nsfw());
+		CommandListener.commands.put("color", new RandomColor());
 
 		api.addEventListener(new CommandListener());
 
