@@ -72,9 +72,9 @@ public class PowerGlove {
 		CommandListener.commands.put("type", new Empty());
 		CommandListener.commands.put("info", new CommandSimpleEmbed(new EmbedBuilder().setColor(0x419399).setAuthor("Info", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").appendDescription(
 				"This bot is made by <:rcxpick:445610943112806400> RCXcrafter#3845"
-				+ "\nYou can join RCXcrafter's server here: https://discord.gg/SthsknG"
-				+ "\nThe source code can be found here: https://github.com/RCXcrafter/PowerGlove"
-				+ "\nYou can add this bot to your own server here: https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352").build()));
+						+ "\nYou can join RCXcrafter's server here: https://discord.gg/SthsknG"
+						+ "\nThe source code can be found here: https://github.com/RCXcrafter/PowerGlove"
+						+ "\nYou can add this bot to your own server here: https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352").build()));
 		CommandListener.commands.put("anthem", new CommandSimpleString("All rise for the official power glove anthem.\nhttps://soundcloud.com/knifepartyinc/knife-party-power-glove"));
 		CommandListener.commands.put("mlg", new MakeMLG());
 		CommandListener.commands.put("smiles", new RenderSmiles());
@@ -153,40 +153,44 @@ public class PowerGlove {
 		file.close();
 		return token.equals("insert token");
 	}
-	
+
 	public static void updateAllStats() {
 		System.out.println("Posting server count...");
 		if (!dblToken.equals("insert token"))
-			postGuildCount("https://discordbots.org/api/bots/439435998078959616/stats", dblToken, "server_count");
+			postGuildCount("https://discordbots.org/api/bots/439435998078959616/stats", "https://discordbots.org", dblToken, "server_count");
 		if (!dBotsToken.equals("insert token"))
-			postGuildCount("https://bots.discord.pw/api/bots/439435998078959616/stats", dBotsToken, "server_count");
+			postGuildCount("https://bots.discord.pw/api/bots/439435998078959616/stats", "https://bots.discord.pw", dBotsToken, "server_count");
 		if (!bots4DToken.equals("insert token"))
-			postGuildCount("https://botsfordiscord.com/api/v1/bots/439435998078959616", bots4DToken, "count");
+			postGuildCount("https://botsfordiscord.com/api/v1/bots/439435998078959616", "https://botsfordiscord.com", bots4DToken, "count");
 		if (!dServToken.equals("insert token"))
-			postGuildCount("https://discord.services/api/bots/439435998078959616", dServToken, "guild_count");
+			postGuildCount("https://discord.services/api/bots/439435998078959616", "https://discord.services", dServToken, "guild_count");
 		if (!botListToken.equals("insert token"))
-			postGuildCount("https://botlist.space/api/bots/439435998078959616", botListToken, "server_count");
+			postGuildCount("https://botlist.space/api/bots/439435998078959616", "https://botlist.space", botListToken, "server_count");
 		if (!botWorldToken.equals("insert token"))
-			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", botWorldToken, "guild_count");
+			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", "https://discordbot.world", botWorldToken, "guild_count");
 		if (!listcordToken.equals("insert token"))
-			postGuildCount("https://listcord.com/api/bot/439435998078959616/guilds", listcordToken, "guilds");
+			postGuildCount("https://listcord.com/api/bot/439435998078959616/guilds", "https://listcord.com", listcordToken, "guilds");
 		if (!botsOnDToken.equals("insert token"))
-			postGuildCount("https://bots.ondiscord.xyz/bot-api/bots/439435998078959616/guilds", botsOnDToken, "guildCount");
+			postGuildCount("https://bots.ondiscord.xyz/bot-api/bots/439435998078959616/guilds", "https://bots.ondiscord.xyz", botsOnDToken, "guildCount");
 		if (!dBotsGroupToken.equals("insert token"))
-			postGuildCount("https://discordbots.group/api/bot/439435998078959616", dBotsGroupToken, "count");
+			postGuildCount("https://discordbots.group/api/bot/439435998078959616", "https://discordbots.group", dBotsGroupToken, "count");
 		if (!boatsClubToken.equals("insert token"))
-			postGuildCount("https://discordboats.club/api/public/bot/stats", boatsClubToken, "server_count");
+			postGuildCount("https://discordboats.club/api/public/bot/stats", "https://discordboats.club", boatsClubToken, "server_count");
 		if (!dbl2Token.equals("insert token"))
-			postGuildCount("https://discordbotlist.com/api/bots/439435998078959616/stats", dbl2Token, "guilds");
+			postGuildCount("https://discordbotlist.com/api/bots/439435998078959616/stats", "https://discordbotlist.com", dbl2Token, "guilds");
 		if (!dbBotsToken.equals("insert token"))
-			postGuildCount("https://discordsbestbots.xyz/api/bots/439435998078959616", dbBotsToken, "guilds");
+			postGuildCount("https://discordsbestbots.xyz/api/bots/439435998078959616", "https://discordsbestbots.xyz", dbBotsToken, "guilds");
 		if (!ddBotsToken.equals("insert token"))
-			postGuildCount("https://bots-discord.tk/bots/439435998078959616/stats", ddBotsToken, "server_count");
+			postGuildCount("https://bots-discord.tk/bots/439435998078959616/stats", "https://bots-discord.tk", ddBotsToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void postGuildCount(String url, String webToken, String countName) {
+	public static void postGuildCount(String url, String checkUrl, String webToken, String countName) {
+		if (!isWebsiteReachable(checkUrl)) {
+			System.out.println("Could not reach " + checkUrl);
+			return;
+		}
 		try {
 			HttpURLConnection site = (HttpURLConnection) new URL(url).openConnection();
 			site.setRequestProperty("Content-Type", "application/json");
@@ -195,7 +199,7 @@ public class PowerGlove {
 			site.setDoOutput(true);
 			site.setDoInput(true);
 			site.connect();
-			
+
 			DataOutputStream wr = new DataOutputStream (site.getOutputStream());
 			JSONObject put = new JSONObject();
 			if (url.equals("https://discordbotlist.com/api/bots/439435998078959616/stats"))
@@ -216,6 +220,18 @@ public class PowerGlove {
 			site.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static boolean isWebsiteReachable(String url) {
+		try {
+			HttpURLConnection.setFollowRedirects(false);
+			HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+			con.setRequestMethod("HEAD");
+			con.setConnectTimeout(4000);
+			return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+		} catch (Exception e) {
+			return false;
 		}
 	}
 }

@@ -44,7 +44,7 @@ public class AbsolutelyDisgusting extends Command {
 			Graphics g = combined.getGraphics();
 			List<BufferedImage> text = convert(textString.toLowerCase());
 			if (text.isEmpty()) {
-				event.getChannel().sendMessage("\u26A0 Only alphanumeric characters work here.").queue();
+				event.getChannel().sendMessage("\u26A0 Only alphanumeric characters (letters and numbers) work here.").queue();
 				return;
 			}
 			int x = 134;

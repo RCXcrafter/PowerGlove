@@ -3,6 +3,7 @@ package com.rcx.powerglove.commands;
 import com.google.code.chatterbotapi.ChatterBot;
 import com.google.code.chatterbotapi.ChatterBotFactory;
 import com.google.code.chatterbotapi.ChatterBotType;
+import com.rcx.powerglove.PowerGlove;
 import com.rcx.powerglove.TalkListener;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -28,13 +29,17 @@ public class Talk extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
+		if (!PowerGlove.isWebsiteReachable("https://www.pandorabots.com/pandora/talk?botid=c9386f59ce345d8b")) {
+			event.getChannel().sendMessage("Sorry, I'm not in the mood right now (the chatbot service could not be reached).\nTry again later.").queue();
+			return;
+		}
 		String id = event.getGuild().getId() + " " + event.getChannel().getId();
 		if (TalkListener.chats.containsKey(id)) {
 			event.getChannel().sendMessage("Alright, I'll stop talking.").queue();
 			TalkListener.chats.remove(id);
 		} else {
-			event.getChannel().sendMessage("Alright, let's talk.").queue();
 			TalkListener.chats.put(id, bot.createSession());
+			event.getChannel().sendMessage("Alright, let's talk.").queue();
 		}
 	}
 }

@@ -40,7 +40,7 @@ public class DongFont extends Command {
 			int width = 0;
 			for (List<BufferedImage> text : texts){
 				if (text.isEmpty()) {
-					event.getChannel().sendMessage("\u26A0 Only alphanumeric characters work here.").queue();
+					event.getChannel().sendMessage("\u26A0 Only alphanumeric characters (letters and numbers) work here.").queue();
 					return;
 				}
 				width = Math.max(text.size(), width);
