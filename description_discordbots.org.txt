@@ -109,6 +109,7 @@ Commands & features:
 |**afk [optional reason]**|Set yourself away from keyboard (globally).|
 |**quote**|Post an inspirational quote by a famous person.|
 |**mastermind**|Play a nice game of mastermind against the bot.|
+|**color**|Generates a random color.|
 
 
 This bot will also respond to certain key phrases/words:  
@@ -117,4 +118,4 @@ This bot will also respond to certain key phrases/words:
 • Start your message with "ninja:" to have it deleted right after you post it so that only really fast people can read it.  
 
 
-If you have any suggestions or questions, feel free to make an issue on github or tell me in my server.  
+If you have any suggestions or questions, feel free to make an issue on [github](https://github.com/RCXcrafter/PowerGlove) or tell me in [my server](https://discord.gg/SthsknG).  
