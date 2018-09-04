@@ -1,0 +1,81 @@
+<html>
+	<style>
+		body {
+		background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		}
+		div {
+		border-radius: 4px;
+		background-color: rgba(0, 0, 0, 0.75);
+		color: white;
+		}
+	</style>
+	<head>
+		<title>Bot Power Glove</title>
+		<meta name="description" content="Build and host your very own chatbot. Include speech and images. Connect it to instant messaging services, multiplayer games and become part of a growing ecosystem of virtual personalities.">
+		<meta name="keywords" content="chatbot, chatterbot, chat bot, pandorabot, software robot, hosting, artificial intelligence, robot, AI, natural language, speech, voice, turing test, IM bot, NPC, game bot, Lisp">
+		<script>
+			<!--
+			function sf(){document.f.message.focus();}
+			// -->
+		</script>
+	</head>
+	<body onLoad="sf()">
+		<center>
+		<div>
+			<br>Tell Power Glove:<br>
+			<form method="POST" name="f">
+				<input type="HIDDEN" name="botcust2" value="9d6165168e784222">
+				<table border="0" cellspacing="0">
+					<tr>
+						<td>
+							<input type="TEXT" autocomplete="off" name="message" size=60>
+						</td>
+						<td>&nbsp;</td>
+						<td>
+							<input type="SUBMIT" value="Say">
+						</td>
+					</tr>
+					<tr>
+						<td align="right" valign="top">
+							<font size="-1">
+								<i>Powered by <a href="https://pandorabots.com/botmaster/en/home" target="_blank">Pandorabots</a>.</i>
+							</font>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<template>
+				<think>
+					<set name="_history_1"><input index="1"/></set>
+					<set name="_history_2"><input index="2"/></set>
+					<set name="_history_3"><input index="3"/></set>
+					<set name="_history_4"><input index="4"/></set>
+				</think>
+				<condition name="_history_1" value="*">
+					Human: <input index="1"/><br/>
+					<bot name="name"/>: <that index="1"/><br/>
+					<br/>
+				</condition>
+				<condition name="_history_2" value="*">
+					Human: <input index="2"/><br/>
+					<bot name="name"/>: <that index="2"/><br/>
+					<br/>
+				</condition>
+				<condition name="_history_3" value="*">
+					Human: <input index="3"/><br/>
+					<bot name="name"/>: <that index="3"/><br/>
+					<br/>
+				</condition>
+				<condition name="_history_4" value="*">
+					Human: <input index="4"/><br/>
+					<bot name="name"/>: <that index="4"/><br/>
+					<br/>
+				</condition>
+			</template>
+		</div>
+	</body>
+</html>
