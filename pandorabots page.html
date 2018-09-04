@@ -1,16 +1,37 @@
 <html>
 	<style>
 		body {
-		background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png");
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		background-attachment: fixed;
+			background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
 		}
 		div {
-		border-radius: 4px;
-		background-color: rgba(0, 0, 0, 0.75);
-		color: white;
+			width: 600px;
+			border-radius: 4px;
+			background-color: rgba(0, 0, 0, 0.75);
+			color: white;
+		}
+		div.info {
+			width: 290px;
+			position: absolute;
+			left: 10px;
+			top: 10px;
+		}
+		i {
+			color: white;
+		}
+		input {
+			border-radius: 4px;
+			background-color: rgba(0, 0, 0, 0.75);
+			color: white;
+		}
+		a:link {
+			color: #419399;
+		}
+		a:visited {
+			color: #c063f9;
 		}
 	</style>
 	<head>
@@ -32,11 +53,11 @@
 				<table border="0" cellspacing="0">
 					<tr>
 						<td>
-							<input type="TEXT" autocomplete="off" name="message" size=60>
+							<input class="field" type="TEXT" autocomplete="off" name="message" size=60>
 						</td>
 						<td>&nbsp;</td>
 						<td>
-							<input type="SUBMIT" value="Say">
+							<input class="button" type="SUBMIT" value="Say">
 						</td>
 					</tr>
 					<tr>
@@ -47,35 +68,59 @@
 						</td>
 					</tr>
 				</table>
+				<br/>
 			</form>
-			<template>
-				<think>
-					<set name="_history_1"><input index="1"/></set>
-					<set name="_history_2"><input index="2"/></set>
-					<set name="_history_3"><input index="3"/></set>
-					<set name="_history_4"><input index="4"/></set>
-				</think>
-				<condition name="_history_1" value="*">
+		</div>
+		<template>
+			<think>
+				<set name="_history_1"><input index="1"/></set>
+				<set name="_history_2"><input index="2"/></set>
+				<set name="_history_3"><input index="3"/></set>
+				<set name="_history_4"><input index="4"/></set>
+			</think>
+			<condition name="_history_1" value="*">
+				<div>
+					<br/>
 					Human: <input index="1"/><br/>
 					<bot name="name"/>: <that index="1"/><br/>
 					<br/>
-				</condition>
-				<condition name="_history_2" value="*">
+				</div>
+				<br/>
+			</condition>
+			<condition name="_history_2" value="*">
+				<div>
+					<br/>
 					Human: <input index="2"/><br/>
 					<bot name="name"/>: <that index="2"/><br/>
 					<br/>
-				</condition>
-				<condition name="_history_3" value="*">
+				</div>
+				<br/>
+			</condition>
+			<condition name="_history_3" value="*">
+				<div>
+					<br/>
 					Human: <input index="3"/><br/>
 					<bot name="name"/>: <that index="3"/><br/>
 					<br/>
-				</condition>
-				<condition name="_history_4" value="*">
+				</div>
+				<br/>
+			</condition>
+			<condition name="_history_4" value="*">
+				<div>
+					<br/>
 					Human: <input index="4"/><br/>
 					<bot name="name"/>: <that index="4"/><br/>
 					<br/>
-				</condition>
-			</template>
+				</div>
+				<br/>
+			</condition>
+		</template>
+		<div class="info">
+			<br/>
+			This is the chatter page for Power Glove.<br/>
+			If you want to use any of the other features the bot offers, please look on <a href="https://github.com/RCXcrafter/PowerGlove" target="_blank">the github page</a>.
+			<br/>
+			<br/>
 		</div>
 	</body>
 </html>
