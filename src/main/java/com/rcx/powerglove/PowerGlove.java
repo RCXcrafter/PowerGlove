@@ -46,6 +46,7 @@ public class PowerGlove {
 	public static String dbBotsToken = "insert token";
 	public static String ddBotsToken = "insert token";
 	public static String dListAppToken = "insert token";
+	public static String dBotListToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -131,6 +132,7 @@ public class PowerGlove {
 		options.putIfAbsent("dbBotsToken", dbBotsToken);
 		options.putIfAbsent("ddBotsToken", ddBotsToken);
 		options.putIfAbsent("dListAppToken", dListAppToken);
+		options.putIfAbsent("dBotListToken", dBotListToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -150,6 +152,7 @@ public class PowerGlove {
 		dbBotsToken = (String) options.get("dbBotsToken");
 		ddBotsToken = (String) options.get("ddBotsToken");
 		dListAppToken = (String) options.get("dListAppToken");
+		dBotListToken = (String) options.get("dBotListToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -188,6 +191,8 @@ public class PowerGlove {
 			postGuildCount("https://divinediscordbots.com/bots/439435998078959616/stats", "https://divinediscordbots.com", ddBotsToken, "server_count");
 		if (!dListAppToken.equals("insert token"))
 			postGuildCount("https://bots.discordlist.app/api/bot/439435998078959616/stats", "https://bots.discordlist.app", dListAppToken, "server_count");
+		if (!dBotListToken.equals("insert token"))
+			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
 		System.out.println("Server count posted.");
 	}
 
