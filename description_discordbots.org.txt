@@ -20,7 +20,7 @@
 	background-color: white !important;
 	color: black;
 	}
-	.zeus_iframe, div#bot-stats, div#zeus_1531081040329 {
+	.zeus_iframe, div#bot-stats, div#zeus_1531081040329, span.donate {
 	visibility: hidden !important;
 	}
 	.bot-description, .bot-name, .titleandvote {
