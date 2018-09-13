@@ -54,7 +54,7 @@ public class Help extends Command {
 			"What's his power level?",
 			"Young man, you must use what little power you have to save the princess and conquer the world",
 			"He's become too powerful for his own good",
-			" powerful stuff",
+			"Powerful stuff",
 			"Firepower",
 			"Horsepower"
 	};
@@ -94,7 +94,7 @@ public class Help extends Command {
 		else
 			newEmbed.appendDescription("Prefix for this server = \"" + settings.prefix + "\"\n" + description);
 		try {
-			event.getChannel().sendMessage(newEmbed.setTitle("\u0376itro").build()).queue();
+			event.getChannel().sendMessage(newEmbed.setTitle(powerQuote[Math.max(rand.nextInt(powerQuote.length + 10) - 10, 0)]).build()).queue();
 		} catch (InsufficientPermissionException e) {
 			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + new String(newEmbed.getDescriptionBuilder())).queue();
 		}
