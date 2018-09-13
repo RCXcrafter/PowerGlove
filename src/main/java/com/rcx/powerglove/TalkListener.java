@@ -54,7 +54,7 @@ public class TalkListener {
 				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).think(content);
 				if (response.equals(""))
 					response = "I have nothing to say to that.";
-				response = response.replaceAll("<br> ", "\n").replaceAll("ust surf somewhere else", "eez fine");
+				response = response.replaceAll("<br> ", "\n").replaceAll("ust surf somewhere else", "eez fine").replaceAll("@everyone", "everyone");
 				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
 				if (nickname != null)
 					response = response.replaceAll("Power Glove", nickname);

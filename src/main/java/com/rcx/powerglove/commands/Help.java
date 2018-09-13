@@ -10,12 +10,10 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class Help extends Command {
+	
+	Random rand = new Random();
 
 	public static String[] powerQuote = {
-			"Now you're playing with power",
-			"Now you're playing with power",
-			"Now you're playing with power",
-			"Now you're playing with power",
 			"Now you're playing with power",
 			"Powerplay",
 			"Super power",
@@ -30,7 +28,7 @@ public class Help extends Command {
 			"It's amazing",
 			"Multifunctionomical",
 			"Laboricious",
-			"Иitro",
+			"\u0376itro",
 			"It's hip to be square",
 			"Your name is Bob",
 			"Pranfeuri",
@@ -47,9 +45,18 @@ public class Help extends Command {
 			"Redesign your logo",
 			"<a:rcxsword:445609872210264066>",
 			"Awesomazing",
-			"I can feel the power",
+			"I can feel the power of fire",
 			"I have the power",
-			"Pa pa pa pa pa power"
+			"Pa pa pa pa pa power",
+			"The power is mine",
+			"Infinite power",
+			"I just need more power",
+			"What's his power level?",
+			"Young man, you must use what little power you have to save the princess and conquer the world",
+			"He's become too powerful for his own good",
+			" powerful stuff",
+			"Firepower",
+			"Horsepower"
 	};
 	
 	String description = "Prefix = \"" + PowerGlove.prefix + "\"";
@@ -87,7 +94,7 @@ public class Help extends Command {
 		else
 			newEmbed.appendDescription("Prefix for this server = \"" + settings.prefix + "\"\n" + description);
 		try {
-			event.getChannel().sendMessage(newEmbed.setTitle(powerQuote[new Random().nextInt(powerQuote.length)]).build()).queue();
+			event.getChannel().sendMessage(newEmbed.setTitle("\u0376itro").build()).queue();
 		} catch (InsufficientPermissionException e) {
 			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + new String(newEmbed.getDescriptionBuilder())).queue();
 		}
