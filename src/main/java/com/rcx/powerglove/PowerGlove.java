@@ -47,6 +47,7 @@ public class PowerGlove {
 	public static String ddBotsToken = "insert token";
 	public static String dListAppToken = "insert token";
 	public static String dBotListToken = "insert token";
+	public static String dBoatsToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -133,6 +134,7 @@ public class PowerGlove {
 		options.putIfAbsent("ddBotsToken", ddBotsToken);
 		options.putIfAbsent("dListAppToken", dListAppToken);
 		options.putIfAbsent("dBotListToken", dBotListToken);
+		options.putIfAbsent("dBoatsToken", dBoatsToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -153,6 +155,7 @@ public class PowerGlove {
 		ddBotsToken = (String) options.get("ddBotsToken");
 		dListAppToken = (String) options.get("dListAppToken");
 		dBotListToken = (String) options.get("dBotListToken");
+		dBoatsToken = (String) options.get("dBoatsToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -168,7 +171,7 @@ public class PowerGlove {
 		if (!dBotsToken.equals("insert token"))
 			postGuildCount("https://bots.discord.pw/api/bots/439435998078959616/stats", "https://bots.discord.pw", dBotsToken, "server_count");
 		if (!bots4DToken.equals("insert token"))
-			postGuildCount("https://botsfordiscord.com/api/v1/bots/439435998078959616", "https://botsfordiscord.com", bots4DToken, "count");
+			postGuildCount("https://botsfordiscord.com/api/bot/439435998078959616", "https://botsfordiscord.com", bots4DToken, "server_count");
 		if (!dServToken.equals("insert token"))
 			postGuildCount("https://discord.services/api/bots/439435998078959616", "https://discord.services", dServToken, "guild_count");
 		if (!botListToken.equals("insert token"))
@@ -193,6 +196,8 @@ public class PowerGlove {
 			postGuildCount("https://bots.discordlist.app/api/bot/439435998078959616/stats", "https://bots.discordlist.app", dListAppToken, "server_count");
 		if (!dBotListToken.equals("insert token"))
 			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
+		if (!dBoatsToken.equals("insert token"))
+			postGuildCount("https://discordboats.xyz/api/bot/439435998078959616", "https://discordboats.xyz", dBoatsToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 
