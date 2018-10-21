@@ -38,7 +38,6 @@ public class PowerGlove {
 	public static String dServToken = "insert token";
 	public static String botListToken = "insert token";
 	public static String botWorldToken = "insert token";
-	public static String listcordToken = "insert token";
 	public static String botsOnDToken = "insert token";
 	public static String dBotsGroupToken = "insert token";
 	public static String boatsClubToken = "insert token";
@@ -48,6 +47,8 @@ public class PowerGlove {
 	public static String dListAppToken = "insert token";
 	public static String dBotListToken = "insert token";
 	public static String dBoatsToken = "insert token";
+	public static String dBotstkToken = "insert token";
+	public static String dBotIndexToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -93,6 +94,7 @@ public class PowerGlove {
 		CommandListener.commands.put("color", new RandomColor());
 
 		api.addEventListener(new CommandListener());
+		new TalkListener();
 
 		updateAllStats();
 
@@ -125,7 +127,6 @@ public class PowerGlove {
 		options.putIfAbsent("dServToken", dServToken);
 		options.putIfAbsent("botListToken", botListToken);
 		options.putIfAbsent("botWorldToken", botWorldToken);
-		options.putIfAbsent("listcordToken", listcordToken);
 		options.putIfAbsent("botsOnDToken", botsOnDToken);
 		options.putIfAbsent("dBotsGroupToken", dBotsGroupToken);
 		options.putIfAbsent("boatsClubToken", boatsClubToken);
@@ -135,6 +136,8 @@ public class PowerGlove {
 		options.putIfAbsent("dListAppToken", dListAppToken);
 		options.putIfAbsent("dBotListToken", dBotListToken);
 		options.putIfAbsent("dBoatsToken", dBoatsToken);
+		options.putIfAbsent("dBotstkToken", dBotstkToken);
+		options.putIfAbsent("dBotIndexToken", dBotIndexToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -146,7 +149,6 @@ public class PowerGlove {
 		dServToken = (String) options.get("dServToken");
 		botListToken = (String) options.get("botListToken");
 		botWorldToken = (String) options.get("botWorldToken");
-		listcordToken = (String) options.get("listcordToken");
 		botsOnDToken = (String) options.get("botsOnDToken");
 		dBotsGroupToken = (String) options.get("dBotsGroupToken");
 		boatsClubToken = (String) options.get("boatsClubToken");
@@ -156,6 +158,8 @@ public class PowerGlove {
 		dListAppToken = (String) options.get("dListAppToken");
 		dBotListToken = (String) options.get("dBotListToken");
 		dBoatsToken = (String) options.get("dBoatsToken");
+		dBotstkToken = (String) options.get("dBotstkToken");
+		dBotIndexToken = (String) options.get("dBotIndexToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -178,8 +182,6 @@ public class PowerGlove {
 			postGuildCount("https://botlist.space/api/bots/439435998078959616", "https://botlist.space", botListToken, "server_count");
 		if (!botWorldToken.equals("insert token"))
 			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", "https://discordbot.world", botWorldToken, "guild_count");
-		if (!listcordToken.equals("insert token"))
-			postGuildCount("https://listcord.com/api/bot/439435998078959616/guilds", "https://listcord.com", listcordToken, "guilds");
 		if (!botsOnDToken.equals("insert token"))
 			postGuildCount("https://bots.ondiscord.xyz/bot-api/bots/439435998078959616/guilds", "https://bots.ondiscord.xyz", botsOnDToken, "guildCount");
 		if (!dBotsGroupToken.equals("insert token"))
@@ -198,6 +200,10 @@ public class PowerGlove {
 			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
 		if (!dBoatsToken.equals("insert token"))
 			postGuildCount("https://discordboats.xyz/api/bot/439435998078959616", "https://discordboats.xyz", dBoatsToken, "server_count");
+		if (!dBotstkToken.equals("insert token"))
+			postGuildCount("http://discordbots.tk/api/post_gc.php?auth=" + dBotstkToken + "&gc=" + Integer.toString(servers.size()), "http://discordbots.tk/api/post_gc.php", dBotstkToken, "server_count");
+		if (!dBotIndexToken.equals("insert token"))
+			postGuildCount("https://discordbotindex.com/apiv1/bot/439435998078959616", "https://discordbotindex.com", dBotIndexToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 
@@ -222,7 +228,7 @@ public class PowerGlove {
 				put.put("shard_id", Integer.toString(0));
 			if (url.equals("https://bots-discord.tk/bots/439435998078959616/stats") || url.equals("https://discordsbestbots.xyz/api/bots/439435998078959616"))
 				put.put("shards", api.getShardsTotal());
-			put.put(countName, Integer.toString(servers.size()));
+			put.put(countName, servers.size());
 			wr.writeBytes(put.toJSONString());
 			wr.close();
 

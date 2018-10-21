@@ -20,7 +20,7 @@
 	background-color: white !important;
 	color: black;
 	}
-	.zeus_iframe, div#bot-stats, div#zeus_1531081040329, span.donate {
+	.zeus_iframe, div#bot-stats, div#zeus_1531081040329, span.donate, div#doublevoting {
 	visibility: hidden !important;
 	}
 	.bot-description, .bot-name, .titleandvote {
@@ -87,6 +87,9 @@
 	.content table thead td, .content table thead th {
 	border-width: 0 0 2px;
 	color: white;
+	}
+	nav#menu {
+	top: -38px;
 	}
 </style>
 This is just another random stuff bot but I try to only add things that other bots don't have.

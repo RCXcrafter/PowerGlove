@@ -1,8 +1,12 @@
 package com.rcx.powerglove;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
 
 import com.google.code.chatterbotapi.ChatterBotSession;
 import com.rcx.powerglove.commands.Afk;
@@ -11,6 +15,7 @@ import com.rcx.powerglove.commands.Settings.Setting;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.impl.DataMessage;
 import net.dv8tion.jda.core.entities.impl.EmoteImpl;
 import net.dv8tion.jda.core.entities.impl.GuildImpl;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -19,6 +24,15 @@ import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 public class TalkListener {
 
 	public static Map<String, ChatterBotSession> chats = new HashMap<String, ChatterBotSession>();
+	
+	public static Random rand = new Random();
+	public static File cena = null;
+	public static File desmond = null;
+	
+	public TalkListener() {
+		cena = FileUtils.toFile(getClass().getClassLoader().getResource("assets/cena.gif"));
+		desmond = FileUtils.toFile(getClass().getClassLoader().getResource("assets/desmond.gif"));
+	}
 
 	public static void onMessageReceived(MessageReceivedEvent event, Setting settings) {
 		Message message = event.getMessage();
@@ -115,11 +129,21 @@ public class TalkListener {
 		}
 
 		if (settings.eastereggs) {
-			if (content.toLowerCase().endsWith("des")) {
-				channel.sendTyping().complete();
-				channel.sendMessage("pa").queue();
-				channel.sendTyping().complete();
-				channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
+			if (content.toLowerCase().endsWith("des") && !content.toLowerCase().endsWith("nudes")) {
+				if (rand.nextInt(100) == 0 && cena != null) {
+					channel.sendTyping().complete();
+					channel.sendMessage("pa").complete();
+					channel.sendTyping().complete();
+					channel.sendFile(cena, new DataMessage(false, "CENA", "", null)).queueAfter(3, TimeUnit.SECONDS);
+				} else if (rand.nextInt(100) == 0 && desmond != null) {
+					channel.sendTyping().complete();
+					channel.sendFile(desmond, new DataMessage(false, "mond the moon bear", "", null)).queue();
+				} else {
+					channel.sendTyping().complete();
+					channel.sendMessage("pa").complete();
+					channel.sendTyping().complete();
+					channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
+				}
 			}
 
 			if (content.toLowerCase().contains("that was easy")) {

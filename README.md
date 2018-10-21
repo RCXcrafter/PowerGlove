@@ -24,6 +24,8 @@ This is just another random stuff bot but I try to only add things that other bo
 [Power Glove on divinediscordbots.com](https://divinediscordbots.com/bots/439435998078959616)  
 [Power Glove on discordsbestbots.xyz](https://discordsbestbots.xyz/bots/439435998078959616)  
 [Power Glove on automacord.xyz](https://automacord.xyz/bot/439435998078959616)  
+[Power Glove on discordbotindex.com](https://discordbotindex.com/bot/439435998078959616)  
+[Power Glove on discordbots.tk](https://discordbots.tk/botinfo.php?botid=439435998078959616)  
 [Power Glove on boatlist.xyz](https://boatlist.xyz/bot/439435998078959616)  
 [Power Glove on thereisabotforthat.com](https://thereisabotforthat.com/bots/powerglove)  
 [Power Glove on discord.services](https://discord.services/bots) (it's somewhere in that list)  
