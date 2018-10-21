@@ -199,7 +199,7 @@ public class PowerGlove {
 		if (!dBotListToken.equals("insert token"))
 			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
 		if (!dBoatsToken.equals("insert token"))
-			postGuildCount("https://discordboats.xyz/api/bot/439435998078959616", "https://discordboats.xyz", dBoatsToken, "server_count");
+			postGuildCount("https://discord.boats/api/bot/439435998078959616", "https://discord.boats", dBoatsToken, "server_count");
 		if (!dBotstkToken.equals("insert token"))
 			postGuildCount("http://discordbots.tk/api/post_gc.php?auth=" + dBotstkToken + "&gc=" + Integer.toString(servers.size()), "http://discordbots.tk/api/post_gc.php", dBotstkToken, "server_count");
 		if (!dBotIndexToken.equals("insert token"))

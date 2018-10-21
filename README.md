@@ -10,8 +10,8 @@ This is just another random stuff bot but I try to only add things that other bo
 
 [![Power Glove on bots.ondiscord.xyz](https://bots.ondiscord.xyz/bots/439435998078959616/embed?theme=dark&showGuilds=true)](https://bots.ondiscord.xyz/bots/439435998078959616)  
 [![Power Glove on discordbotlist.com](https://discordbotlist.com/bots/439435998078959616/widget)](https://discordbotlist.com/bots/439435998078959616)  
-[![Power Glove on discordboats.xyz](https://discordboats.xyz/api/widget/439435998078959616)](https://discordboats.xyz/bot/439435998078959616)  
 [![Power Glove on discordbots.co.uk](https://discordbots.co.uk/api/bots/439435998078959616.svg)](https://discordbots.co.uk/bots/439435998078959616)  
+[![Power Glove on discord.boats](https://discord.boats/api/widget/439435998078959616)](https://discord.boats/bot/439435998078959616)  
 [![Power Glove on botsfordiscord.com](https://botsfordiscord.com/api/bot/439435998078959616/widget)](https://botsfordiscord.com/bots/439435998078959616)  
 [![Power Glove on bots.discordlist.app](https://bots.discordlist.app/api/bot/439435998078959616/widget)](https://bots.discordlist.app/bot/439435998078959616)  
 [![Power Glove on discordboats.club](https://discordboats.club/bot/439435998078959616/widget.png)](https://discordboats.club/bot/439435998078959616)  
