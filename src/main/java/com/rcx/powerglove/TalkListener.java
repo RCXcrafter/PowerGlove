@@ -101,7 +101,7 @@ public class TalkListener {
 			try {
 				message.delete().queue();
 			} catch (InsufficientPermissionException e) {
-				channel.sendMessage("You'll have to delete that one yourself, I don't have permission to do it.").queue();
+				channel.sendMessage("You'll have to delete that one yourself, I don't have permission to do it.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
 			}
 		}
 
@@ -151,7 +151,7 @@ public class TalkListener {
 			}
 
 			if (content.toLowerCase().contains("power")) {
-				message.addReaction(new EmoteImpl(447839588002824192l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
+				message.addReaction(new EmoteImpl(506113366780280852l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 
 			if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
