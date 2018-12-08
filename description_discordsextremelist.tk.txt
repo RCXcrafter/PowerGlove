@@ -1,24 +1,25 @@
 <style>
-	body {
+	.section {
 	background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png") !important;
 	background-repeat: no-repeat !important;
 	background-size: cover !important;
 	background-position: center !important;
 	background-attachment: fixed;
 	}
-	.section > .container {
-	border-radius: 4px;
-	background-color: rgba(0, 0, 0, 0.75) !important;
-	color: white !important;
-	}
-  .section > .container >table, .section > .container >p {
-	margin: 0px 10px !important;
-	}
 	th, strong {
 	color: #C0C0C0 !important;
 	}
+	.margin-top-20 {
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0.75) !important;
+	color: white !important;
+	margin-bottom: 40px;
+	}
+	.margin-top-20 > p, .margin-top-20 > table {
+	margin: 0px 10px !important;
+	}
 </style>
-<br>
+<a class="button is-outlined is-transparent margin-right-20" href="https://github.com/RCXcrafter/PowerGlove" style="position: absolute; left: 430px; top: 437px;">Github</a>
 <p>This is just another random stuff bot but I try to only add things that other bots don't have.</p>
 <br>
 	<p>Commands &amp; features:  </p>

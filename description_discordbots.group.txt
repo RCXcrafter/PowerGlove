@@ -1,10 +1,22 @@
 <style>
-	.jumbotron {
+	html {
 	background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png") !important;
 	background-repeat: no-repeat !important;
 	background-size: cover !important;
 	background-position: center !important;
 	background-attachment: fixed;
+	}
+	th, strong {
+	color: #C0C0C0 !important;
+	}
+	.margin-top-20 {
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0.75) !important;
+	color: white !important;
+	margin-bottom: 40px;
+	}
+	.margin-top-20 > p, .margin-top-20 > table {
+	margin: 0px 10px !important;
 	}
 </style>
 <p>This is just another random stuff bot but I try to only add things that other bots don't have.</p>

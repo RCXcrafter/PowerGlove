@@ -49,6 +49,7 @@ public class PowerGlove {
 	public static String dBoatsToken = "insert token";
 	public static String dBotstkToken = "insert token";
 	public static String dBotIndexToken = "insert token";
+	public static String extremelistToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -138,6 +139,7 @@ public class PowerGlove {
 		options.putIfAbsent("dBoatsToken", dBoatsToken);
 		options.putIfAbsent("dBotstkToken", dBotstkToken);
 		options.putIfAbsent("dBotIndexToken", dBotIndexToken);
+		options.putIfAbsent("extremelistToken", extremelistToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -160,6 +162,7 @@ public class PowerGlove {
 		dBoatsToken = (String) options.get("dBoatsToken");
 		dBotstkToken = (String) options.get("dBotstkToken");
 		dBotIndexToken = (String) options.get("dBotIndexToken");
+		extremelistToken = (String) options.get("extremelistToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -173,7 +176,7 @@ public class PowerGlove {
 		if (!dblToken.equals("insert token"))
 			postGuildCount("https://discordbots.org/api/bots/439435998078959616/stats", "https://discordbots.org", dblToken, "server_count");
 		if (!dBotsToken.equals("insert token"))
-			postGuildCount("https://bots.discord.pw/api/bots/439435998078959616/stats", "https://bots.discord.pw", dBotsToken, "server_count");
+			postGuildCount("https://discord.bots.gg/api/v1/bots/439435998078959616/stats", "https://discord.bots.gg", dBotsToken, "server_count");
 		if (!bots4DToken.equals("insert token"))
 			postGuildCount("https://botsfordiscord.com/api/bot/439435998078959616", "https://botsfordiscord.com", bots4DToken, "server_count");
 		if (!dServToken.equals("insert token"))
@@ -204,6 +207,8 @@ public class PowerGlove {
 			postGuildCount("http://discordbots.tk/api/post_gc.php?auth=" + dBotstkToken + "&gc=" + Integer.toString(servers.size()), "http://discordbots.tk/api/post_gc.php", dBotstkToken, "server_count");
 		if (!dBotIndexToken.equals("insert token"))
 			postGuildCount("https://discordbotindex.com/apiv1/bot/439435998078959616", "https://discordbotindex.com", dBotIndexToken, "server_count");
+		if (!extremelistToken.equals("insert token"))
+			postGuildCount("https://discordsextremelist.tk/api/bot/439435998078959616", "https://discordsextremelist.tk", extremelistToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 

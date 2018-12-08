@@ -11,7 +11,7 @@
 	background-color: rgba(0, 0, 0, 0.75) !important;
 	color: white !important;
 	}
-  .section > .container >table, .section > .container >p {
+	.section > .container >table, .section > .container >p {
 	margin: 0px 10px !important;
 	}
 	th, strong {
