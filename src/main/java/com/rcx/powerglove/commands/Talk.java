@@ -2,6 +2,8 @@ package com.rcx.powerglove.commands;
 
 import com.rcx.powerglove.TalkListener;
 
+import java.io.File;
+
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
 
@@ -13,7 +15,7 @@ public class Talk extends Command {
 
 	public Talk(){
 		try {
-			bot = new Bot ("powerglove", getClass().getClassLoader().getResource("assets").getPath().substring(1).replaceAll("%20", " "));
+			bot = new Bot("powerglove", new File("").getAbsolutePath());
 			//"f5d922d97e345aa1" A.L.I.C.E.
 			//"c34376751e34cf4d" Guigui The A'Bot
 			//"aa0613bd7e35f089" LEMONBOT
