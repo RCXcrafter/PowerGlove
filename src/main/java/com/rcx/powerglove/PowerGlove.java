@@ -50,6 +50,7 @@ public class PowerGlove {
 	public static String dBotstkToken = "insert token";
 	public static String dBotIndexToken = "insert token";
 	public static String extremelistToken = "insert token";
+	public static String botsReviewToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -140,6 +141,7 @@ public class PowerGlove {
 		options.putIfAbsent("dBotstkToken", dBotstkToken);
 		options.putIfAbsent("dBotIndexToken", dBotIndexToken);
 		options.putIfAbsent("extremelistToken", extremelistToken);
+		options.putIfAbsent("botsReviewToken", botsReviewToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -163,6 +165,7 @@ public class PowerGlove {
 		dBotstkToken = (String) options.get("dBotstkToken");
 		dBotIndexToken = (String) options.get("dBotIndexToken");
 		extremelistToken = (String) options.get("extremelistToken");
+		botsReviewToken = (String) options.get("botsReviewToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -209,6 +212,8 @@ public class PowerGlove {
 			postGuildCount("https://discordbotindex.com/apiv1/bot/439435998078959616", "https://discordbotindex.com", dBotIndexToken, "server_count");
 		if (!extremelistToken.equals("insert token"))
 			postGuildCount("https://discordsextremelist.tk/api/bot/439435998078959616", "https://discordsextremelist.tk", extremelistToken, "server_count");
+		if (!botsReviewToken.equals("insert token"))
+			postGuildCount("https://discordbotsreview.tk/api/bot/439435998078959616/stats", "https://discordbotsreview.tk", botsReviewToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 

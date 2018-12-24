@@ -1,21 +1,19 @@
 package com.rcx.powerglove.commands;
 
-import com.google.code.chatterbotapi.ChatterBot;
-import com.google.code.chatterbotapi.ChatterBotFactory;
-import com.google.code.chatterbotapi.ChatterBotType;
-import com.rcx.powerglove.PowerGlove;
 import com.rcx.powerglove.TalkListener;
+
+import org.alicebot.ab.Bot;
+import org.alicebot.ab.Chat;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Talk extends Command {
 
-	ChatterBot bot;
-	ChatterBotFactory factory = new ChatterBotFactory();
+	Bot bot;
 
 	public Talk(){
 		try {
-			bot = factory.create(ChatterBotType.PANDORABOTS, "c9386f59ce345d8b");
+			bot = new Bot ("powerglove", getClass().getClassLoader().getResource("assets").getPath().substring(1).replaceAll("%20", " "));
 			//"f5d922d97e345aa1" A.L.I.C.E.
 			//"c34376751e34cf4d" Guigui The A'Bot
 			//"aa0613bd7e35f089" LEMONBOT
@@ -29,17 +27,15 @@ public class Talk extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		if (!PowerGlove.isWebsiteReachable("https://www.pandorabots.com/pandora/talk?botid=c9386f59ce345d8b")) {
-			event.getChannel().sendMessage("Sorry, I'm not in the mood right now (the chatbot service could not be reached).\nTry again later.").queue();
-			return;
-		}
 		String id = event.getGuild().getId() + " " + event.getChannel().getId();
 		if (TalkListener.chats.containsKey(id)) {
 			event.getChannel().sendMessage("Alright, I'll stop talking.").queue();
 			TalkListener.chats.remove(id);
 		} else {
-			TalkListener.chats.put(id, bot.createSession());
-			event.getChannel().sendMessage("Alright, let's talk.").queue();
+			Chat chat = new Chat(bot);
+			chat.multisentenceRespond("setname " + event.getMember().getEffectiveName());
+			TalkListener.chats.put(id, chat);
+			event.getChannel().sendMessage(chat.multisentenceRespond(event.getMessage().getContentRaw()).replaceAll("<br/>", "\n")).queue();
 		}
 	}
 }

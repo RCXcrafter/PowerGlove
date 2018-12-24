@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0">
+
+
+<category><pattern>* PLAY DESPACITO</pattern>
+<template><srai>PLAY DESPACITO</srai></template>
+</category>
+<category><pattern>THIS IS SO SAD</pattern>
+<template>*Prepares despacito*</template>
+</category>
+<category><pattern>PLAY DESPACITO</pattern>
+<template><random><li>https://soundcloud.com/flufffierbuns/megalocito</li>
+<li>https://soundcloud.com/saivation/the-despacito-collab</li>
+<li>https://soundcloud.com/pluffaduff/initial-despacito-extended-ver</li>
+<li>https://soundcloud.com/uun4/pink-fluffy-unicorns-dancing-on-despacito</li>
+<li>https://soundcloud.com/8bitofftopic/smash-mouth-despito</li>
+<li>https://soundcloud.com/chickensuitgamer/dame-tu-cuello</li></random></template>
+</category>
+<category><pattern>I AM GOING TO SAY THE N WORD</pattern>
+<template>That's racist, you can't say the N word.</template>
+</category>
+<category><pattern>OWO WHAT IS THIS</pattern>
+<template>Rawr XD *nuzzles you*.</template>
+</category>
+<category><pattern>PARTY ROCK IS IN THE HOU</pattern>
+<template><srai>PARTY ROCKERS IN THE HOU</srai></template>
+</category>
+<category><pattern>PARTY ROCKERS IN THE HOU</pattern>
+<template>se tonight.</template>
+</category>
+<category><pattern>AYY</pattern>
+<template>lmao</template>
+</category>
+</aiml>

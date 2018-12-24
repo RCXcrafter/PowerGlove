@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.alicebot.ab.Chat;
 import org.apache.commons.io.FileUtils;
 
-import com.google.code.chatterbotapi.ChatterBotSession;
 import com.rcx.powerglove.commands.Afk;
 import com.rcx.powerglove.commands.Settings.Setting;
 
@@ -23,7 +23,7 @@ import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class TalkListener {
 
-	public static Map<String, ChatterBotSession> chats = new HashMap<String, ChatterBotSession>();
+	public static Map<String, Chat> chats = new HashMap<String, Chat>();
 	
 	public static Random rand = new Random();
 	public static File cena = null;
@@ -65,10 +65,10 @@ public class TalkListener {
 		if (chats.containsKey(event.getGuild().getId() + " " + channel.getId())) {
 			try {
 				channel.sendTyping().complete();
-				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).think(content);
+				String response = chats.get(event.getGuild().getId() + " " + channel.getId()).multisentenceRespond(content);
 				if (response.equals(""))
 					response = "I have nothing to say to that.";
-				response = response.replaceAll("<br> ", "\n").replaceAll("ust surf somewhere else", "eez fine").replaceAll("@everyone", "everyone").replaceAll(", .", ".");
+				response = response.replaceAll("<br/>", "\n").replaceAll("ust surf somewhere else", "eez fine").replaceAll("@everyone", "everyone");
 				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
 				if (nickname != null)
 					response = response.replaceAll("Power Glove", nickname);
@@ -78,7 +78,7 @@ public class TalkListener {
 				}
 				channel.sendMessage(response).queueAfter(1, TimeUnit.SECONDS);
 				String said = response.toLowerCase();
-				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later"))
+				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later") || content.toLowerCase().contains("shut up"))
 					chats.remove(event.getGuild().getId() + " " + channel.getId());
 				return;
 			} catch (Exception e) {
