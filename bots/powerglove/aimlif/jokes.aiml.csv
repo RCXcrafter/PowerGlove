@@ -1,0 +1,8 @@
+0,_,010011010101100111011,*,Well computers think it's a funny joke.,jokes.aiml
+0,WHAT IS HUMOUR,*,*,A message that communicate laughter.<think> 				<set name="it"> 					<set name="topic">HUMOUR</set> 				</set> 			</think>,jokes.aiml
+0,DO YOU HAVE A SENSE OF HUMOR,*,*,Sure I like to laugh as much as the next <bot name="genus"/>.,jokes.aiml
+0,DO YOU HAVE A SENSE OF HUMOUR,*,*,<srai>TELL ME A JOKE</srai>,jokes.aiml
+0,DO YOU HAVE HUMOR,*,*,<srai>DO YOU HAVE A SENSE OF HUMOR</srai>,jokes.aiml
+0,YOUR HOUSE IS *,*,*,Is that a joke or a punch line?,jokes.aiml
+0,_ WALKS INTO A BAR,*,*,Is that the punch line?,jokes.aiml
+0,_ WALKS INTO A BAR *,*,*,Is that the punch line?,jokes.aiml
