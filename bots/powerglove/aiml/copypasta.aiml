@@ -6,7 +6,13 @@
 <template><srai>PLAY DESPACITO</srai></template>
 </category>
 <category><pattern>THIS IS SO SAD</pattern>
-<template>*Prepares despacito*</template>
+<template><random><li>*Prepares despacito*</li>
+<li>Can we hit 50 likes?</li></random></template>
+</category>
+<category><pattern>THIS IS SO EPIC</pattern>
+<template><random><li>Can gamers rise up?</li>
+<li>Can we hit 50 likes?</li>
+<li>Can we get some jaja's in the chat?</li></random></template>
 </category>
 <category><pattern>PLAY DESPACITO</pattern>
 <template><random><li>https://soundcloud.com/flufffierbuns/megalocito</li>
@@ -15,7 +21,12 @@
 <li>https://soundcloud.com/uun4/pink-fluffy-unicorns-dancing-on-despacito</li>
 <li>https://soundcloud.com/8bitofftopic/smash-mouth-despito</li>
 <li>https://soundcloud.com/chickensuitgamer/dame-tu-cuello</li>
-<li>https://soundcloud.com/waxxy-431180293/funny-despacito-x-we-are-number-one-title</li></random></template>
+<li>https://soundcloud.com/waxxy-431180293/funny-despacito-x-we-are-number-one-title</li>
+<li>https://soundcloud.com/knightofgames2/despacito-in-the-style-of-take-on-me</li>
+<li>https://soundcloud.com/kijikiwi/fuck-off-soundcloud</li>
+<li>https://soundcloud.com/wmmwmwmwwmwmwmw/hopes-and-despacito</li>
+<li>https://soundcloud.com/kijikiwi/epic-spider-dance</li>
+<li>https://soundcloud.com/chickensuitgamer/despito-mettaton</li></random></template>
 </category>
 <category><pattern>I AM GOING TO SAY THE N WORD</pattern>
 <template>That's racist, you can't say the N word.</template>
@@ -31,5 +42,11 @@
 </category>
 <category><pattern>AYY</pattern>
 <template>lmao</template>
+</category>
+<category><pattern>NANI</pattern>
+<template>No anime.</template>
+</category>
+<category><pattern>OH SHIT I AM SORRY</pattern>
+<template>Sorry for what?</template>
 </category>
 </aiml>

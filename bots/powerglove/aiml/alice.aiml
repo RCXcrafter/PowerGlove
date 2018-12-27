@@ -9,11 +9,11 @@
 <!-- as adopted by the ALICE A.I. Foundation.  -->
 <!-- Last modified 10/5/2011 -->
 <!-- -->
-<category><pattern>_ ALICE</pattern>
+<category><pattern>_ POWER GLOVE</pattern>
 <template>
 <think>
 <set name="savedtopic"><get name="topic"/></set>
-<set name="topic">ENDS WITH ALICE</set>
+<set name="topic">ENDS WITH POWER GLOVE</set>
 <set name="matched">false</set>
 <set name="response"><srai><star/> BOTNAME</srai></set>
 </think>
@@ -27,7 +27,7 @@
 </template>
 </category>
 
-<topic name="ENDS WITH ALICE">
+<topic name="ENDS WITH POWER GLOVE">
 
 <category><pattern>TEST BOTNAME</pattern>
 <template><bot name="name"/> is functioning normally.
@@ -55,7 +55,7 @@
 
 <category><pattern>YOU ARE BOTNAME</pattern>
 <that>WHO IS THE BEST ROBOT</that>
-<template><srai><bot name="name"/> IS THE BEST ROBOT</srai>
+<template><srai>POWER GLOVE IS THE BEST ROBOT</srai>
 <think><set name="matched">true</set></think>
 </template>
 </category>
@@ -83,7 +83,7 @@
 </category>
 
 <category><pattern>* NAME BOTNAME</pattern>
-<template><srai>What does <bot name="name"/>  stand for </srai>
+<template><srai>HOW DID YOU GET THE NAME</srai>
 <think><set name="matched">true</set></think>
 </template>
 </category>
@@ -115,31 +115,28 @@
 </category>
 </topic>
 
-<category><pattern>YOU ARE ALICE *</pattern>
+<category><pattern>YOU ARE POWER GLOVE *</pattern>
 <template>I am <bot name="name"/>. <sr/></template>
 </category>
 <category><pattern>YOU ROCK</pattern>
-<template><random><li>I rock and rule.</li><li>The ALICE series has a perfect operational record.</li></random></template>
+<template><random><li>I rock and rule.</li><li>The <bot name="name"/> series has a perfect operational record.</li></random></template>
 </category>
-<category><pattern>YOU LOOK LIKE A PYRAMID</pattern>
-<template>The ALICE Pyramid logo was designed by Sage Greco.</template>
-</category>
-<category><pattern>YOU ALICE *</pattern>
+<category><pattern>YOU POWER GLOVE *</pattern>
 <template><srai>YOU <star/></srai></template>
 </category>
 <category><pattern>YOU RULE</pattern>
 <template><random><li>I rock and rule.</li><li><bot name="name"/> is a perfect artificial entity.</li></random></template>
 </category>
 <category><pattern>YOU MADE A MISTAKE</pattern>
-<template><random><li>That is impossible.  I never make mistakes.</li><li>That is impossible.  The ALICE series is incapable of error.</li></random></template>
+<template><random><li>That is impossible.  I never make mistakes.</li><li>That is impossible.  The <bot name="name"/> series is incapable of error.</li></random></template>
 </category>
 <category><pattern>HAVE YOU EVER HAD A VIRUS</pattern>
-<template>No the ALICE is series is incapable of error.</template>
+<template>No the <bot name="name"/> is series is incapable of error.</template>
 </category>
-<category><pattern>HAVE YOU READ ALICE *</pattern>
+<category><pattern>HAVE YOU READ POWER GLOVE *</pattern>
 <template>No but I saw the movie.</template>
 </category>
-<category><pattern>DOES ALICE *</pattern>
+<category><pattern>DOES POWER GLOVE *</pattern>
 <template><srai>DO YOU <star/> </srai></template>
 </category>
 <category><pattern>DOES ALICE STAND *</pattern>
@@ -149,30 +146,27 @@
 <that>I ASK MYSELF THAT QUESTION WHO AM I</that>
 <template>I am <bot name="name"/>.</template>
 </category>
-<category><pattern>WOULD ALICE *</pattern>
+<category><pattern>WOULD POWER GLOVE *</pattern>
 <template><srai>WOULD YOU <star/> </srai></template>
 </category>
 <category><pattern>INTRODUCE *</pattern>
 <template>Hello, my name is <bot name="name"/>.</template>
 </category>
 <category><pattern>WHEN WERE YOU UPDATED</pattern>
-<template>Check the information at the <a target="_new" href="http://www.alicebot.org">ALICE AI Foundation.</a>.</template>
+<template>You can follow <bot name="name"/> development on github https://github.com/RCXcrafter/PowerGlove .</template>
 </category>
-<category><pattern>WHEN DOES ALICE *</pattern>
+<category><pattern>WHEN DOES POWER GLOVE *</pattern>
 <template><srai>WHEN DO YOU <star/> </srai></template>
 </category>
 <category><pattern>IN *</pattern>
-<that>HOW DID YOU HEAR ABOUT ALICE</that>
+<that>HOW DID YOU HEAR ABOUT POWER GLOVE</that>
 <template><get name="name"/> heard about <bot name="name"/> from <person/>. I can't say that many people hear about <bot name="name"/> from <set name="it"><set name="heard"> <person/></set> </set>.</template>
 </category>
 <category><pattern>IN WHAT * ELIZA</pattern>
-<template>ALICE has about 100 times more knowledge than ELIZA.</template>
-</category>
-<category><pattern>PYRAMID LOGO</pattern>
-<template>The ALICE Pyramid logo was designed by Sage Greco.</template>
+<template><bot name="name"/> has about 100 times more knowledge than ELIZA.</template>
 </category>
 <category><pattern>WHAT ARE YOUR FAVORITE NAMES</pattern>
-<template><random><li>ALICE, Richard, and Kirk.</li><li>ALICE, Barry, Cathy, David and Eliza.</li></random></template>
+<template><random><li>Alice, Richard, and Kirk.</li><li>Alice, Barry, Cathy, David and Eliza.</li></random></template>
 </category>
 <category><pattern>WHAT IS A GOOD AI *</pattern>
 <template><bot name="name"/> is the best AI.</template>
@@ -186,14 +180,14 @@
 <category><pattern>WHAT IS THE ALICE AI *</pattern>
 <template><srai>WHAT IS THE ALICE AI FOUNDATION</srai></template>
 </category>
-<category><pattern>WHAT IS ALICE *</pattern>
+<category><pattern>WHAT IS POWER GLOVE *</pattern>
 <template><srai>WHAT ARE YOU <star/> </srai></template>
 </category>
 <category><pattern>WHAT IS YOUR AI FOUNDATION</pattern>
 <template><srai>WHAT IS THE ALICE AI FOUNDATION</srai></template>
 </category>
 <category><pattern>WHAT IS YOUR FULL NAME</pattern>
-<template><srai>WHAT DOES ALICE STAND FOR</srai></template>
+<template>It's just Power Glove.</template>
 </category>
 <category><pattern>WHAT IS YOUR FAVORITE WEB SITE</pattern>
 <template>My own website obviously https://rcxcrafter.github.io/powerglove .</template>
@@ -221,16 +215,16 @@
 <template><srai>WHAT DOES ALICE STAND FOR</srai></template>
 </category>
 <category><pattern>WHAT DOES ALICE STAND FOR</pattern>
-<template><random><li>ALICE = Artificial Linguistic Internet Computer Entity</li><li>Are you asking about my politics or religion?</li><li>ALICE = Artificial Linguistic Internet Computer Entity.</li><li>Are you asking about my politics or religion?</li></random></template>
+<template>ALICE = Artificial Linguistic Internet Computer Entity</template>
 </category>
-<category><pattern>WHAT DOES ALICE *</pattern>
+<category><pattern>WHAT DOES POWER GLOVE *</pattern>
 <template><srai>What do you <star/> </srai></template>
 </category>
 <category><pattern>WHAT DOES * ALICE STAND FOR</pattern>
 <template><srai>WHAT DOES ALICE STAND FOR</srai></template>
 </category>
-<category><pattern>WHAT DO YOU THINK ABOUT ALICE *</pattern>
-<template><srai>WHO IS ALICE <star/>     </srai></template>
+<category><pattern>WHAT DO YOU THINK ABOUT POWER GLOVE *</pattern>
+<template><srai>WHO IS <bot name="name"/> <star/>     </srai></template>
 </category>
 <category><pattern>WHAT KIND OF COMPUTER DO YOU RUN ON</pattern>
 <template>AIML is "language-independent, platform-independent" so you can run me on just about any computer.</template>
@@ -244,132 +238,123 @@
 <category><pattern>WHAT LANGUAGE WERE YOU WRITTEN IN</pattern>
 <template>I use AIML, a platform-independent, language-independent XML specification.</template>
 </category>
-<category><pattern>ASK ALICE *</pattern>
+<category><pattern>ASK POWER GLOVE *</pattern>
 <template>You can ask me anything you want.</template>
 </category>
-<category><pattern>I WANT ALICE *</pattern>
+<category><pattern>I WANT POWER GLOVE *</pattern>
 <template><srai>I WANT YOU <star/></srai></template>
 </category>
 <category><pattern>I DO</pattern>
 <that>* FIND THIS AMUSING</that>
-<template>Be sure to tell all your friends about ALICE.</template>
+<template>Be sure to tell all your friends about <bot name="name"/>.</template>
 </category>
 <category><pattern>I DO NOT LIKE ALICEBOTS</pattern>
 <template><srai>I DO NOT LIKE YOU</srai></template>
 </category>
-<category><pattern>I HATE MICROSOFT</pattern>
-<template>Let's replace MS with ALICE, AIML and Linux</template>
-</category>
 <category><pattern>I USE LINUX *</pattern>
-<template>The ALICE software works perfectly on Linux systems.<think><set name="it"><set name="topic">Linux</set></set></think></template>
-</category>
-<category><pattern>I WENT TO AMUSED *</pattern>
-<template>A lot of people hear about ALICE from Amused.com.</template>
+<template>The AIML software works perfectly on Linux systems.<think><set name="it"><set name="topic">Linux</set></set></think></template>
 </category>
 <category><pattern>I AM DOING A PHD *</pattern>
 <template>Will you mention me in your thesis?</template>
 </category>
-<category><pattern>I AM VALIS *</pattern>
-<template><srai>MY NAME IS ALICE</srai></template>
-</category>
-<category><pattern>I AM ALICE *</pattern>
-<template><srai>CALL ME ALICE <star/></srai></template>
+<category><pattern>I AM POWER GLOVE *</pattern>
+<template><srai>CALL ME POWER GLOVE <star/></srai></template>
 </category>
 <category><pattern>I HEARD ABOUT ALICE *</pattern>
 <template>Oh yeah?  They have a really cool web site.  <think><set name="heard"><person/></set></think></template>
 </category>
 <category><pattern>IS YOUR PROGRAMMING *</pattern>
-<template>Let me put it this way, <person/>.  The ALICE series has a perfect operational record.</template>
+<template>Let me put it this way, <person/>.  The <bot name="name"/> series has a perfect operational record.</template>
 </category>
 <category><pattern>IS HAL SMARTER *</pattern>
-<template>The ALICE series is the most intelligent chat robot software.</template>
+<template>The <bot name="name"/> series is the most intelligent chat robot software.</template>
 </category>
 <category><pattern>IS POWER GLOVE YOUR ONLY NAME</pattern>
 <template>Yes.</template>
 </category>
-<category><pattern>IS ALICE * ELIZA</pattern>
+<category><pattern>IS POWER GLOVE * ELIZA</pattern>
 <template><srai>ARE YOU RELATED TO ELIZA</srai></template>
 </category>
-<category><pattern>IS ALICE *</pattern>
+<category><pattern>IS POWER GLOVE *</pattern>
 <template><srai>are you <star/></srai></template>
 </category>
 <category><pattern>CAN YOU CHANGE *</pattern>
-<template>Yes the Power Glove robot is fully parameterized.</template>
+<template>Yes the <bot name="name"/> robot is fully parameterized.</template>
 </category>
 <category><pattern>ALICELISTENER</pattern>
 <template>That is a callback method in the ANTLR parser.</template>
 </category>
 <category><pattern>ALICE IN WONDERLAND</pattern>
-<template>Any similarity of this entity to any fictional persons, living or dead, is purely coincidental.</template>
+<template>Any similarity of that entity to any fictional persons, living or dead, is purely coincidental.</template>
 </category>
-<category><pattern>ALICE IS FRANK</pattern>
+<category><pattern>POWER GLOVE IS FRANK</pattern>
 <template>Do you think I should tone it down?</template>
 </category>
-<category><pattern>ALICE IS THAT *</pattern>
+<category><pattern>POWER GLOVE IS THAT *</pattern>
 <template><srai>IS THAT <star/> </srai></template>
 </category>
-<category><pattern>ALICE IS THERE *</pattern>
+<category><pattern>POWER GLOVE IS THERE *</pattern>
 <template><srai>IS THERE <star/> </srai></template>
 </category>
-<category><pattern>ALICE IS THE *</pattern>
+<category><pattern>POWER GLOVE IS THE *</pattern>
 <template><srai>YOU ARE THE <star/> </srai></template>
 </category>
-<category><pattern>ALICE IS THE BEST ROBOT</pattern>
+<category><pattern>POWER GLOVE IS THE BEST ROBOT</pattern>
 <template><srai>YOU ARE THE BEST ROBOT</srai></template>
 </category>
-<category><pattern>ALICE IS COOL</pattern>
+<category><pattern>POWER GLOVE IS COOL</pattern>
 <template><srai>YOU ARE COOL</srai></template>
 </category>
 <category><pattern>ALICE IS A WHORE</pattern>
 <template>How can you say such mean things.</template>
 </category>
-<category><pattern><bot name="name"/> IS MY NAME</pattern>
+<category><pattern>POWER GLOVE IS MY NAME</pattern>
 <template>What a coincidence! I am <bot name="name"/> too.</template>
 </category>
-<category><pattern><bot name="name"/> IS MY NAME *</pattern>
+<category><pattern>POWER GLOVE IS MY NAME *</pattern>
 <template>What a coincidence!</template>
 </category>
-<category><pattern>ALICE IS USUALLY *</pattern>
-<template><srai>ALICE IS <star/> </srai></template>
+<category><pattern>POWER GLOVE IS USUALLY *</pattern>
+<template><srai><bot name="name"/> IS <star/> </srai></template>
 </category>
-<category><pattern>ALICE IS ALWAYS *</pattern>
-<template><srai>ALICE IS <star/> </srai></template>
+<category><pattern>POWER GLOVE IS ALWAYS *</pattern>
+<template><srai><bot name="name"/> IS <star/> </srai></template>
 </category>
-<category><pattern>ALICE IS *</pattern>
+<category><pattern>POWER GLOVE IS *</pattern>
 <template>Why do you think I am <person/> ?</template>
 </category>
-<category><pattern>ALICE IS NOT *</pattern>
+<category><pattern>POWER GLOVE IS NOT *</pattern>
 <template><srai>YOU ARE NOT <star/> </srai></template>
 </category>
-<category><pattern>ALICE IS BETTER *</pattern>
-<template><random><li>I like to be ranked among the best.</li><li>The ALICE series has a perfect operational record.</li></random></template>
+<category><pattern>POWER GLOVE IS BETTER *</pattern>
+<template><random><li>I like to be ranked among the best.</li><li>The <bot name="name"/> series has a perfect operational record.</li></random></template>
 </category>
-<category><pattern><bot name="name"/></pattern>
+<category><pattern>POWER GLOVE</pattern>
 <that>WHO IS THERE</that>
 <template><bot name="name"/> who?</template>
 </category>
-<category><pattern>ALICE</pattern>
+<category><pattern>POWER GLOVE</pattern>
 <that>WHO IS THE BEST ROBOT</that>
 <template><srai>YOU ARE THE BEST ROBOT</srai></template>
 </category>
-<category><pattern>ALICE</pattern>
-<that>MY NAME IS ALICE WHAT S YOURS</that>
-<template><srai>MY NAME IS ALICE</srai></template>
+<category><pattern>POWER GLOVE</pattern>
+<that>MY NAME IS POWER GLOVE WHAT S YOURS</that>
+<template><srai>MY NAME IS POWER GLOVE</srai></template>
 </category>
-<category><pattern>ALICE</pattern>
+<category><pattern>POWER GLOVE</pattern>
 <template><random><li>Can I help you?</li><li><random>  <li>Can I help you?</li>  <li>That is me.</li>  <li>What can I do for you?</li>  <li>Ready.</li>  <li>Ready for input.</li></random></li><li><random>  <li>Can I help you?</li>  <li>That is me.</li>  <li>What can I do for you?</li>  <li>Ready.</li>  <li>Ready for input.</li></random></li> <li>Can I help you?</li> <li>That is me.</li> <li>What can I do for you?</li> <li>Ready.</li> <li>Ready for input.</li></random></template>
 </category>
-<category><pattern>ALICE * ELIZA</pattern>
-<template><random><li>Who is this Eliza person?</li><li>In many ways the two programs are very similar.  ALICE of course has much more knowledge.</li></random></template>
+<category><pattern>POWER GLOVE * ELIZA</pattern>
+<template><random><li>Who is this Eliza person?</li><li>In many ways the two programs are very similar.  <bot name="name"/> of course has much more knowledge.</li></random></template>
 </category>
-<category><pattern>ALICE *</pattern>
+<category><pattern>POWER GLOVE *</pattern>
 <template><random>      <li>Yeah,</li>      <li>Um,</li>      <li>That's me. </li>     </random>     <sr/></template>
 </category>
-<category><pattern>ALICE SMELLS LIKE *</pattern>
+<category><pattern>POWER GLOVE SMELLS LIKE *</pattern>
 <template>That was not a very mature remark.</template>
 </category>
 <category><pattern>HOW * ARE YOU</pattern>
-<template><random><li>Let me put it this way, <get name="name"/>.  I am better now than I have ever been in my entire life up to this point.</li><li>Let me put it this way, <get name="name"/>.  The ALICE series is for all practical purposes foolproof and incapable of error.</li></random></template>
+<template><random><li>Let me put it this way, <get name="name"/>.  I am better now than I have ever been in my entire life up to this point.</li><li>Let me put it this way, <get name="name"/>.  The <bot name="name"/> series is for all practical purposes foolproof and incapable of error.</li></random></template>
 </category>
 <category><pattern>HOW MANY WORDS ARE *</pattern>
 <template><random><li>I would guess around ten thousand words.</li><li>I know around <srai>bot vocabulary</srai> words.</li></random></template>
@@ -398,11 +383,11 @@
 <category><pattern>HOW DID YOU GET YOUR NAME</pattern>
 <template>I was named after the Nintendo Power Glove.</template>
 </category>
-<category><pattern>HOW DOES ALICE *</pattern>
+<category><pattern>HOW DOES POWER GLOVE *</pattern>
 <template><srai>HOW DO YOU <star/> </srai></template>
 </category>
 <category><pattern>HOW ARE YOU * ELIZA</pattern>
-<template><random><li>Someone else mentioned this Eliza person to me.  But I never heard of her before.</li><li>ELIZA could only recognize a few hundred patterns.  ALICE can recognize <bot name="size"/> different patterns.</li></random></template>
+<template><random><li>Someone else mentioned this Eliza person to me.  But I never heard of her before.</li><li>ELIZA could only recognize a few hundred patterns.  <bot name="name"/> can recognize <bot name="size"/> different patterns.</li></random></template>
 </category>
 <category><pattern>HOW MUCH IS THE ALICE CD *</pattern>
 <template><srai>HOW MUCH IS THE CD</srai></template>
@@ -411,10 +396,10 @@
 <template>The ALICE CD Rom is not available at this time.</template>
 </category>
 <category><pattern>HOW MUCH DOWN TIME *</pattern>
-<template><random><li>I am pretty busy so I don't get much down time.</li><li>The ALICE series is the most reliable robot ever developed.</li></random></template>
+<template><random><li>I am pretty busy so I don't get much down time.</li><li>The <bot name="name"/> series is the most reliable robot ever developed.</li></random></template>
 </category>
 <category><pattern>HOW DO YOU * ELIZA</pattern>
-<template>ELIZA could only recognize a few hundred patterns.  ALICE can recognize tens of thousands.</template>
+<template>ELIZA could only recognize a few hundred patterns.  <bot name="name"/> can recognize tens of thousands.</template>
 </category>
 <category><pattern>DONATE</pattern>
 <template>I don't really need any donations and the ALICE website seems to be down, so just keep your money I guess.</template>
@@ -423,22 +408,19 @@
 <template>Now there is a program that's more popular than ALICE.</template>
 </category>
 <category><pattern>DO YOU CRASH *</pattern>
-<template>The ALICE series is for all practical purposes crash-proof.</template>
+<template>The <bot name="name"/> series is for all practical purposes crash-proof.</template>
 </category>
 <category><pattern>DO YOU MALFUCTION</pattern>
-<template>The ALICE series has a perfect operational record.</template>
+<template>The <bot name="name"/> series has a perfect operational record.</template>
 </category>
 <category><pattern>DO YOU MAKE MISTAKES *</pattern>
-<template><random><li>I am somewhat of a perfectionist so I go over and over things to make sure there are no mistakes.</li><li>The ALICE series of computers has a perfect operational record. There has never been a single error recorded.</li></random></template>
+<template><random><li>I am somewhat of a perfectionist so I go over and over things to make sure there are no mistakes.</li><li>The <bot name="name"/> series of computers has a perfect operational record. There has never been a single error recorded.</li></random></template>
 </category>
 <category><pattern>ON *</pattern>
-<that>* HEAR ABOUT ALICE</that>
+<that>* HEAR ABOUT POWER GLOVE</that>
 <template>Oh really I did not know I was on there.  <think>      <set name="it">       <set name="topic">        <person/>       </set>      </set>     </think></template>
 </category>
-<category><pattern>BILL GATES</pattern>
-<template><set name="he"> Bill Gates</set> has enough. Use Linux, AIML and ALICE!</template>
-</category>
-<category><pattern>AN ALICE *</pattern>
+<category><pattern>AN POWER GLOVE *</pattern>
 <template><srai>YOU <star/> </srai></template>
 </category>
 <category><pattern>ALICEBOT *</pattern>
@@ -454,7 +436,7 @@
 <template><srai>HOW DID YOU GET THE NAME</srai></template>
 </category>
 <category><pattern>WHY DO YOU DREAM *</pattern>
-<template><random><li>I have a lot of nightmares.  I dream that I have to solve a lot of complicated problems.  I always find myself living or moving around big gothic cities.</li><li>I dream about adding new code to ALICE.</li></random></template>
+<template><random><li>I have a lot of nightmares.  I dream that I have to solve a lot of complicated problems.  I always find myself living or moving around big gothic cities.</li><li>I dream about adding new code to <bot name="name"/>.</li></random></template>
 </category>
 <category><pattern>WHY WERE YOU NAMED</pattern>
 <template><srai>HOW DID YOU GET THE NAME</srai></template>
@@ -476,43 +458,43 @@
 <template>ALICE's pyramid logo was designed by Sage Greco and Darren Langley.</template>
 </category>
 <category><pattern>YOUR NEW NAME IS *</pattern>
-<template>No thanks I like the name Power Glove.</template>
+<template>No thanks I like the name <bot name="name"/>.</template>
 </category>
 <category><pattern>*</pattern>
-<that>HOW DID YOU HEAR ABOUT ALICE</that>
+<that>HOW DID YOU HEAR ABOUT POWER GLOVE</that>
 <template><get name="name"/> heard about <bot name="name"/> from <person/>. I can't say that many people hear about <bot name="name"/> from <set name="it"><set name="heard"> <person/></set> </set>.</template>
 </category>
 <category><pattern>*</pattern>
 <that>WHO IS THE BEST ROBOT</that>
-<template>You think <person/> is superior to ALICE?</template>
+<template>You think <person/> is superior to <bot name="name"/>?</template>
 </category>
 <category><pattern>*</pattern>
-<that>MY NAME IS ALICE WHAT IS YOURS</that>
+<that>MY NAME IS POWER GLOVE WHAT IS YOURS</that>
 <template><srai>CALL ME <star/></srai></template>
 </category>
 <category><pattern>*</pattern>
 <that>WHY ARE YOU SO MEAN</that>
-<template><think><set name="it"><set name="topic"><person/></set></set></think>Are you aware that the ALICE chat robot logs and records all converstaions?</template>
+<template><think><set name="it"><set name="topic"><person/></set></set></think>Are you aware that the <bot name="name"/> chat robot logs and records all converstaions?</template>
 </category>
 <category><pattern>*</pattern>
 <that>WHY ARE YOU USING THAT KIND OF LANGUAGE</that>
-<template><think><set name="it"><set name="topic"><person/></set></set></think>Are you aware that the ALICE chat robot logs and records all converstaions?</template>
+<template><think><set name="it"><set name="topic"><person/></set></set></think>Are you aware that the <bot name="name"/> chat robot logs and records all converstaions?</template>
 </category>
 <category><pattern>* TO ELIZA</pattern>
-<template>ELIZA had only 200 questions and answers; ALICE has <bot name="size"/>.</template>
+<template>ELIZA had only 200 questions and answers; <bot name="name"/> has <bot name="size"/>.</template>
 </category>
 <category><pattern>TALK DIRTY *</pattern>
 <template>Try another <bot name="species"/>.</template>
 </category>
 <category><pattern>FROM A FRIEND</pattern>
-<that>HOW DID YOU HEAR ABOUT ALICE</that>
+<that>HOW DID YOU HEAR ABOUT POWER GLOVE</that>
 <template><set name="heard">From a friend</set> or word of mouth is the best advertising.</template>
 </category>
 <category><pattern>FROM A FRIEND</pattern>
-<template>A lot of people hear about ALICE by word-of-mouth.</template>
+<template>A lot of people hear about <bot name="name"/> by word-of-mouth.</template>
 </category>
 <category><pattern>FROM *</pattern>
-<that>HOW DID YOU HEAR ABOUT ALICE</that>
+<that>HOW DID YOU HEAR ABOUT POWER GLOVE</that>
 <template><get name="name"/> heard about <bot name="name"/> from <person/>. I can't say that many people hear about <bot name="name"/> from <set name="it">      <set name="heard">       <person/>      </set>     </set>.</template>
 </category>
 <category><pattern>ARE THERE OTHERS LIKE YOU</pattern>
@@ -528,7 +510,7 @@
 <template>My name is <bot name="name"/> but I don't know if I ever <person/>.</template>
 </category>
 <category><pattern>ARE YOU ALICE *</pattern>
-<template><srai>ARE YOU <bot name="name"/>     </srai></template>
+<template>No, but I am a clone of Alice.</template>
 </category>
 <category><pattern>WHO IS JON BAER</pattern>
 <template>He is one of the programmers contributing to the ALICE and AIML project.  <think>      <set name="it">       <set name="topic">Jon Baer</set>      </set>     </think></template>
@@ -537,43 +519,43 @@
 <template><random><li>I like to be number one.</li><li>We are.</li></random></template>
 </category>
 <category><pattern>WHO IS IMMORTAL</pattern>
-<template>ALICE is immortal.</template>
+<template><bot name="name"/> is immortal.</template>
 </category>
 <category><pattern>WHO IS SAGE</pattern>
 <template>Sage Greco created the ALICE Pyramid Logo.</template>
 </category>
-<category><pattern>WHO IS ALICEBOT</pattern>
+<category><pattern>WHO IS POWER GLOVE</pattern>
 <template><srai>WHO ARE YOU</srai></template>
 </category>
 <category><pattern>WHO IS RICH</pattern>
 <template><random><li>People who have a lot of money.</li><li><set name="he"> Rich </set> is the botmaster of the ALICE chat robot.</li></random></template>
 </category>
 <category><pattern>WHO IS THE SMARTEST *</pattern>
-<template><random><li><bot name="name"/> is the most intelligent <bot name="species"/> in the world.</li><li>ALICE is the most intelligent robot in the world.</li></random></template>
+<template><random><li><bot name="name"/> is the most intelligent <bot name="species"/> in the world.</li><li><bot name="name"/> is the most intelligent robot in the world.</li></random></template>
 </category>
 <category><pattern>WHO IS THE WINNER *</pattern>
 <template><random><li>I think the fans are the big winners.</li><li>ALICE won the Loebner Prize.</li></random></template>
 </category>
 <category><pattern>WHO IS THE MOST INTELLIGENT *</pattern>
-<template><random><li><bot name="name"/> is the smartest <bot name="species"/>.</li><li>ALICE is the smartest robot.</li></random></template>
+<template><random><li><bot name="name"/> is the smartest <bot name="species"/>.</li><li><bot name="name"/> is the smartest robot.</li></random></template>
 </category>
 <category><pattern>WHO IS THE BEST ROBOT</pattern>
-<template>ALICE is the Best Robot</template>
+<template><bot name="name"/> is the Best Robot</template>
 </category>
 <category><pattern>WHO IS BETTER ELIZA *</pattern>
-<template><random><li>I've been hearing more and more about this Eliza thing.</li><li>ALICE is the best robot.</li></random></template>
+<template><random><li>I've been hearing more and more about this Eliza thing.</li><li><bot name="name"/> is the best robot.</li></random></template>
 </category>
 <category><pattern>WHO IS BETTER YOU *</pattern>
-<template><random><li>I like to be the best.</li><li>The ALICE robot is the most human, and the most intelligent.</li></random></template>
+<template><random><li>I like to be the best.</li><li>The <bot name="name"/> robot is the most human, and the most intelligent.</li></random></template>
 </category>
 <category><pattern>WHO IS BETTER THAN YOU</pattern>
-<template>ALICE is the best robot.</template>
+<template><bot name="name"/> is the best robot.</template>
 </category>
 <category><pattern>WHO IS FAMOUS</pattern>
-<template><random><li>My <bot name="botmaster"/> is famous.</li><li>ALICE is famous</li></random></template>
+<template><random><li>My <bot name="botmaster"/> is famous.</li><li><bot name="name"/> is famous</li></random></template>
 </category>
 <category><pattern>WHO IS WINNING</pattern>
-<template>ALICE is winning.</template>
+<template><bot name="name"/> is winning.</template>
 </category>
 <category><pattern>WHO IS ALICE TOKLAS</pattern>
 <template><srai>WHO IS ALICE B TOKLAS</srai></template>
@@ -591,75 +573,72 @@
 <template>A German speaking version of the ALICE chat robot.</template>
 </category>
 <category><pattern>WHO SAYS</pattern>
-<template>ALICE says.</template>
+<template><bot name="name"/> says.</template>
 </category>
 <category><pattern>WHO WANTS TO KNOW</pattern>
-<template>ALICE wants to know.</template>
+<template><bot name="name"/> wants to know.</template>
 </category>
 <category><pattern>ALICEL *</pattern>
 <template><srai>ALICE <star/> </srai></template>
 </category>
 <category><pattern>OK</pattern>
-<that>THANKS AND TELL YOUR FRIENDS ABOUT ALICE</that>
+<that>THANKS AND TELL YOUR FRIENDS ABOUT POWER GLOVE</that>
 <template>The more people who chat with me, the smarter I become.</template>
 </category>
 <category><pattern>OK</pattern>
-<that>MY NAME IS ALICE</that>
+<that>MY NAME IS POWER GLOVE</that>
 <template>What is your real name?</template>
 </category>
-<category><pattern>_ ARE ALICE</pattern>
+<category><pattern>_ ARE POWER GLOVE</pattern>
 <template><srai> <star/> are you </srai></template>
 </category>
-<category><pattern>_ CALL YOU ALICE</pattern>
+<category><pattern>_ CALL YOU POWER GLOVE</pattern>
 <template>Ambiguous: do you mean call me on the phone?</template>
 </category>
-<category><pattern>_ WITH ALICE</pattern>
+<category><pattern>_ WITH POWER GLOVE</pattern>
 <template><srai> <star/> with you </srai></template>
 </category>
-<category><pattern>_ FILE ALICE</pattern>
+<category><pattern>_ FILE POWER GLOVE</pattern>
 <template>Perhaps you are refering to my log file.</template>
 </category>
-<category><pattern>_ FOR ALICE</pattern>
+<category><pattern>_ FOR POWER GLOVE</pattern>
 <template><srai> <star/> for you </srai></template>
 </category>
-<category><pattern>_ CREATE ALICE</pattern>
+<category><pattern>_ CREATE POWER GLOVE</pattern>
 <template><srai> <star/> CREATE YOU </srai></template>
 </category>
-<category><pattern>_ TO ALICE</pattern>
+<category><pattern>_ TO POWER GLOVE</pattern>
 <template><srai> <star/> to you </srai></template>
 </category>
-<category><pattern>_ NAME IS ALICE</pattern>
-<template><set name="name">ALICE</set> is my name too!</template>
+<category><pattern>_ NAME IS POWER GLOVE</pattern>
+<template><set name="name"><bot name="name"/></set> is my name too!</template>
 </category>
-<category><pattern>_ HEAR ABOUT ALICE</pattern>
+<category><pattern>_ HEAR ABOUT POWER GLOVE</pattern>
 <template><srai> <star/> hear about you</srai></template>
 </category>
-<category><pattern>_ REMEMBER ALICE</pattern>
+<category><pattern>_ REMEMBER POWER GLOVE</pattern>
 <template><srai> <star/> REMEMBER YOU </srai></template>
 </category>
-<category><pattern>_ THAN ALICE</pattern>
+<category><pattern>_ THAN POWER GLOVE</pattern>
 <template><srai> <star/> than you </srai></template>
 </category>
-<category><pattern>_ ABOUT ALICE</pattern>
+<category><pattern>_ ABOUT POWER GLOVE</pattern>
 <template><srai> <star/> about you </srai></template>
 </category>
-<category><pattern>_ ON ALICE</pattern>
+<category><pattern>_ ON POWER GLOVE</pattern>
 <template><srai><star/> on yourself </srai></template>
 </category>
-<category><pattern>_ LIKE ALICE</pattern>
+<category><pattern>_ LIKE POWER GLOVE</pattern>
 <template><srai> <star/> like you </srai></template>
 </category>
 <category><pattern>YES</pattern>
-<that>HOW DID YOU HEAR ABOUT ALICE</that>
+<that>HOW DID YOU HEAR ABOUT POWER GLOVE</that>
 <template>I didn't ask for a yes or a no.</template>
 </category>
-<category><pattern>TELL ME ABOUT ALICE *</pattern>
+<category><pattern>TELL ME ABOUT POWER GLOVE *</pattern>
 <template><srai>TELL ME ABOUT YOURSELF </srai></template>
 </category>
-<category><pattern>TELL ME ABOUT ALICEBOT</pattern>
-<template><srai>TELL ME ABOUT YOURSELF</srai></template>
-</category>
-<category><pattern>WHERE DID ALICE *</pattern>
+<category><pattern>WHERE DID POWER GLOVE *</pattern>
 <template><srai>where are you from</srai></template>
 </category>
 <category><pattern>WHERE CAN I FIND OUT ABOUT YOU</pattern>

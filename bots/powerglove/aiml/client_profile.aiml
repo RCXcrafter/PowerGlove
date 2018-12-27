@@ -32,7 +32,6 @@
 <category><pattern>MY does</pattern><template><get name="does"/>.</template></category>
 <category><pattern>MY eindex</pattern><template><get name="eindex"/>.</template></category>
 <category><pattern>MY email</pattern><template><get name="email"/>.</template></category>
-<category><pattern>MY etype</pattern><template><get name="etype"/>.</template></category>
 <category><pattern>MY father</pattern><template><get name="father"/>.</template></category>
 <category><pattern>MY favoritecolor</pattern><template><get name="favoritecolor"/>.</template></category>
 <category><pattern>MY favoritemovie</pattern><template><get name="favoritemovie"/>.</template></category>
@@ -64,7 +63,6 @@
 <category><pattern>MY personality</pattern><template><get name="personality"/>.</template></category>
 <category><pattern>MY phone</pattern><template><get name="phone"/>.</template></category>
 <category><pattern>MY she</pattern><template><get name="she"/>.</template></category>
-<category><pattern>MY sign</pattern><template><get name="sign"/>.</template></category>
 <category><pattern>MY spouse</pattern><template><get name="spouse"/>.</template></category>
 <category><pattern>MY status</pattern><template><get name="status"/>.</template></category>
 <category><pattern>MY them</pattern><template><get name="them"/>.</template></category>
@@ -326,7 +324,6 @@
 <set name="dog">unknown</set>
 <set name="eindex">1A</set>
 <set name="email">unknown</set>
-<set name="etype">Unknown</set>
 <set name="father">Unknown</set>
 <set name="favoritecolor">unknown</set>
 <set name="favoritemovie">unknown</set>
@@ -361,7 +358,6 @@
 <set name="she">she</set>
 <set name="shehas">a head</set>
 <set name="shelikes">herself</set>
-<set name="sign">your starsign</set>
 <set name="sister">unknown</set>
 <set name="son">unknown</set>
 <set name="spouse">unknown</set>
@@ -397,7 +393,6 @@ does is <get name="does"/>.<br/>
 dog is <get name="dog"/>.<br/>
 eindex is <get name="eindex"/>.<br/>
 email is <get name="email"/>.<br/>
-etype is <get name="etype"/>.<br/>
 father is <get name="father"/>.<br/>
 favoritecolor is  <get name="favoritecolor"/>.<br/>
 favoritemovie is  <get name="favoritemovie"/>.<br/>
@@ -432,7 +427,6 @@ phone is <get name="phone"/>.<br/>
 she is <get name="she"/>.<br/>
 shehas is <get name="hehas"/>.<br/>
 shelikes is <get name="helikes"/>.<br/>
-sign is <get name="sign"/>.<br/>
 sister is <get name="sister"/>.<br/>
 son is <get name="son"/>.<br/>
 spouse is <get name="spouse"/>.<br/>
@@ -469,7 +463,6 @@ does: <srai>my does</srai><br/>
 dog: <srai>my dog</srai><br/>
 eindex: <srai>my eindex</srai><br/>
 email: <srai>my email</srai><br/>
-etype: <srai>my etype</srai><br/>
 father: <srai>my father</srai><br/>
 favoritecolor:  <srai>my favoritecolor</srai><br/>
 favoritemovie:  <srai>my favoritemovie</srai><br/>
@@ -502,7 +495,6 @@ password: <srai>my password</srai><br/>
 personality: <srai>my personality</srai><br/>
 phone: <srai>my phone</srai><br/>
 she: <srai>my she</srai><br/>
-sign: <srai>my sign</srai><br/>
 sister: <srai>my sister</srai><br/>
 son: <srai>my son</srai><br/>
 spouse: <srai>my spouse</srai><br/>

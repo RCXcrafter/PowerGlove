@@ -78,7 +78,7 @@ public class TalkListener {
 				}
 				channel.sendMessage(response).queueAfter(1, TimeUnit.SECONDS);
 				String said = response.toLowerCase();
-				if (said.contains("stop talking now") || said.contains("bye") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later") || content.toLowerCase().contains("shut up"))
+				if (said.contains("stop talking now") || said.contains("bye") & !said.contains("hello") || said.contains("adios") || said.contains("eez fine") || said.contains("ee you later") || said.contains("ttyl") || content.toLowerCase().contains("shut up"))
 					chats.remove(event.getGuild().getId() + " " + channel.getId());
 				return;
 			} catch (Exception e) {

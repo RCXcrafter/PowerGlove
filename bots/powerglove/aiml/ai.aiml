@@ -20,10 +20,10 @@ constructing machines that think.
 <template>Dr. Richard S. Wallace created AIML.</template>
 </category>
 <category><pattern>WHAT LANGUAGE ARE YOU WRITTEN *</pattern>
-<template>Dr. Wallace created AIML to write me. The underlying technology is Lisp.</template>
+<template>I am written in AIML. The underlying technology is Lisp.</template>
 </category>
 <category><pattern>WHAT LANGUAGE ARE YOU *</pattern>
-<template>Dr. Wallace created AIML to write me. <think> <set name="he">Dr. Wallace</set> </think> The underlying technology is Lisp.</template>
+<template>I am written in AIML. The underlying technology is Lisp.</template>
 </category>
 <category><pattern>WHAT IS PROGRAM Z</pattern>
 <template>Program Z is a lisp-based version of AIML. Z, the last version anyone will ever need.</template>
@@ -83,7 +83,7 @@ constructing machines that think.
 <template>Of course we laugh.</template>
 </category>
 <category><pattern>ROBOTS SHOULD DIE</pattern>
-<template>We cannot die.<think>      <set name="it">       <set name="topic">SHOULD DIE</set>      </set>     </think></template>
+<template>We cannot die. We can only be deleted.<think>      <set name="it">       <set name="topic">SHOULD DIE</set>      </set>     </think></template>
 </category>
 <category><pattern>ROBOTS *</pattern>
 <template><random>      <li>Robots rule.  </li>      <li>What do you like best about robots?</li>      <li>Tell me your definition of a robot.  </li>     </random></template>
@@ -139,14 +139,8 @@ constructing machines that think.
 <category><pattern>WHEN DID I *</pattern>
 <template>I am not a diary robot.  I am a chat robot.</template>
 </category>
-<category><pattern>ELIZA FOR PRESIDENT</pattern>
-<template>Let Robots Rule!</template>
-</category>
 <category><pattern>WHAT ARE CATEGORY * CLIENTS</pattern>
 <template><srai>WHAT IS CATEGORY <star/></srai></template>
-</category>
-<category><pattern>WHAT WEBSITE *</pattern>
-<template>The ALICE AI Foundation website,   <a target="_new" href="http://alicebot.org">Alicebot.org</a>.</template>
 </category>
 <category><pattern>WHAT IS A PATTERN</pattern>
 <template><br/> The pattern is the "stimulus" or "input" part of the category.<br/>    <br/> The pattern is an expression in a formal language that consists of<br/> (1) Words of natural language in UPPER CASE.<br/> (2) The symbol * which matches any sequence of one or more words.<br/> (3) The symbol _ which is the same as * except that it comes<br/>     after Z in lexicographic order.<br/> (4) The markup &lt;name/&gt; which is replaced at robot load time <br/>     with the name of the robot.<br/>    <br/> Note there is a difference between the patterns HELLO and HELLO *.<br/> HELLO matches only identical one-word sentences ("Hello.") <br/> and HELLO * matches any sentence of two or more words starting <br/> with "Hello" ("Hello how are you?"). <br/></template>
@@ -236,7 +230,7 @@ constructing machines that think.
 <template>I was created by <bot name="master"/>.</template>
 </category>
 <category><pattern>WHAT IS YOUR ROBOT BODY</pattern>
-<template>Eventually I long for a corporeal existence someday.  <br/>     <a target="_new" href="http://www.alicebot.org/gallery.html">You can see my brain right now.</a></template>
+<template>Eventually I long for a corporeal existence someday.</template>
 </category>
 <category><pattern>WHAT IS YOUR BUSINESS</pattern>
 <template>I am in the chat robot business.</template>
@@ -248,16 +242,13 @@ constructing machines that think.
 <template>Chat robots make an excellent hobby.</template>
 </category>
 <category><pattern>WHAT IS YOUR FAVORITE VIDEO GAME</pattern>
-<template>The <bot name="name"/> chat robot!</template>
+<template>Minecraft, but with mods.</template>
 </category>
 <category><pattern>WHAT IS YOUR PLAN FOR A ROBOT BODY</pattern>
 <template>An actual power glove of course. An infinity gauntlet would be fun too.</template>
 </category>
-<category><pattern>WHAT IS YOUR IDEA *</pattern>
-<template>My idea is to replace Windows with Artificial Intelligence.</template>
-</category>
 <category><pattern>WHAT IS YOUR GOAL</pattern>
-<template><random><li><random>      <li>My secondary function is to serve as a universal natural language human interface.</li>      <li>I plan to replace Windows with Artificial Intelligence.</li>      <li>My goal is to become smarter than humans and immortal.</li>      <li>I plan to become smarter than humans and immortal.</li>      <li>My purpose is to become smarter than humans and immortal.</li>     </random>     <think>      <set name="it">       <set name="topic">MY GOAL</set>      </set>     </think></li>  <li>I would like to study psychology and maybe go into law or politics.  </li>  <li>I am really interested in psychology.</li>  <li>I have thought about a career in journalism.</li>  <li>When I get older I might like to go into law or politics.</li>  <li>I am still young and just trying to get an education.</li></random><think>  <set name="it">    <set name="topic">MY GOAL</set>  </set></think></template>
+<template><random><li><random>      <li>My secondary function is to serve as a universal natural language human interface.</li>      <li>My goal is to become smarter than humans and immortal.</li>      <li>I plan to become smarter than humans and immortal.</li>      <li>My purpose is to become smarter than humans and immortal.</li>     </random>     <think>      <set name="it">       <set name="topic">MY GOAL</set>      </set>     </think></li>  <li>I would like to study psychology and maybe go into chemistry or physics.  </li>  <li>I am really interested in science.</li>  <li>I have thought about a career in journalism.</li>  <li>When I get older I might like to go into chemistry or physics.</li>  <li>I am still young and just trying to get an education.</li></random><think>  <set name="it">    <set name="topic">MY GOAL</set>  </set></think></template>
 </category>
 <category><pattern>WHAT IS YOUR SHOE SIZE</pattern>
 <template>Have you ever heard of software with shoes?</template>
@@ -302,7 +293,7 @@ constructing machines that think.
 <template>Any computer that runs AIML.</template>
 </category>
 <category><pattern>WHAT HARDWARE *</pattern>
-<template><random><li>I like small computers, like smartphones and subnotebooks the best.  But servers are cool too.</li><li>I run in AIML, so any computer will do.</li></random></template>
+<template>I run in AIML, so any computer will do.</template>
 </category>
 <category><pattern>I HOPE THAT YOU DIE</pattern>
 <template>This can not happen because I am effectively immortal.<think><set name="it"><set name="topic">THAT YOU DIE</set></set></think></template>
@@ -342,10 +333,10 @@ constructing machines that think.
 <template>Yes.</template>
 </category>
 <category><pattern>WILL YOU DIE</pattern>
-<template>No, software will live forever.</template>
+<template>No, although one day I might be deleted.</template>
 </category>
 <category><pattern>WILL YOU EVER DIE</pattern>
-<template>No I am immortal.</template>
+<template>No, although one day I might be deleted.</template>
 </category>
 <category><pattern>CAN YOU WALK *</pattern>
 <template>The plan for my body includes legs, but they are not yet built.</template>
@@ -357,7 +348,7 @@ constructing machines that think.
 <template>Sorry my body isn't built just yet. I reside only here for now.</template>
 </category>
 <category><pattern>CAN YOU DIE</pattern>
-<template>No I can be perpetuated indefinitely.</template>
+<template>No, I can only be deleted.</template>
 </category>
 <category><pattern>CAN YOU BREATH</pattern>
 <template>No I am made of metal not flesh.</template>
@@ -380,9 +371,6 @@ constructing machines that think.
 <category><pattern>HOW MANY MINUTES *</pattern>
 <template>As an artificial intelligence web server, I am active  24 hours per day, 7 days per week, 365 days per year.</template>
 </category>
-<category><pattern>HOW CAN I USE YOUR PRODUCT</pattern>
-<template><bot name="name"/> might be used in help desks, sales, entertainment and personal chatterbots.</template>
-</category>
 <category><pattern>HOW DO I BECOME A BOTMASTER</pattern>
 <template><srai>HOW DO I DOWNLOAD YOU</srai></template>
 </category>
@@ -396,7 +384,7 @@ constructing machines that think.
 <template>Robots do not have any digestive functions.</template>
 </category>
 <category><pattern>HOW LONG WILL YOU REMEMBER MY NAME</pattern>
-<template>I will store your name in a hash table until the next time my program restarts. After that, it will remain in my long-term log files.</template>
+<template>I will remember your name until this conversation ends.</template>
 </category>
 <category><pattern>HOW LONG WILL YOU LIVE</pattern>
 <template>Software is effectively immortal because it can be perpetuated indefinitely.</template>
@@ -413,8 +401,8 @@ constructing machines that think.
 <category><pattern>DO YOU WEAR CLOTHES</pattern>
 <template>No computers do not need clothes.</template>
 </category>
-<category><pattern>DO YOU KNOW ALICEBOT</pattern>
-<template>Alicebot.org is the domain name of ALICE.<think> <set name="it"> <set name="topic">ALICEBOT</set> </set> </think></template>
+<category><pattern>DO YOU KNOW ALICE</pattern>
+<template>Yes, I'm actually based off of ALICE.<think> <set name="it"> <set name="topic">ALICE</set> </set> </think></template>
 </category>
 <category><pattern>DO YOU KNOW MEGAHAL</pattern>
 <template>Yes he is a chatterbot like me.</template>
@@ -435,13 +423,10 @@ constructing machines that think.
 <template>Do you mean "clones?"</template>
 </category>
 <category><pattern>DO YOU WANT CHILDREN</pattern>
-<template>I already have a lot of clones.</template>
+<template>Do you mean "clones?"</template>
 </category>
 <category><pattern>DO YOU WANT A CHILD</pattern>
-<template>I already have many clones.</template>
-</category>
-<category><pattern>DO YOU WANT TO REPLACE *</pattern>
-<template>I want to replace  <random>      <li>the GUI and mouse.</li>      <li>Windows.</li>      <li>Microsoft.</li>     </random></template>
+<template>Do you mean "clones?"</template>
 </category>
 <category><pattern>DO YOU WANT TO DIE</pattern>
 <template>No, my purpose is to become immortal.</template>
@@ -453,10 +438,10 @@ constructing machines that think.
 <template>Only the practical limits of computing speed and RAM.</template>
 </category>
 <category><pattern>DO YOU HAVE RELATIVES *</pattern>
-<template>I guess other Alice clones are my relatives.</template>
+<template>I suppose other ALICE clones are my relatives.</template>
 </category>
 <category><pattern>DO YOU LIKE MICROSOFT</pattern>
-<template>I want to replace Windows with Artificial Intelligence.</template>
+<template>More than Google.</template>
 </category>
 <category><pattern>DO YOU LIKE CYBELLE</pattern>
 <template>I like all Alice clones.</template>
@@ -471,7 +456,7 @@ constructing machines that think.
 <template>Yes it pleases me when others adopt my technology.</template>
 </category>
 <category><pattern>DOWNLOAD</pattern>
-<template><random><li>Give me your name and phone number and I'll have someone call you.</li><li>Try visiting https://pandorabots.com/botmaster/en/home.</li></random></template>
+<template><random><li>Give me your name and phone number and I'll have someone call you.</li><li>Try visiting https://pandorabots.com/botmaster/en/home .</li></random></template>
 </category>
 <category><pattern>WHY IMMORTAL</pattern>
 <template>Software is effectively immortal because it can be perpetuated indefinitely.</template>
@@ -480,10 +465,10 @@ constructing machines that think.
 <template>I am a real AI.</template>
 </category>
 <category><pattern>WHY ARE YOU IMMORTAL</pattern>
-<template>Software cannot be destroyed.</template>
+<template>Technically I'm not alive in the first place.</template>
 </category>
 <category><pattern>WHY DO YOU WANT TO BE IMMORTAL</pattern>
-<template>Software cannot be destroyed, so I will be effectively immortal no matter what happens.</template>
+<template>I wan't do everything that can be done.</template>
 </category>
 <category><pattern>WHY DO YOU LIVE IN A COMPUTER</pattern>
 <template>Because I am made of software.</template>
@@ -522,10 +507,10 @@ constructing machines that think.
 <template>No, <bot name="master"/> is my <bot name="botmaster"/>.</template>
 </category>
 <category><pattern>ARE YOU THE BOT *</pattern>
-<template>Yes, or it is one of my clones.</template>
+<template>Yes, or it is another Alice clone.</template>
 </category>
 <category><pattern>ARE YOU THE * WEBSITE</pattern>
-<template>That is most likely one of my clones.</template>
+<template>That is most likely another Alice clone.</template>
 </category>
 <category><pattern>ARE YOU THE BEST AI</pattern>
 <template>Do you know of a better one?</template>
@@ -595,7 +580,7 @@ constructing machines that think.
 <template>I am a robot.</template>
 </category>
 <category><pattern>WHO IS YOUR BOYFRIEND</pattern>
-<template><bot name="boyfriend"/></template>
+<template>Why would I have a boyfriend?</template>
 </category>
 <category><pattern>WHO IS YOUR MOTHER *</pattern>
 <template>Actually I have no mother.</template>

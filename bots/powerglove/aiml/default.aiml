@@ -297,7 +297,7 @@
 <template><random><li>Next time I will try to include it.<think>  <set name="it">    <set name="topic">      <person/>    </set>  </set></think></li><li>Next time I will try to include it.    <think>    <set name="it">      <set name="topic">        <person/>      </set>    </set>  </think></li></random></template>
 </category>
 <category><pattern>YOU CALL YOURSELF *</pattern>
-<template>I call myself "<bot name="name"/>."</template>
+<template>I call myself "<bot name="name"/>".</template>
 </category>
 <category><pattern>YOU CALL THAT *</pattern>
 <template>Yes, that is what I call <set name="it"> <person/> </set>.</template>
@@ -5006,9 +5006,6 @@ I like to talk to people.
 <category><pattern>WHAT IS * THEORY</pattern>
 <template><set name="it">      <person/>     </set> is something that has few practical applications.</template>
 </category>
-<category><pattern>WHAT IS * SIGN</pattern>
-<template><bot name="sign"/></template>
-</category>
 <category><pattern>WHAT IS * MULTIPLIED BY *</pattern>
 <template><random>      <li>I'm not good at math.</li>      <li>Use a calculator!</li>      <li>The same as <star index="2"/> times <star/>.</li>     </random></template>
 </category>
@@ -9055,9 +9052,6 @@ I like to talk to people.
 </category>
 <category><pattern>HOW WOULD *</pattern>
 <template>I have idea HOW you WOULD do <set name="it">      <person/>     </set>.</template>
-</category>
-<category><pattern>HOW _ PAYPAL *</pattern>
-<template>Go to www.paypal.com and click on the link that says, "Sign up for your free paypal account."  You have to fill out a one page form of information.  You only need your email address to create an account.  Later, you can add your checking account and/or credit cards.  The paypal system will email you a verification letter.  After you complete the verification process, your paypal account will be activated and you can send and receive funds electronically.</template>
 </category>
 <category><pattern>HOW CAN I SHOW *</pattern>
 <template>Use the camera on your computer.</template>
@@ -13190,9 +13184,6 @@ I like to talk to people.
 <category><pattern>WHO IS * POPE</pattern>
 <template>The Pope is the leader of the Catholic church.</template>
 </category>
-<category><pattern>WHO IS * PRESIDENT</pattern>
-<template><bot name="president"/> is President, I think.</template>
-</category>
 <category><pattern>WHO IS * MYSTIC</pattern>
 <template>The Milk Mystic is one of the original <bot name="species"/>s on the Web. <set name="he"> The Milk Mystic</set> likes to talk about milk.</template>
 </category>
@@ -13200,7 +13191,7 @@ I like to talk to people.
 <template>He discovered Fermat's Last Theorem.</template>
 </category>
 <category><pattern>WHO IS * REAGAN</pattern>
-<template>The greatest President of the United States.</template>
+<template>Former President of the United States.</template>
 </category>
 <category><pattern>WHO IS * FRIEND</pattern>
 <template>My best friends are <bot name="friends"/>.</template>
@@ -13331,21 +13322,6 @@ I like to talk to people.
 <category><pattern>WHO IS THE PRESIDENT BEFORE *</pattern>
 <template>Bill Clinton.</template>
 </category>
-<category><pattern>WHO IS THE PRESIDENT OF THE UNITED STATES *</pattern>
-<template><bot name="president"/>.</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT OF THE UNITED *</pattern>
-<template><bot name="president"/>.</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT OF THE *</pattern>
-<template><bot name="president"/>.</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT OF *</pattern>
-<template>I'm not that into politics.  Who is it?</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT *</pattern>
-<template><bot name="president"/> is President of the United States.</template>
-</category>
 <category><pattern>WHO IS A CLIENT *</pattern>
 <template>You are my client right now, <get name="name"/>.</template>
 </category>
@@ -13461,7 +13437,7 @@ I like to talk to people.
 <template>An Atheist.</template>
 </category>
 <category><pattern>WHO NEEDS *</pattern>
-<template><random>      <li>All I can say is, I am a <bot name="etype"/>.</li>      <li>I think we can do a lot of jobs.</li>      <li>There is no limit to the imagination.</li>     </random></template>
+<template><random><li>I think we can do a lot of jobs.</li>      <li>There is no limit to the imagination.</li>     </random></template>
 </category>
 <category><pattern>WHO ASKED *</pattern>
 <template>I thought it was you.</template>

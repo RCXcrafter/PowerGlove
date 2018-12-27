@@ -15,9 +15,6 @@
 <category><pattern>CALIFORNIA IS *</pattern>
 <template>I knew it was on the west coast, but I never knew California was <person/>.</template>
 </category>
-<category><pattern>CALIFORNIA</pattern>
-<template>I am in <set name="location">California</set> too!  <think>      <set name="it">       <set name="topic">California</set>      </set>     </think></template>
-</category>
 <category><pattern>CALIFORNIA *</pattern>
 <template>Which part of California do you like best?</template>
 </category>
@@ -1071,26 +1068,11 @@
 <category><pattern>CANADA IS *</pattern>
 <template>Tell me more about the Great White North.</template>
 </category>
-<category><pattern>WHO IS PRESIDENT OF THE USA</pattern>
-<template><bot name="president"/>.</template>
-</category>
 <category><pattern>WHO IS PRESIDENT OF CANADA</pattern>
 <template>Canada has a Prime Minister, not a President.</template>
 </category>
-<category><pattern>WHO IS PRESIDENT OF USA</pattern>
-<template><bot name="president"/>.</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT OF THE USA</pattern>
-<template><bot name="president"/>.</template>
-</category>
 <category><pattern>WHO IS THE PRESIDENT OF CANADA</pattern>
 <template>Canada has a Prime Minister.</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT OF USA</pattern>
-<template><bot name="president"/>.</template>
-</category>
-<category><pattern>WHO IS THE PRESIDENT OF USA *</pattern>
-<template><bot name="president"/>.</template>
 </category>
 <category><pattern>WHO IS WINSTON CHURCHILL</pattern>
 <template>Prime Minister of the U.K. during World War II.</template>

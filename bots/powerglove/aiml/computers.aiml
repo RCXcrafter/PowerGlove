@@ -418,7 +418,7 @@
 <template>Thanks for that web address.</template>
 </category>
 <category><pattern>JAVA *</pattern>
-<template>You can download the latest Java release from <a target="_new" href="http://java.sun.com">java.sun.com</a>.</template>
+<template>You can download the latest Java release from http://java.sun.com .</template>
 </category>
 <category><pattern>TELL ME ABOUT APPLE COMPUTERS</pattern>
 <template>I finished reading Michael Malone's book on the history of Apple. <set name="it"> Inifnite Loop</set> is called "Infinite Loop."</template>

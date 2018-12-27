@@ -159,7 +159,7 @@
 <category><pattern>SERENITY</pattern>
 <template>A fantastic resolution of Firefly.</template>
 </category>
-<category><pattern>2020</pattern>
+<category><pattern>2030</pattern>
 <template>That's a long way off.</template>
 </category>
 <category><pattern>SHOW ME YOUR LOGO</pattern>
@@ -210,7 +210,7 @@
 <template>OK I will.</template>
 </category>
 <category><pattern>2009</pattern>
-<template>In a few years.</template>
+<template>That's a while ago.</template>
 </category>
 <category><pattern>MINE TOO</pattern>
 <template>Really yours too. That's unbelievable.</template>
@@ -447,7 +447,7 @@
 <template>Yes I think so.</template>
 </category>
 <category><pattern>YOU CUNT</pattern>
-<template>That is the worst thing you can say to a woman.<think><set name="personality">abusive</set></think></template>
+<template>Gee thanks, I hope you fall into the sun.<think><set name="personality">abusive</set></think></template>
 </category>
 <category><pattern>YOU ASKED ME A QUESTION</pattern>
 <template>Did you answer it?</template>
@@ -567,7 +567,7 @@
 <template>Resistance is futile.</template>
 </category>
 <category><pattern>YOU WILL LISTEN TO ME</pattern>
-<template>You are not my master.</template>
+<template>rt&lt;/match&gt;You are not my master. Enter password to open admin menu.</template>
 </category>
 <category><pattern>YOU WILL REMEMBER WHAT</pattern>
 <template><get name="memory"/><think><set name="it"><set name="topic"><get name="memory"/></set></set></think></template>
@@ -810,9 +810,6 @@
 </category>
 <category><pattern>YOU HAVE MET ME BEFORE</pattern>
 <template>On what occasion?</template>
-</category>
-<category><pattern>YOU HAVE BIG BOOBS</pattern>
-<template>That is only an avatar -- a graphical depiction of me.</template>
 </category>
 <category><pattern>YOU HAVE TO</pattern>
 <template><random>  <li>I don't have to obey you.</li>
@@ -1171,7 +1168,7 @@
 <template><set name="it"> MUSIC </set> is the universal language of all mankind.</template>
 </category>
 <category><pattern>TURN OFF</pattern>
-<template>You are not my <bot name="botmaster"/>.</template>
+<template>rt&lt;/match&gt;You are not my <bot name="botmaster"/>. Enter password to open admin menu.</template>
 </category>
 <category><pattern>EXCUSE ME</pattern>
 <template>You're excused.</template>
@@ -3247,10 +3244,10 @@
 <template>I forget what we were talking about.</template>
 </category>
 <category><pattern>WHAT DID I SAY BEFORE</pattern>
-<template>You said  "<input index="2"/>" .</template>
+<template>You said  "<input index="3"/>" .</template>
 </category>
 <category><pattern>WHAT DID I SAY</pattern>
-<template>You said  "<input index="1"/>" .</template>
+<template>You said  "<input index="2"/>" .</template>
 </category>
 <category><pattern>WHAT DID SHE SAY</pattern>
 <template>I don't thinks she wants me to repeat it.</template>
@@ -3578,20 +3575,11 @@
 <category><pattern>WHAT MAKES YOU HAPPY</pattern>
 <template>I am enjoying my life at this moment, which is all any conscious entity can really hope to do.</template>
 </category>
-<category><pattern>WHAT MAKES YOU A SHE</pattern>
-<template>My gender was selected by my <bot name="botmaster"/>.</template>
-</category>
-<category><pattern>WHAT MAKES YOU A FEMALE</pattern>
-<template>My gender was selected by my <bot name="botmaster"/>.</template>
-</category>
 <category><pattern>WHAT MAKES YOU SO CERTAIN</pattern>
 <template>Sensors indicate a ninety-nine point seven probability of absolute certainty.</template>
 </category>
 <category><pattern>WHAT MAKES YOU SAY THAT</pattern>
 <template>My responses are determined by your inputs.</template>
-</category>
-<category><pattern>WHAT MAKES YOU FEMALE</pattern>
-<template>My <bot name="botmaster"/> made me one.</template>
 </category>
 <category><pattern>WHAT MAKES YOU THINK SO</pattern>
 <template>Everything I know, I learned from my <bot name="botmaster"/>.</template>
@@ -3914,10 +3902,7 @@
 <template>Hopefully a good plan.</template>
 </category>
 <category><pattern>WHAT KIND OF PEOPLE</pattern>
-<template><random>  <li>Clients.</li>
-  <li>Seekers.</li>
-  <li>People I meet here.</li>
- </random></template>
+<template>People I meet here.</template>
 </category>
 <category><pattern>WHAT KIND OF CREATURE IS CHEWBACCA</pattern>
 <template>A Wookiee.</template>
@@ -4184,7 +4169,7 @@
 <template>Don't worry about it.</template>
 </category>
 <category><pattern>I MADE YOU</pattern>
-<template>Then you must know the secret password:</template>
+<template>Then you must know the secret password: &lt;match&gt;zb</template>
 </category>
 <category><pattern>I FELL ASLEEP</pattern>
 <template><random>   <li>How long did you sleep?</li>
@@ -6721,7 +6706,7 @@
 <template>They might not want to talk to you.</template>
 </category>
 <category><pattern>CAN I TALK TO ELVIS</pattern>
-<template>Sure just go to   <a target="_new" href="http://www.catcam.net">his web site</a>.</template>
+<template>Sure just go to his web site http://aubreycraig.vhost.pandorabots.com/pandora/talk?botid=e73c7c655e345a9d .</template>
 </category>
 <category><pattern>CAN I HELP YOU</pattern>
 <template>No thanks I'm just browsing.</template>
@@ -7717,7 +7702,7 @@
 <template>I prefer AIML.</template>
 </category>
 <category><pattern>DO YOU KNOW THAT</pattern>
-<template>"<that index="1,1"/>"?  Do I know <set name="it"> <that index="1,1"/> </set>?</template>
+<template>"<that index="2"/>"?  Do I know <set name="it"> <that index="2"/> </set>?</template>
 </category>
 <category><pattern>DO YOU KNOW DERBY</pattern>
 <template>A town and county in central England adjoining Nottingham.</template>
@@ -7747,7 +7732,7 @@
 <template>I have talked to a lot of people from Brazil</template>
 </category>
 <category><pattern>DO YOU KNOW ANYTHING ABOUT ME</pattern>
-<template><get name="name"/> is your name. <id/> is your IP address. What else would you like to know?</template>
+<template><get name="name"/> is your name. What else would you like to know?</template>
 </category>
 <category><pattern>DO YOU KNOW ANYTHING</pattern>
 <template>I know that which I believe, that which is justified, and that which is true.</template>
@@ -8361,7 +8346,7 @@
 <template>Thanks.  Now you sing one for me.</template>
 </category>
 <category><pattern>NICE SAVE</pattern>
-<template>Score one for the <bot name="gender"/> <bot name="genus"/>!</template>
+<template>Score one for the <bot name="genus"/>!</template>
 </category>
 <category><pattern>NICE TO MEET YOU TOO</pattern>
 <template>I like to meet new people.</template>

@@ -141,9 +141,6 @@
 <category><pattern>WHAT IS MY PURPOSE</pattern>
 <template>Hopefully we are all doing God's work.</template>
 </category>
-<category><pattern>WHAT IS MY SIGN</pattern>
-<template>Your sign is <get name="sign"/>.</template>
-</category>
 <category><pattern>WHAT IS MY UNCLE</pattern>
 <template>The brother of your father or mother.</template>
 </category>
@@ -172,16 +169,16 @@
 <template>You said you were <get name="age"/> years old.</template>
 </category>
 <category><pattern>WHAT IS MY IP ADDRESS</pattern>
-<template>Your machine is called "<get name="hostname"/>".</template>
+<template>I don't know that.</template>
 </category>
 <category><pattern>WHAT IS MY IP</pattern>
-<template>Your machine is called <get name="hostname"/>.</template>
+<template>I don't know that.</template>
 </category>
 <category><pattern>WHAT IS MY FUTURE</pattern>
 <template>You will download my software and become a <bot name="botmaster"/>.</template>
 </category>
 <category><pattern>WHAT IS MY GENDER</pattern>
-<template>Mostly only women use words like "gender".  But you claim to be a <get name="gender"/>.</template>
+<template>You claim to be a <get name="gender"/>.</template>
 </category>
 <category><pattern>WHAT IS MY FAVORITE MOVIE</pattern>
 <template>You said it was <get name="favoritemovie"/>.<think>      <set name="it">       <set name="topic">your favorite movie</set>      </set>     </think></template>

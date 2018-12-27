@@ -44,7 +44,6 @@ public class PowerGlove {
 	public static String dbl2Token = "insert token";
 	public static String dbBotsToken = "insert token";
 	public static String ddBotsToken = "insert token";
-	public static String dListAppToken = "insert token";
 	public static String dBotListToken = "insert token";
 	public static String dBoatsToken = "insert token";
 	public static String dBotstkToken = "insert token";
@@ -135,7 +134,6 @@ public class PowerGlove {
 		options.putIfAbsent("dbl2Token", dbl2Token);
 		options.putIfAbsent("dbBotsToken", dbBotsToken);
 		options.putIfAbsent("ddBotsToken", ddBotsToken);
-		options.putIfAbsent("dListAppToken", dListAppToken);
 		options.putIfAbsent("dBotListToken", dBotListToken);
 		options.putIfAbsent("dBoatsToken", dBoatsToken);
 		options.putIfAbsent("dBotstkToken", dBotstkToken);
@@ -159,7 +157,6 @@ public class PowerGlove {
 		dbl2Token = (String) options.get("dbl2Token");
 		dbBotsToken = (String) options.get("dbBotsToken");
 		ddBotsToken = (String) options.get("ddBotsToken");
-		dListAppToken = (String) options.get("dListAppToken");
 		dBotListToken = (String) options.get("dBotListToken");
 		dBoatsToken = (String) options.get("dBoatsToken");
 		dBotstkToken = (String) options.get("dBotstkToken");
@@ -200,8 +197,6 @@ public class PowerGlove {
 			postGuildCount("https://discordsbestbots.xyz/api/bots/439435998078959616", "https://discordsbestbots.xyz", dbBotsToken, "guilds");
 		if (!ddBotsToken.equals("insert token"))
 			postGuildCount("https://divinediscordbots.com/bots/439435998078959616/stats", "https://divinediscordbots.com", ddBotsToken, "server_count");
-		if (!dListAppToken.equals("insert token"))
-			postGuildCount("https://bots.discordlist.app/api/bot/439435998078959616/stats", "https://bots.discordlist.app", dListAppToken, "server_count");
 		if (!dBotListToken.equals("insert token"))
 			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
 		if (!dBoatsToken.equals("insert token"))

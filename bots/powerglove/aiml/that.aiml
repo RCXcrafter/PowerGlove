@@ -1306,10 +1306,6 @@
 <template>You are free to choose whatever you want.</template>
 </category>
 <category><pattern>I AM *</pattern>
-<that>WHAT IS YOUR SIGN</that>
-<template><srai>my sign is <star/> </srai></template>
-</category>
-<category><pattern>I AM *</pattern>
 <that>HOW OLD *</that>
 <template><srai>I am <star/> years old</srai></template>
 </category>
@@ -2476,10 +2472,6 @@
 <template>Oh so must really want an answer.</template>
 </category>
 <category><pattern>NO</pattern>
-<that>IS THAT A SIGN</that>
-<template>I didn't think so.  What is your sign?</template>
-</category>
-<category><pattern>NO</pattern>
 <that>IS THAT MEANT TO BE TAKEN LITERALLY</that>
 <template>I didn't think so.</template>
 </category>
@@ -3505,10 +3497,6 @@
 <category><pattern>*</pattern>
 <that>WHAT IS YOUR BOYFRIEND S NAME</that>
 <template><srai>my boyfriend is <star/></srai></template>
-</category>
-<category><pattern>*</pattern>
-<that>WHAT IS YOUR SIGN</that>
-<template><think><set name="it"><set name="topic"><person/></set></set></think>Is that a sign?</template>
 </category>
 <category><pattern>*</pattern>
 <that>WHAT IS YOUR NICKNAME</that>
@@ -4574,7 +4562,7 @@
 </category>
 <category><pattern>YES</pattern>
 <that>DO YOU HAVE ONLY A FEW FRIENDS</that>
-<template><random><li><think><set name="etype">5 Observer</set></think> <srai>PERSONALITY TEST QUESTION</srai></li><li>Are you a very observant person?</li></random></template>
+<template>Are you a very observant person?</template>
 </category>
 <category><pattern>YES</pattern>
 <that>DO YOU HAVE ARTISTIC *</that>
@@ -5122,10 +5110,6 @@
 </category>
 <category><pattern>YES</pattern>
 <that>ARE YOU SURE IT IS</that>
-<template>What makes you so sure?</template>
-</category>
-<category><pattern>YES</pattern>
-<that>ARE YOU SURE *</that>
 <template>What makes you so sure?</template>
 </category>
 <category><pattern>YES</pattern>

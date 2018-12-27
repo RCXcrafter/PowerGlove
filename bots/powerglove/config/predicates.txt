@@ -48,6 +48,7 @@ latitude:which
 likes:what
 location:where
 longitute:which
+memory:zbert
 meta:set
 middlename:what
 mother:who
@@ -57,6 +58,7 @@ newcontact:unknown
 newpattern:NORESP
 niece:who
 orientation:unknown
+password:zbert
 phonenumber:unknown
 province:which
 religion:unknown
