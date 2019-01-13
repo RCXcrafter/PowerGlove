@@ -1,4 +1,20 @@
-<style>body {color: white;background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png") !important;}div.jumbotron {background-color: rgba(0, 0, 0, 0.75);}span.red {color: red;}.row{border-radius: 4px;background-color: rgba(0, 0, 0, 0.75) !important;color: white !important;}</style>
+<style>
+.hero-body {
+ background-image: url("https://github.com/RCXcrafter/PowerGlove/raw/master/lightning%20background.png") !important;
+}
+.notification {
+ background-color: rgba(0, 0, 0, 0.75) !important;
+ color: white !important;
+}
+.has-text-centered > .title {
+ border-radius: 4px;
+ background-color: rgba(0, 0, 0, 0.75) !important;
+ color: white !important;
+}
+strong, th {
+ color: #C0C0C0 !important;
+}
+</style>
 This is just another random stuff bot but I try to only add things that other bots don't have.
 
 Commands & features:

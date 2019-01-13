@@ -182,7 +182,7 @@ public class PowerGlove {
 		if (!dServToken.equals("insert token"))
 			postGuildCount("https://discord.services/api/bots/439435998078959616", "https://discord.services", dServToken, "guild_count");
 		if (!botListToken.equals("insert token"))
-			postGuildCount("https://botlist.space/api/bots/439435998078959616", "https://botlist.space", botListToken, "server_count");
+			postGuildCount("https://api.botlist.space/v1/bots/439435998078959616", "https://botlist.space", botListToken, "server_count");
 		if (!botWorldToken.equals("insert token"))
 			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", "https://discordbot.world", botWorldToken, "guild_count");
 		if (!botsOnDToken.equals("insert token"))
