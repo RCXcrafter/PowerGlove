@@ -14,7 +14,7 @@ This is just another random stuff bot but I try to only add things that other bo
 [![Power Glove on botsfordiscord.com](https://botsfordiscord.com/api/bot/439435998078959616/widget?theme=dark)](https://botsfordiscord.com/bots/439435998078959616)  
 [![Power Glove on discordboats.club](https://discordboats.club/bot/439435998078959616/widget.png)](https://discordboats.club/bot/439435998078959616)  
 [![Power Glove on divinediscordbots.com](https://divinediscordbots.com/api/widget/439435998078959616.svg)](https://divinediscordbots.com/bots/439435998078959616)  
-[![Power Glove on discordbotsreview.tk](https://discordbotsreview.tk/bot/439435998078959616)](https://discordbotsreview.tk/bot/439435998078959616)  
+[![Power Glove on discordbotsreview.tk](https://discordbotsreview.tk/api/widget/439435998078959616.png)](https://discordbotsreview.tk/bot/439435998078959616)  
 [![Power Glove on discordbotlist.xyz](https://discordbotlist.xyz/embed/439435998078959616)](https://discordbotlist.xyz/bots/439435998078959616)  
 [![Power Glove on discordbots.org](https://discordbots.org/api/widget/439435998078959616.svg?usernamecolor=419399&topcolor=333333&middlecolor=A0A0A0&highlightcolor=333333&certifiedcolor=419399)](https://discordbots.org/bot/439435998078959616)  
 [Power Glove on discord.bots.gg](https://discord.bots.gg/bots/439435998078959616)  

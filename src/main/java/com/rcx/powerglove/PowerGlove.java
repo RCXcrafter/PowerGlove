@@ -46,7 +46,6 @@ public class PowerGlove {
 	public static String ddBotsToken = "insert token";
 	public static String dBotListToken = "insert token";
 	public static String dBoatsToken = "insert token";
-	public static String dBotstkToken = "insert token";
 	public static String dBotIndexToken = "insert token";
 	public static String extremelistToken = "insert token";
 	public static String botsReviewToken = "insert token";
@@ -136,7 +135,6 @@ public class PowerGlove {
 		options.putIfAbsent("ddBotsToken", ddBotsToken);
 		options.putIfAbsent("dBotListToken", dBotListToken);
 		options.putIfAbsent("dBoatsToken", dBoatsToken);
-		options.putIfAbsent("dBotstkToken", dBotstkToken);
 		options.putIfAbsent("dBotIndexToken", dBotIndexToken);
 		options.putIfAbsent("extremelistToken", extremelistToken);
 		options.putIfAbsent("botsReviewToken", botsReviewToken);
@@ -159,7 +157,6 @@ public class PowerGlove {
 		ddBotsToken = (String) options.get("ddBotsToken");
 		dBotListToken = (String) options.get("dBotListToken");
 		dBoatsToken = (String) options.get("dBoatsToken");
-		dBotstkToken = (String) options.get("dBotstkToken");
 		dBotIndexToken = (String) options.get("dBotIndexToken");
 		extremelistToken = (String) options.get("extremelistToken");
 		botsReviewToken = (String) options.get("botsReviewToken");
@@ -201,8 +198,6 @@ public class PowerGlove {
 			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
 		if (!dBoatsToken.equals("insert token"))
 			postGuildCount("https://discord.boats/api/bot/439435998078959616", "https://discord.boats", dBoatsToken, "server_count");
-		if (!dBotstkToken.equals("insert token"))
-			postGuildCount("http://discordbots.tk/api/post_gc.php?auth=" + dBotstkToken + "&gc=" + Integer.toString(servers.size()), "http://discordbots.tk/api/post_gc.php", dBotstkToken, "server_count");
 		if (!dBotIndexToken.equals("insert token"))
 			postGuildCount("https://discordbotindex.com/apiv1/bot/439435998078959616", "https://discordbotindex.com", dBotIndexToken, "server_count");
 		if (!extremelistToken.equals("insert token"))
