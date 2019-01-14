@@ -203,7 +203,7 @@ public class PowerGlove {
 		if (!extremelistToken.equals("insert token"))
 			postGuildCount("https://discordsextremelist.tk/api/bot/439435998078959616", "https://discordsextremelist.tk", extremelistToken, "server_count");
 		if (!botsReviewToken.equals("insert token"))
-			postGuildCount("https://discordbotsreview.tk/api/bot/439435998078959616/stats", "https://discordbotsreview.tk", botsReviewToken, "server_count");
+			postGuildCount("https://discordbotreviews.xyz/api/bot/439435998078959616/stats", "https://discordbotreviews.xyz", botsReviewToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 
