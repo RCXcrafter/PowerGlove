@@ -60,6 +60,29 @@ public class Help extends Command {
 	};
 	
 	String description = "Prefix = \"" + PowerGlove.prefix + "\"";
+	
+	String lameversion = "\nHere's a list of all the commands:"
+			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
+			+ "\n\u2022 **settings:** Change the settings for this server."
+			+ "\n\u2022 **science:** Posts a science related picture."
+			+ "\n\u2022 **type:** Makes the bot start typing."
+			+ "\n\u2022 **info:** Gives some info about this bot."
+			+ "\n\u2022 **anthem:** Posts the theme song of this bot."
+			+ "\n\u2022 **mlg [user]:** Make someone (or yourself) mlg."
+			+ "\n\u2022 **smiles [smiles]:** Give it a SMILES formula and it will draw the molecule for you (reaction smiles are also supported). https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system"
+			+ "\nExample: pow smiles CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+			+ "\n\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
+			+ "\n\u2022 **dong [text]:** Convert text into expand dong text."
+			+ "\n\u2022 **talk:** Make the bot start or stop talking in the current channel."
+			+ "\n\u2022 **afk: [optional reason]** Set yourself away from keyboard (globally)."
+			+ "\n\u2022 **quote:** Post an inspirational quote by a famous person."
+			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot."
+			+ "\n\u2022 **nsfw:** Post some hot ~~garbage~~ naked people."
+			+ "\n\u2022 **color:** Generates a random color.\n"
+			+ "\nThis bot will also respond to certain key phrases/words:"
+			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
+			+ "\n\u2022 Start your message with \"poll:\" to start a poll."
+			+ "\n\u2022 Start your message with \"ninja:\" to have it deleted right after you post it so that only really fast people can read it.";
 
 	EmbedBuilder embed = new EmbedBuilder().setColor(0x419399).setAuthor("Power Glove Help", null, "https://cdn.discordapp.com/avatars/439435998078959616/94941ff09437eef86861c579e8b5a6fb.png").addField("Here's a list of all the commands:",
 			"\u2022 **help:** Displays this list, helpful isn't it?"
@@ -96,7 +119,7 @@ public class Help extends Command {
 		try {
 			event.getChannel().sendMessage(newEmbed.setTitle(powerQuote[Math.max(rand.nextInt(powerQuote.length + 10) - 10, 0)]).build()).queue();
 		} catch (InsufficientPermissionException e) {
-			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + new String(newEmbed.getDescriptionBuilder())).queue();
+			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + "Power Glove Help\n" + new String(newEmbed.getDescriptionBuilder()) + lameversion).queue();
 		}
 	}
 }

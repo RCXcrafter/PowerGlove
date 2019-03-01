@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -59,6 +60,11 @@ public class MakeMLG extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
+		if (event.getGuild().getMemberById("439435998078959616").hasPermission(event.getTextChannel(), Permission.MESSAGE_ATTACH_FILES)) {
+			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
+			return;
+		}
+
 		User thisGuy = event.getAuthor();
 
 		if (arguments.length > 1) {

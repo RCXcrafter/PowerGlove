@@ -38,6 +38,18 @@ public class TalkListener {
 		Message message = event.getMessage();
 		String content = message.getContentRaw();
 		MessageChannel channel = event.getChannel();
+		
+		//catch bot index votes
+		/*if (event.getGuild().getId().equals("445601562186874891") && channel.getId().equals("549703938396389386") && message.isWebhookMessage()) {
+			userVotes voter;
+			if (VoteHandler.voters.containsKey(content)) {
+				voter = VoteHandler.voters.get(content);
+			} else {
+				voter = new userVotes(content);
+				VoteHandler.voters.put(content, voter);
+			}
+			voter.voteIndex();
+		}*/
 
 		for (User mention : message.getMentionedUsers()) {
 			String ping = mention.getId();

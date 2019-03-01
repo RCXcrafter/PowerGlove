@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class DongFont extends Command {
@@ -26,6 +28,10 @@ public class DongFont extends Command {
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		if (arguments.length < 2) {
 			event.getChannel().sendMessage("\u26A0 Insert text to convert.").queue();
+			return;
+		}
+		if (event.getGuild().getMemberById("439435998078959616").hasPermission(event.getTextChannel(), Permission.MESSAGE_ATTACH_FILES)) {
+			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
 			return;
 		}
 

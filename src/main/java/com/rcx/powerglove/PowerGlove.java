@@ -7,7 +7,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,11 +47,9 @@ public class PowerGlove {
 	public static String dbl2Token = "insert token";
 	public static String dbBotsToken = "insert token";
 	public static String ddBotsToken = "insert token";
-	public static String dBotListToken = "insert token";
 	public static String dBoatsToken = "insert token";
-	public static String dBotIndexToken = "insert token";
-	public static String extremelistToken = "insert token";
 	public static String botsReviewToken = "insert token";
+	public static String mythToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -105,6 +106,9 @@ public class PowerGlove {
 					System.exit(0);
 				}
 			}, 1, TimeUnit.DAYS);
+
+		//recieveWebhooks();
+		Webhook.listen();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -133,11 +137,9 @@ public class PowerGlove {
 		options.putIfAbsent("dbl2Token", dbl2Token);
 		options.putIfAbsent("dbBotsToken", dbBotsToken);
 		options.putIfAbsent("ddBotsToken", ddBotsToken);
-		options.putIfAbsent("dBotListToken", dBotListToken);
 		options.putIfAbsent("dBoatsToken", dBoatsToken);
-		options.putIfAbsent("dBotIndexToken", dBotIndexToken);
-		options.putIfAbsent("extremelistToken", extremelistToken);
 		options.putIfAbsent("botsReviewToken", botsReviewToken);
+		options.putIfAbsent("mythToken", mythToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
@@ -155,11 +157,9 @@ public class PowerGlove {
 		dbl2Token = (String) options.get("dbl2Token");
 		dbBotsToken = (String) options.get("dbBotsToken");
 		ddBotsToken = (String) options.get("ddBotsToken");
-		dBotListToken = (String) options.get("dBotListToken");
 		dBoatsToken = (String) options.get("dBoatsToken");
-		dBotIndexToken = (String) options.get("dBotIndexToken");
-		extremelistToken = (String) options.get("extremelistToken");
 		botsReviewToken = (String) options.get("botsReviewToken");
+		mythToken = (String) options.get("mythToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
@@ -194,16 +194,12 @@ public class PowerGlove {
 			postGuildCount("https://discordsbestbots.xyz/api/bots/439435998078959616", "https://discordsbestbots.xyz", dbBotsToken, "guilds");
 		if (!ddBotsToken.equals("insert token"))
 			postGuildCount("https://divinediscordbots.com/bots/439435998078959616/stats", "https://divinediscordbots.com", ddBotsToken, "server_count");
-		if (!dBotListToken.equals("insert token"))
-			postGuildCount("https://discordbotlist.xyz/api/stats/439435998078959616", "https://discordbotlist.xyz", dBotListToken, "count");
 		if (!dBoatsToken.equals("insert token"))
 			postGuildCount("https://discord.boats/api/bot/439435998078959616", "https://discord.boats", dBoatsToken, "server_count");
-		if (!dBotIndexToken.equals("insert token"))
-			postGuildCount("https://discordbotindex.com/apiv1/bot/439435998078959616", "https://discordbotindex.com", dBotIndexToken, "server_count");
-		if (!extremelistToken.equals("insert token"))
-			postGuildCount("https://discordsextremelist.tk/api/bot/439435998078959616", "https://discordsextremelist.tk", extremelistToken, "server_count");
 		if (!botsReviewToken.equals("insert token"))
 			postGuildCount("https://discordbotreviews.xyz/api/bot/439435998078959616/stats", "https://discordbotreviews.xyz", botsReviewToken, "server_count");
+		if (!mythToken.equals("insert token"))
+			postGuildCount("https://mythical-bots.ml/api?key=" + mythToken + "?postServers?439435998078959616/" + servers.size(), "https://mythical-bots.ml", mythToken, "server_count");
 		System.out.println("Server count posted.");
 	}
 
@@ -254,6 +250,59 @@ public class PowerGlove {
 			return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
 		} catch (Exception e) {
 			return false;
+		}
+	}
+
+	public static void recieveWebhooks() {
+		try {
+			// Get the port to listen on
+			int port = 12876;
+			// Create a ServerSocket to listen on that port.
+			@SuppressWarnings("resource")
+			ServerSocket ss = new ServerSocket(port);
+			// Now enter an infinite loop, waiting for & handling connections.
+			for (;;) {
+				// Wait for a client to connect. The method will block;
+				// when it returns the socket will be connected to the client
+				Socket client = ss.accept();
+
+				// Get input and output streams to talk to the client
+				BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+				PrintWriter out = new PrintWriter(client.getOutputStream());
+
+				// Start sending our reply, using the HTTP 1.1 protocol
+				out.print("HTTP/1.1 200 \r\n"); // Version & status code
+				out.print("Content-Type: text/plain\r\n"); // The type of data
+				out.print("Connection: close\r\n"); // Will close stream
+				out.print("\r\n"); // End of headers
+
+				// Now, read the HTTP request from the client, and send it
+				// right back to the client as part of the body of our
+				// response. The client doesn't disconnect, so we never get
+				// an EOF. It does sends an empty line at the end of the
+				// headers, though. So when we see the empty line, we stop
+				// reading. This means we don't mirror the contents of POST
+				// requests, for example. Note that the readLine() method
+				// works with Unix, Windows, and Mac line terminators.
+				String line;
+				while ((line = in.readLine()) != null) {
+					if (line.length() == 0)
+						break;
+					out.print(line + "\r\n");
+					System.out.println(line);
+				}
+
+				// Close socket, breaking the connection to the client, and
+				// closing the input and output streams
+				out.close(); // Flush and close the output stream
+				in.close(); // Close the input stream
+				client.close(); // Close the socket itself
+			} // Now loop again, waiting for the next connection
+		}
+		// If anything goes wrong, print an error message
+		catch (Exception e) {
+			System.err.println(e);
+			System.err.println("Usage: java HttpMirror <port>");
 		}
 	}
 }

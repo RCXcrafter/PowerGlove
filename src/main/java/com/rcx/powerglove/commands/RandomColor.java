@@ -18,7 +18,7 @@ public class RandomColor extends Command {
 		String hex = Integer.toHexString(color.getRGB()).substring(2);
 
 		MessageEmbed returns = new EmbedBuilder().setColor(color.getRGB()).addField("Random color",
-		"hex: #" + hex
+		"Hex: #" + hex
 		+ "\nRed: " + color.getRed()
 		+ "\nGreen: " + color.getGreen()
 		+ "\nBlue: " + color.getBlue(), true).setThumbnail("https://www.colorhexa.com/" + hex +".png").build();
@@ -26,7 +26,12 @@ public class RandomColor extends Command {
 		try {
 			event.getChannel().sendMessage(returns).queue();
 		} catch (InsufficientPermissionException e) {
-			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + returns.getDescription()).queue();
+			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions."
+					+ "\nRandom color"
+					+ "\nHex: #" + hex
+					+ "\nRed: " + color.getRed()
+					+ "\nGreen: " + color.getGreen()
+					+ "\nBlue: " + color.getBlue()).queue();
 		}
 	}
 }
