@@ -13,8 +13,8 @@ import org.openscience.cdk.interfaces.IReaction;
 import org.openscience.cdk.silent.SilentChemObjectBuilder;
 import org.openscience.cdk.smiles.SmilesParser;
 
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class RenderSmiles extends Command {
 
@@ -25,10 +25,6 @@ public class RenderSmiles extends Command {
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		if (arguments.length < 2) {
 			event.getChannel().sendMessage("\u26A0 Add a SMILES formula for this to work.").queue();
-			return;
-		}
-		if (event.getGuild().getMemberById("439435998078959616").hasPermission(event.getTextChannel(), Permission.MESSAGE_ATTACH_FILES)) {
-			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
 			return;
 		}
 
@@ -67,6 +63,8 @@ public class RenderSmiles extends Command {
 					event.getChannel().sendFile(picture).queue();
 				} catch (CDKException | IOException e) {
 					e.printStackTrace();
+				} catch (InsufficientPermissionException e) {
+					event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();

@@ -139,11 +139,11 @@ public class Nsfw extends Command {
 		}
 	}
 
-	public boolean getBoatsClubVote(String id) {
+	public static boolean getBoatsClubVote(String id) {
 		try {
 			HttpURLConnection site = (HttpURLConnection) new URL("https://discordboats.club/api/public/bot/me/liked/" + id).openConnection();
 			site.setRequestProperty("Content-Type", "application/json");
-			site.setRequestProperty("Authorization", PowerGlove.boatsClubToken);
+			site.setRequestProperty("Authorization", "1aSgmSs0IFZMoHHVPglbg1SZFtSBxM");//PowerGlove.boatsClubToken);
 			site.setRequestMethod("GET");
 			site.setDoInput(true);
 			site.connect();
@@ -159,6 +159,11 @@ public class Nsfw extends Command {
 			d.close();
 			rd.close();
 			site.disconnect();
+
+			System.out.println("getting boatsclub vote");
+			System.out.println(lines);
+			System.out.println((Boolean) ((JSONObject) new JSONParser().parse(lines)).get("data"));
+			
 			return (Boolean) ((JSONObject) new JSONParser().parse(lines)).get("data");
 		} catch (Exception e) {
 			e.printStackTrace();

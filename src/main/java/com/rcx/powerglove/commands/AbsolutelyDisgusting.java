@@ -9,8 +9,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class AbsolutelyDisgusting extends Command {
 
@@ -28,10 +28,6 @@ public class AbsolutelyDisgusting extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		if (event.getGuild().getMemberById("439435998078959616").hasPermission(event.getTextChannel(), Permission.MESSAGE_ATTACH_FILES)) {
-			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
-			return;
-		}
 		File picture = null;
 		try {
 			picture = File.createTempFile("disgusting", ".png");
@@ -65,6 +61,8 @@ public class AbsolutelyDisgusting extends Command {
 			g.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (InsufficientPermissionException e) {
+			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
 		}
 		picture.delete();
 	}

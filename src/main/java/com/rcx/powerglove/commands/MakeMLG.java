@@ -4,8 +4,11 @@ import java.awt.Graphics;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
 
@@ -13,9 +16,9 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
 
 public class MakeMLG extends Command {
 
@@ -60,11 +63,6 @@ public class MakeMLG extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		if (event.getGuild().getMemberById("439435998078959616").hasPermission(event.getTextChannel(), Permission.MESSAGE_ATTACH_FILES)) {
-			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
-			return;
-		}
-
 		User thisGuy = event.getAuthor();
 
 		if (arguments.length > 1) {
@@ -77,11 +75,17 @@ public class MakeMLG extends Command {
 		}
 
 		File avatar = null;
-		String url = thisGuy.getAvatarUrl() + "?size=1024";
+		String url = thisGuy.getEffectiveAvatarUrl() + "?size=1024";
 
 		try {
 			avatar = File.createTempFile("avatar", url.substring(url.lastIndexOf("."), url.lastIndexOf("?")));
-			FileUtils.copyURLToFile(new URL(url), avatar);
+
+			HttpURLConnection site = (HttpURLConnection) new URL(url).openConnection();
+			site.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+			site.setDoInput(true);
+			site.connect();
+			InputStream in = new BufferedInputStream(site.getInputStream());
+			FileUtils.copyToFile(in, avatar);
 
 			BufferedImage vatar = ImageIO.read(avatar);
 			BufferedImage combined = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
@@ -113,6 +117,8 @@ public class MakeMLG extends Command {
 			g.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (InsufficientPermissionException e) {
+			event.getChannel().sendMessage("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
 		}
 		avatar.delete();
 	}

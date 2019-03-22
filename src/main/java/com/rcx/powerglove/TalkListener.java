@@ -118,7 +118,7 @@ public class TalkListener {
 		}
 
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
-			if (content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
+			if (content.toLowerCase().equals("<@439435998078959616>") || content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
 				channel.sendTyping().complete();
 				channel.sendMessage("Use: pow help\nfor a list of commands and other help.").queue();
 			} else if (content.toLowerCase().contains("hello")) {

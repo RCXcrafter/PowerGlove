@@ -14,13 +14,13 @@ public class VoteHandler {
 		userVotes voter;
 
 		if (sender.equals("botlist.space Webhooks (https://botlist.space)") && authorization.equals(PowerGlove.botListToken)) {
-			user = content.substring(content.indexOf("{\"id\":\"") + 7, content.substring(content.indexOf("{\"id\":\"") + 7).indexOf("\""));
-		} else if (ip.equals("144.172.70.177") && authorization.equals(PowerGlove.bots4DToken)) {
-			user = content.substring(9, content.substring(9).indexOf("\""));
-		} else if (sender.equals("DBL2") && authorization.equals(PowerGlove.dbl2Token)) {
-			user = content.substring(3, content.substring(3).indexOf("&"));
+			user = content.substring(content.indexOf("\"id\":\"") + 6, content.indexOf("\"id\":\"") + 6 + content.substring(content.indexOf("\"id\":\"") + 6).indexOf("\",\""));
+		} else if (ip.equals("144.172.70.177") && authorization.equals(PowerGlove.bots4DToken.substring(0, 60))) {
+			user = content.substring(9, content.substring(9).indexOf("\"") + 9);
+		} else if (sender.equals("DBL2") && authorization.equals(PowerGlove.dbl2Token.substring(0, 51))) {
+			user = content.substring(3, content.substring(3).indexOf("&") + 3);
 		} else if (ip.equals("139.99.56.126") && authorization.equals(PowerGlove.dBotsGroupToken)) {
-			user = content.substring(7, content.substring(7).indexOf("\""));
+			user = content.substring(7, content.substring(7).indexOf("\"") + 7);
 		}
 
 		System.out.println("a vote has been recieved");
