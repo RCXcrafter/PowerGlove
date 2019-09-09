@@ -85,7 +85,7 @@ public class MakeMLG extends Command {
 			site.setDoInput(true);
 			site.connect();
 			InputStream in = new BufferedInputStream(site.getInputStream());
-			FileUtils.copyToFile(in, avatar);
+			FileUtils.copyInputStreamToFile(in, avatar);
 
 			BufferedImage vatar = ImageIO.read(avatar);
 			BufferedImage combined = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);

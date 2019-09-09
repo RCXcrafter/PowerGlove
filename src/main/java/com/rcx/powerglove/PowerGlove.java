@@ -68,7 +68,7 @@ public class PowerGlove {
 				servers.put(server.getId(), server);
 		}
 
-		SecretStuff.secretMethod();
+		//SecretStuff.secretMethod();
 		System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0");
 		CommandListener.commands.put("help", new Help());
 		CommandListener.commands.put("settings", new Settings());
