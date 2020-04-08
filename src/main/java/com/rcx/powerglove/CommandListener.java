@@ -42,7 +42,7 @@ public class CommandListener extends ListenerAdapter {
 		commands.get(arguments[0].toLowerCase()).execute(arguments, event, settings);
 	}
 
-	@Override
+	/*@Override
 	public void onGuildJoin(GuildJoinEvent event) {
 		PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Added to server: " + event.getGuild().getName() + " " + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.put(event.getGuild().getId(), event.getGuild());
@@ -54,5 +54,5 @@ public class CommandListener extends ListenerAdapter {
 		PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Removed from server: " + event.getGuild().getName() + " "  + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.remove(event.getGuild().getId());
 		PowerGlove.updateAllStats();
-	}
+	}*/
 }
