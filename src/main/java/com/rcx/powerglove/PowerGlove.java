@@ -68,7 +68,6 @@ public class PowerGlove {
 				servers.put(server.getId(), server);
 		}
 
-		//SecretStuff.secretMethod();
 		System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0");
 		CommandListener.commands.put("help", new Help());
 		CommandListener.commands.put("settings", new Settings());
@@ -90,7 +89,7 @@ public class PowerGlove {
 		CommandListener.commands.put("quote", new InspirationalQuote());
 		CommandListener.commands.put("mastermind", new Mastermind());
 		CommandListener.commands.put("guess", new MastermindGuess());
-		CommandListener.commands.put("nsfw", new Nsfw());
+		//CommandListener.commands.put("nsfw", new Nsfw());
 		CommandListener.commands.put("color", new RandomColor());
 
 		api.addEventListener(new CommandListener());
@@ -107,7 +106,7 @@ public class PowerGlove {
 			}, 1, TimeUnit.DAYS);
 
 		//recieveWebhooks();
-		Webhook.listen();
+		//Webhook.listen();
 	}
 
 	@SuppressWarnings("unchecked")

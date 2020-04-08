@@ -100,7 +100,7 @@ public class Help extends Command {
 			+ "\n\u2022 **afk: [optional reason]** Set yourself away from keyboard (globally)."
 			+ "\n\u2022 **quote:** Post an inspirational quote by a famous person."
 			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot."
-			+ "\n\u2022 **nsfw:** Post some hot ~~garbage~~ naked people."
+			//+ "\n\u2022 **nsfw:** Post some hot ~~garbage~~ naked people."
 			+ "\n\u2022 **color:** Generates a random color.\n", false).addField("",
 			"\nThis bot will also respond to certain key phrases/words:"
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
