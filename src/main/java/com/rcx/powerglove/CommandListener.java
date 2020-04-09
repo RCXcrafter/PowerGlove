@@ -6,8 +6,6 @@ import com.rcx.powerglove.commands.Command;
 import com.rcx.powerglove.commands.Settings;
 import com.rcx.powerglove.commands.Settings.Setting;
 
-import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
-import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
