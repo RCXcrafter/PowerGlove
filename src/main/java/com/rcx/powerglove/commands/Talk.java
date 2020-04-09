@@ -2,12 +2,12 @@ package com.rcx.powerglove.commands;
 
 import com.rcx.powerglove.TalkListener;
 
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+
 import java.io.File;
 
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
-
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Talk extends Command {
 

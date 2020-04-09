@@ -2,7 +2,7 @@ package com.rcx.powerglove.commands;
 
 import java.util.Random;
 
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class InspirationalQuote extends Command {
 

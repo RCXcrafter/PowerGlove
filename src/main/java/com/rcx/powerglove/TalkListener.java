@@ -12,14 +12,13 @@ import org.apache.commons.io.FileUtils;
 import com.rcx.powerglove.commands.Afk;
 import com.rcx.powerglove.commands.Settings.Setting;
 
-import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.entities.impl.DataMessage;
-import net.dv8tion.jda.core.entities.impl.EmoteImpl;
-import net.dv8tion.jda.core.entities.impl.GuildImpl;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.internal.entities.EmoteImpl;
+import net.dv8tion.jda.internal.entities.GuildImpl;
 
 public class TalkListener {
 
@@ -146,10 +145,10 @@ public class TalkListener {
 					channel.sendTyping().complete();
 					channel.sendMessage("pa").complete();
 					channel.sendTyping().complete();
-					channel.sendFile(cena, new DataMessage(false, "CENA", "", null)).queueAfter(3, TimeUnit.SECONDS);
+					channel.sendMessage("CENA").addFile(cena).queueAfter(3, TimeUnit.SECONDS);
 				} else if (rand.nextInt(100) == 0 && desmond != null) {
 					channel.sendTyping().complete();
-					channel.sendFile(desmond, new DataMessage(false, "mond the moon bear", "", null)).queue();
+					channel.sendMessage("mond the moon bear").addFile(desmond).queue();
 				} else {
 					channel.sendTyping().complete();
 					channel.sendMessage("pa").complete();

@@ -2,7 +2,7 @@ package com.rcx.powerglove.commands;
 
 import com.rcx.powerglove.commands.Settings.Setting;
 
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public abstract class Command {
 	

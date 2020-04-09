@@ -14,12 +14,12 @@ import org.json.simple.parser.ParseException;
 
 import com.rcx.powerglove.PowerGlove;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.MessageEmbed;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
-import net.dv8tion.jda.core.utils.PermissionUtil;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.internal.utils.PermissionUtil;
 
 public class Settings extends Command {
 
@@ -146,7 +146,7 @@ public class Settings extends Command {
 				}
 				settings.put(serverID, new Setting((String) server.getOrDefault("prefix", "pow "), Boolean.parseBoolean((String) server.getOrDefault("talktobots", "false")), Boolean.parseBoolean((String) server.getOrDefault("eastereggs", "false"))));
 			}
-			fileWriter.write(new org.json.JSONObject(config.toJSONString()).toString(4));
+			fileWriter.write(config.toJSONString());
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();

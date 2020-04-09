@@ -22,13 +22,13 @@ import org.json.simple.parser.JSONParser;
 
 import com.rcx.powerglove.commands.*;
 
-import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
-import net.dv8tion.jda.bot.sharding.ShardManager;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDA.Status;
-import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDA.Status;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class PowerGlove {
 
@@ -58,7 +58,7 @@ public class PowerGlove {
 	public static void main(String[] args) throws Exception {
 		if (readConfigs())
 			return;
-		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setGame(Game.playing("with power")).build();
+		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setActivity(Activity.playing("with power")).build();
 
 		for (JDA shard : api.getShards()) {
 			while (shard.getStatus().ordinal() < Status.CONNECTED.ordinal()) {
@@ -161,7 +161,7 @@ public class PowerGlove {
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
-		file.write(new org.json.JSONObject(config.toJSONString()).toString(4));
+		file.write(config.toJSONString());
 		file.close();
 		return token.equals("insert token");
 	}

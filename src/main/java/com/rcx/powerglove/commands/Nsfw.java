@@ -16,7 +16,7 @@ import com.rcx.powerglove.PowerGlove;
 import com.rcx.powerglove.VoteHandler;
 import com.rcx.powerglove.VoteHandler.userVotes;
 
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class Nsfw extends Command {
 
