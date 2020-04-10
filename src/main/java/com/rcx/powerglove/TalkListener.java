@@ -97,17 +97,6 @@ public class TalkListener {
 			}
 		}
 
-		if (content.toLowerCase().equals("delete this message")) {
-			channel.sendTyping().complete();
-			try {
-				message.delete().queueAfter(10, TimeUnit.SECONDS);
-				channel.sendMessage("Alright, if that's what you want.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
-				channel.sendTyping().complete();
-			} catch (InsufficientPermissionException e) {
-				channel.sendMessage("I'm sorry, I just can't.").queue();
-			}
-		}
-
 		if (content.toLowerCase().startsWith("ninja:")) {
 			try {
 				message.delete().queue();
@@ -140,6 +129,17 @@ public class TalkListener {
 		}
 
 		if (settings.eastereggs) {
+			if (content.toLowerCase().equals("delete this message")) {
+				channel.sendTyping().complete();
+				try {
+					message.delete().queueAfter(10, TimeUnit.SECONDS);
+					channel.sendMessage("Alright, if that's what you want.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
+					channel.sendTyping().complete();
+				} catch (InsufficientPermissionException e) {
+					channel.sendMessage("I'm sorry, I just can't.").queue();
+				}
+			}
+
 			if (content.toLowerCase().endsWith("des") && !content.toLowerCase().endsWith("nudes")) {
 				if (rand.nextInt(100) == 0 && cena != null) {
 					channel.sendTyping().complete();
