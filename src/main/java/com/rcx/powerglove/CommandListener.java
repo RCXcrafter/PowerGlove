@@ -6,6 +6,8 @@ import com.rcx.powerglove.commands.Command;
 import com.rcx.powerglove.commands.Settings;
 import com.rcx.powerglove.commands.Settings.Setting;
 
+import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
+import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -40,17 +42,17 @@ public class CommandListener extends ListenerAdapter {
 		commands.get(arguments[0].toLowerCase()).execute(arguments, event, settings);
 	}
 
-	/*@Override
+	@Override
 	public void onGuildJoin(GuildJoinEvent event) {
-		PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Added to server: " + event.getGuild().getName() + " " + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
+		//PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Added to server: " + event.getGuild().getName() + " " + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.put(event.getGuild().getId(), event.getGuild());
 		PowerGlove.updateAllStats();
 	}
 
 	@Override
 	public void onGuildLeave(GuildLeaveEvent event) {
-		PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Removed from server: " + event.getGuild().getName() + " "  + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
+		//PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Removed from server: " + event.getGuild().getName() + " "  + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.remove(event.getGuild().getId());
 		PowerGlove.updateAllStats();
-	}*/
+	}
 }
