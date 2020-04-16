@@ -25,6 +25,7 @@ import com.rcx.powerglove.commands.*;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDA.Status;
+import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
@@ -58,7 +59,7 @@ public class PowerGlove {
 	public static void main(String[] args) throws Exception {
 		if (readConfigs())
 			return;
-		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setActivity(Activity.playing("with power")).build();
+		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setActivity(Activity.playing("with power")).setStatus(OnlineStatus.IDLE).build();
 
 		for (JDA shard : api.getShards()) {
 			while (shard.getStatus().ordinal() < Status.CONNECTED.ordinal()) {
@@ -108,6 +109,7 @@ public class PowerGlove {
 
 		//recieveWebhooks();
 		//Webhook.listen();
+		api.setStatus(OnlineStatus.ONLINE);
 	}
 
 	@SuppressWarnings("unchecked")
