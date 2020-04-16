@@ -97,11 +97,12 @@ public class Help extends Command {
 			"\u2022 **disgusting [text]:** Insert your own text into the absolutely disgusting meme."
 			+ "\n\u2022 **dong [text]:** Convert text into expand dong text."
 			+ "\n\u2022 **talk:** Make the bot start or stop talking in the current channel."
-			+ "\n\u2022 **afk: [optional reason]** Set yourself away from keyboard (globally)."
+			+ "\n\u2022 **afk [optional reason]:** Set yourself away from keyboard (globally)."
 			+ "\n\u2022 **quote:** Post an inspirational quote by a famous person."
 			+ "\n\u2022 **mastermind:** Play a nice game of mastermind against the bot."
 			//+ "\n\u2022 **nsfw:** Post some hot ~~garbage~~ naked people."
-			+ "\n\u2022 **color:** Generates a random color.\n", false).addField("",
+			+ "\n\u2022 **color:** Generates a random color."
+			+ "\n\u2022 **cancel [user]:** Cancel or uncancel someone.\n", false).addField("",
 			"\nThis bot will also respond to certain key phrases/words:"
 			+ "\n\u2022 If you say \"delete this message\", your message will be deleted."
 			//+ "\n\u2022 Say \"des\", and your sentence will be finished."
