@@ -1,13 +1,11 @@
 package com.rcx.powerglove;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.alicebot.ab.Chat;
-import org.apache.commons.io.FileUtils;
 
 import com.rcx.powerglove.commands.Afk;
 import com.rcx.powerglove.commands.Settings.Setting;
@@ -25,30 +23,11 @@ public class TalkListener {
 	public static Map<String, Chat> chats = new HashMap<String, Chat>();
 	
 	public static Random rand = new Random();
-	public static File cena = null;
-	public static File desmond = null;
-	
-	public TalkListener() {
-		cena = FileUtils.toFile(getClass().getClassLoader().getResource("assets/cena.gif"));
-		desmond = FileUtils.toFile(getClass().getClassLoader().getResource("assets/desmond.gif"));
-	}
 
 	public static void onMessageReceived(MessageReceivedEvent event, Setting settings) {
 		Message message = event.getMessage();
 		String content = message.getContentRaw();
 		MessageChannel channel = event.getChannel();
-		
-		//catch bot index votes
-		/*if (event.getGuild().getId().equals("445601562186874891") && channel.getId().equals("549703938396389386") && message.isWebhookMessage()) {
-			userVotes voter;
-			if (VoteHandler.voters.containsKey(content)) {
-				voter = VoteHandler.voters.get(content);
-			} else {
-				voter = new userVotes(content);
-				VoteHandler.voters.put(content, voter);
-			}
-			voter.voteIndex();
-		}*/
 
 		for (User mention : message.getMentionedUsers()) {
 			String ping = mention.getId();
@@ -97,14 +76,6 @@ public class TalkListener {
 			}
 		}
 
-		if (content.toLowerCase().startsWith("ninja:")) {
-			try {
-				message.delete().queue();
-			} catch (InsufficientPermissionException e) {
-				channel.sendMessage("You'll have to delete that one yourself, I don't have permission to do it.").complete().delete().queueAfter(10, TimeUnit.SECONDS);
-			}
-		}
-
 		if (content.toLowerCase().contains("<@439435998078959616>")) {
 			if (content.toLowerCase().equals("<@439435998078959616>") || content.toLowerCase().contains("help") || content.toLowerCase().contains("how") || content.toLowerCase().contains("what") || content.contains("?")) {
 				channel.sendTyping().complete();
@@ -123,11 +94,6 @@ public class TalkListener {
 			}
 		}
 
-		if (content.toLowerCase().startsWith("poll:")) {
-			message.addReaction("\uD83D\uDC4D").queue();
-			message.addReaction("\uD83D\uDC4E").queue();
-		}
-
 		if (settings.eastereggs) {
 			if (content.toLowerCase().equals("delete this message")) {
 				channel.sendTyping().complete();
@@ -137,23 +103,6 @@ public class TalkListener {
 					channel.sendTyping().complete();
 				} catch (InsufficientPermissionException e) {
 					channel.sendMessage("I'm sorry, I just can't.").queue();
-				}
-			}
-
-			if (content.toLowerCase().endsWith("des") && !content.toLowerCase().endsWith("nudes")) {
-				if (rand.nextInt(100) == 0 && cena != null) {
-					channel.sendTyping().complete();
-					channel.sendMessage("pa").complete();
-					channel.sendTyping().complete();
-					channel.sendMessage("CENA").addFile(cena).queueAfter(3, TimeUnit.SECONDS);
-				} else if (rand.nextInt(100) == 0 && desmond != null) {
-					channel.sendTyping().complete();
-					channel.sendMessage("mond the moon bear").addFile(desmond).queue();
-				} else {
-					channel.sendTyping().complete();
-					channel.sendMessage("pa").complete();
-					channel.sendTyping().complete();
-					channel.sendMessage("cito").queueAfter(1, TimeUnit.SECONDS);
 				}
 			}
 
