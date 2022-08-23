@@ -36,21 +36,6 @@ public class PowerGlove {
 	public static int shardAmount = 0;
 	public static Boolean autoShutdown = true;
 	public static String token = "insert token";
-	public static String dblToken = "insert token";
-	public static String dBotsToken = "insert token";
-	public static String bots4DToken = "insert token";
-	public static String dServToken = "insert token";
-	public static String botListToken = "insert token";
-	public static String botWorldToken = "insert token";
-	public static String botsOnDToken = "insert token";
-	public static String dBotsGroupToken = "insert token";
-	public static String boatsClubToken = "insert token";
-	public static String dbl2Token = "insert token";
-	public static String dbBotsToken = "insert token";
-	public static String ddBotsToken = "insert token";
-	public static String dBoatsToken = "insert token";
-	public static String botsReviewToken = "insert token";
-	public static String mythToken = "insert token";
 	public static String prefix = "pow ";
 
 	public static ShardManager api = null;
@@ -97,8 +82,6 @@ public class PowerGlove {
 		api.addEventListener(new CommandListener());
 		new TalkListener();
 
-		updateAllStats();
-
 		if (autoShutdown)
 			Executors.newScheduledThreadPool(1).schedule(new Runnable() {
 				public void run() {
@@ -126,82 +109,17 @@ public class PowerGlove {
 		options.putIfAbsent("shardAmount", Integer.toString(shardAmount));
 		options.putIfAbsent("token", token);
 		options.putIfAbsent("prefix", prefix);
-		options.putIfAbsent("dblToken", dblToken);
-		options.putIfAbsent("dBotsToken", dBotsToken);
-		options.putIfAbsent("bots4DToken", bots4DToken);
-		options.putIfAbsent("dServToken", dServToken);
-		options.putIfAbsent("botListToken", botListToken);
-		options.putIfAbsent("botWorldToken", botWorldToken);
-		options.putIfAbsent("botsOnDToken", botsOnDToken);
-		options.putIfAbsent("dBotsGroupToken", dBotsGroupToken);
-		options.putIfAbsent("boatsClubToken", boatsClubToken);
-		options.putIfAbsent("dbl2Token", dbl2Token);
-		options.putIfAbsent("dbBotsToken", dbBotsToken);
-		options.putIfAbsent("ddBotsToken", ddBotsToken);
-		options.putIfAbsent("dBoatsToken", dBoatsToken);
-		options.putIfAbsent("botsReviewToken", botsReviewToken);
-		options.putIfAbsent("mythToken", mythToken);
 		options.putIfAbsent("autoShutdown", autoShutdown.toString());
 
 		shardAmount = Integer.parseInt((String) options.get("shardAmount"));
 		token = (String) options.get("token");
 		prefix = (String) options.get("prefix");
-		dblToken = (String) options.get("dblToken");
-		dBotsToken = (String) options.get("dBotsToken");
-		bots4DToken = (String) options.get("bots4DToken");
-		dServToken = (String) options.get("dServToken");
-		botListToken = (String) options.get("botListToken");
-		botWorldToken = (String) options.get("botWorldToken");
-		botsOnDToken = (String) options.get("botsOnDToken");
-		dBotsGroupToken = (String) options.get("dBotsGroupToken");
-		boatsClubToken = (String) options.get("boatsClubToken");
-		dbl2Token = (String) options.get("dbl2Token");
-		dbBotsToken = (String) options.get("dbBotsToken");
-		ddBotsToken = (String) options.get("ddBotsToken");
-		dBoatsToken = (String) options.get("dBoatsToken");
-		botsReviewToken = (String) options.get("botsReviewToken");
-		mythToken = (String) options.get("mythToken");
 		autoShutdown = Boolean.parseBoolean((String) options.get("autoShutdown"));
 
 		FileWriter file = new FileWriter("config.json");
 		file.write(config.toJSONString());
 		file.close();
 		return token.equals("insert token");
-	}
-
-	public static void updateAllStats() {
-		System.out.println("Posting server count...");
-		if (!dblToken.equals("insert token"))
-			postGuildCount("https://discordbots.org/api/bots/439435998078959616/stats", "https://discordbots.org", dblToken, "server_count");
-		if (!dBotsToken.equals("insert token"))
-			postGuildCount("https://discord.bots.gg/api/v1/bots/439435998078959616/stats", "https://discord.bots.gg", dBotsToken, "server_count");
-		if (!bots4DToken.equals("insert token"))
-			postGuildCount("https://botsfordiscord.com/api/bot/439435998078959616", "https://botsfordiscord.com", bots4DToken, "server_count");
-		if (!dServToken.equals("insert token"))
-			postGuildCount("https://discord.services/api/bots/439435998078959616", "https://discord.services", dServToken, "guild_count");
-		if (!botListToken.equals("insert token"))
-			postGuildCount("https://api.botlist.space/v1/bots/439435998078959616", "https://botlist.space", botListToken, "server_count");
-		if (!botWorldToken.equals("insert token"))
-			postGuildCount("https://discordbot.world/api/bot/439435998078959616/stats", "https://discordbot.world", botWorldToken, "guild_count");
-		if (!botsOnDToken.equals("insert token"))
-			postGuildCount("https://bots.ondiscord.xyz/bot-api/bots/439435998078959616/guilds", "https://bots.ondiscord.xyz", botsOnDToken, "guildCount");
-		if (!dBotsGroupToken.equals("insert token"))
-			postGuildCount("https://discordbots.group/api/bot/439435998078959616", "https://discordbots.group", dBotsGroupToken, "count");
-		if (!boatsClubToken.equals("insert token"))
-			postGuildCount("https://discordboats.club/api/public/bot/stats", "https://discordboats.club", boatsClubToken, "server_count");
-		if (!dbl2Token.equals("insert token"))
-			postGuildCount("https://discordbotlist.com/api/bots/439435998078959616/stats", "https://discordbotlist.com", dbl2Token, "guilds");
-		if (!dbBotsToken.equals("insert token"))
-			postGuildCount("https://discordsbestbots.xyz/api/bots/439435998078959616", "https://discordsbestbots.xyz", dbBotsToken, "guilds");
-		if (!ddBotsToken.equals("insert token"))
-			postGuildCount("https://divinediscordbots.com/bots/439435998078959616/stats", "https://divinediscordbots.com", ddBotsToken, "server_count");
-		if (!dBoatsToken.equals("insert token"))
-			postGuildCount("https://discord.boats/api/bot/439435998078959616", "https://discord.boats", dBoatsToken, "server_count");
-		if (!botsReviewToken.equals("insert token"))
-			postGuildCount("https://discordbotreviews.xyz/api/bot/439435998078959616/stats", "https://discordbotreviews.xyz", botsReviewToken, "server_count");
-		if (!mythToken.equals("insert token"))
-			postGuildCount("https://mythical-bots.ml/api?key=" + mythToken + "?postServers?439435998078959616/" + servers.size(), "https://mythical-bots.ml", mythToken, "server_count");
-		System.out.println("Server count posted.");
 	}
 
 	@SuppressWarnings("unchecked")
