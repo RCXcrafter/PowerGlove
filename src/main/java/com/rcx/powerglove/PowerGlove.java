@@ -27,6 +27,7 @@ import com.rcx.powerglove.commands.RenderSmiles;
 import com.rcx.powerglove.commands.Science;
 import com.rcx.powerglove.commands.Settings;
 import com.rcx.powerglove.commands.Talk;
+import com.rcx.powerglove.commands.Ventriloquism;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -84,6 +85,7 @@ public class PowerGlove {
 		CommandListener.commands.put("guess", new MastermindGuess());
 		CommandListener.commands.put("color", new RandomColor());
 		CommandListener.commands.put("cancel", new Cancel());
+		CommandListener.commands.put("vent", new Ventriloquism());
 
 		api.addEventListener(new CommandListener());
 		new TalkListener();

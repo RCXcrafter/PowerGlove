@@ -5,6 +5,7 @@ import java.util.Map;
 import com.rcx.powerglove.commands.Command;
 import com.rcx.powerglove.commands.Settings;
 import com.rcx.powerglove.commands.Settings.Setting;
+import com.rcx.powerglove.commands.Ventriloquism;
 
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
@@ -38,8 +39,10 @@ public class CommandListener extends ListenerAdapter {
 			TalkListener.onMessageReceived(event, settings);
 			return;
 		}
-		event.getChannel().sendTyping().complete();
-		commands.get(arguments[0].toLowerCase()).execute(arguments, event, settings);
+		Command command = commands.get(arguments[0].toLowerCase());
+		if (!(command instanceof Ventriloquism))
+			event.getChannel().sendTyping().complete();
+		command.execute(arguments, event, settings);
 	}
 
 	@Override
