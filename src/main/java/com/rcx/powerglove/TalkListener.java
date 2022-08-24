@@ -59,7 +59,7 @@ public class TalkListener {
 				if (response.equals(""))
 					response = "I have nothing to say to that.";
 				response = response.replaceAll("<br/>", "\n").replaceAll("ust surf somewhere else", "eez fine").replaceAll("@everyone", "everyone");
-				String nickname = event.getGuild().getMemberById("439435998078959616").getNickname();
+				String nickname = event.getGuild().getSelfMember().getNickname();
 				if (nickname != null)
 					response = response.replaceAll("Power Glove", nickname);
 				if (response.length() > 2000) {

@@ -37,6 +37,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 public class PowerGlove {
 
@@ -44,6 +45,7 @@ public class PowerGlove {
 	public static Boolean autoShutdown = true;
 	public static String token = "insert token";
 	public static String prefix = "pow ";
+	public static String id = "1011730784152981514";
 
 	public static ShardManager api = null;
 	public static Map<String, Guild> servers = new HashMap<String, Guild>();
@@ -71,7 +73,7 @@ public class PowerGlove {
 				"This bot is made by <:rcxpick:445610943112806400> RCXcrafter#3845"
 						+ "\nYou can join RCXcrafter's server here: https://discord.gg/SthsknG"
 						+ "\nThe source code can be found here: https://github.com/RCXcrafter/PowerGlove"
-						+ "\nYou can add this bot to your own server here: https://discordapp.com/oauth2/authorize?client_id=439435998078959616&scope=bot&permissions=104332352").build()));
+						+ "\nYou can add this bot to your own server here: https://discord.com/oauth2/authorize?client_id=1011730784152981514&scope=bot").build()));
 		CommandListener.commands.put("mlg", new MakeMLG());
 		CommandListener.commands.put("smiles", new RenderSmiles());
 		CommandListener.commands.put("disgusting", new AbsolutelyDisgusting());

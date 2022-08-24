@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.rcx.powerglove.PowerGlove;
+
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -40,6 +42,7 @@ public class Cancel extends Command {
 		immuneUsers.add("439435998078959616");
 		immuneUsers.add("448759521981235211");
 		immuneUsers.add("96664175350149120");
+		immuneUsers.add(PowerGlove.id);
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class CommandListener extends ListenerAdapter {
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		Setting settings = Settings.settings.getOrDefault(event.getGuild().getId(), Settings.settings.get("default"));
-		if (event.getAuthor().isSystem() || (event.getAuthor().isBot() && !settings.talktobots) || event.getAuthor().getId().equals("1011730784152981514"))
+		if (event.getAuthor().isSystem() || (event.getAuthor().isBot() && !settings.talktobots) || event.getAuthor().getId().equals(PowerGlove.id))
 			return;
 		String message = event.getMessage().getContentRaw();
 		String[] arguments = {"bluh"};
