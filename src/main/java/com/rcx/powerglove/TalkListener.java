@@ -24,6 +24,36 @@ public class TalkListener {
 
 	public static Random rand = new Random();
 
+	public static String[] misspellings = {
+			"avacado",
+			"deoderent",
+			"seretonin",
+			"restraunt",
+			"pheremones",
+			"deprevation",
+			"plummer",
+			"aquire",
+			"whailord",
+			"tounge",
+			"lasanga",
+			"lasangna",
+			"poddles",
+			"suprise",
+			"repairations",
+			"liquer",
+			"pescription",
+			"marshmellow",
+			"oragami",
+			"scandle",
+			"existance",
+			"chilli",
+			"delerious",
+			"thurst",
+			"governer",
+			"domanatrix",
+			"calender"
+	};
+
 	public static void onMessageReceived(MessageReceivedEvent event, Setting settings) {
 		Message message = event.getMessage();
 		String content = message.getContentRaw();
@@ -118,5 +148,28 @@ public class TalkListener {
 				message.addReaction(new RichCustomEmojiImpl(445609116145287169l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 		}
+
+		if (event.getAuthor().getId().equals("168410556942778368")) {
+			for (String word : misspellings) {
+				if (content.toLowerCase().contains(word)) {
+					channel.sendMessage(mockify(word)).queue();
+					break;
+				}
+			}
+		}
+	}
+
+	public static String mockify(String word) {
+		String returnWord = "";
+		boolean flip = rand.nextBoolean();
+		for (char letter : word.toCharArray()) {
+			if (flip) {
+				returnWord += Character.toUpperCase(letter);
+			} else {
+				returnWord += letter;
+			}
+			flip = !flip;
+		}
+		return returnWord;
 	}
 }
