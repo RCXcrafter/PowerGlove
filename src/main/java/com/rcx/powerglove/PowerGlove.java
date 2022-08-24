@@ -11,7 +11,22 @@ import java.util.concurrent.TimeUnit;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.rcx.powerglove.commands.*;
+import com.rcx.powerglove.commands.AbsolutelyDisgusting;
+import com.rcx.powerglove.commands.Afk;
+import com.rcx.powerglove.commands.Cancel;
+import com.rcx.powerglove.commands.CommandSimpleEmbed;
+import com.rcx.powerglove.commands.DongFont;
+import com.rcx.powerglove.commands.Empty;
+import com.rcx.powerglove.commands.Exit;
+import com.rcx.powerglove.commands.Help;
+import com.rcx.powerglove.commands.MakeMLG;
+import com.rcx.powerglove.commands.Mastermind;
+import com.rcx.powerglove.commands.MastermindGuess;
+import com.rcx.powerglove.commands.RandomColor;
+import com.rcx.powerglove.commands.RenderSmiles;
+import com.rcx.powerglove.commands.Science;
+import com.rcx.powerglove.commands.Settings;
+import com.rcx.powerglove.commands.Talk;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -19,6 +34,7 @@ import net.dv8tion.jda.api.JDA.Status;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
@@ -35,7 +51,8 @@ public class PowerGlove {
 	public static void main(String[] args) throws Exception {
 		if (readConfigs())
 			return;
-		api = new DefaultShardManagerBuilder().setToken(token).setShardsTotal(-1).setActivity(Activity.playing("with power")).setStatus(OnlineStatus.IDLE).build();
+
+		api = DefaultShardManagerBuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.MESSAGE_CONTENT).setShardsTotal(-1).setActivity(Activity.playing("with power")).setStatus(OnlineStatus.IDLE).build();
 
 		for (JDA shard : api.getShards()) {
 			while (shard.getStatus().ordinal() < Status.CONNECTED.ordinal()) {

@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.utils.FileUpload;
 
 public class DongFont extends Command {
 
@@ -60,7 +61,7 @@ public class DongFont extends Command {
 				x = 0;
 			}
 			ImageIO.write(combined, "PNG", picture);
-			event.getChannel().sendFile(picture).queue();
+			event.getChannel().sendFiles(FileUpload.fromData(picture)).queue();
 			g.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();

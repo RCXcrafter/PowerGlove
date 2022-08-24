@@ -15,13 +15,13 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
-import net.dv8tion.jda.internal.entities.EmoteImpl;
 import net.dv8tion.jda.internal.entities.GuildImpl;
+import net.dv8tion.jda.internal.entities.emoji.RichCustomEmojiImpl;
 
 public class TalkListener {
 
 	public static Map<String, Chat> chats = new HashMap<String, Chat>();
-	
+
 	public static Random rand = new Random();
 
 	public static void onMessageReceived(MessageReceivedEvent event, Setting settings) {
@@ -29,7 +29,7 @@ public class TalkListener {
 		String content = message.getContentRaw();
 		MessageChannel channel = event.getChannel();
 
-		for (User mention : message.getMentionedUsers()) {
+		for (User mention : message.getMentions().getUsers()) {
 			String ping = mention.getId();
 			if (Afk.afkPeople.containsKey(ping)) {
 				String reason = Afk.afkPeople.get(ping);
@@ -90,7 +90,7 @@ public class TalkListener {
 				channel.sendTyping().complete();
 				channel.sendMessage("That better be a pat on the shoulder or the back, I do not allow pats on my head.").queue();
 			} else if (message.getGuild() != null){
-				message.addReaction(new EmoteImpl(445609116337963008l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
+				message.addReaction(new RichCustomEmojiImpl(445609116337963008l, (GuildImpl) event.getJDA().getGuildById(445601562186874891l))).queue();
 			}
 		}
 
@@ -107,15 +107,15 @@ public class TalkListener {
 			}
 
 			if (content.toLowerCase().contains("that was easy")) {
-				message.addReaction(new EmoteImpl(445609298366824459l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
+				message.addReaction(new RichCustomEmojiImpl(445609298366824459l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 
 			if (content.toLowerCase().contains("power")) {
-				message.addReaction(new EmoteImpl(506113366780280852l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
+				message.addReaction(new RichCustomEmojiImpl(506113366780280852l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 
 			if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
-				message.addReaction(new EmoteImpl(445609116145287169l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
+				message.addReaction(new RichCustomEmojiImpl(445609116145287169l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
 		}
 	}

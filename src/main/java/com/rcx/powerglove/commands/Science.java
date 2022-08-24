@@ -63,7 +63,7 @@ public class Science extends Command {
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		try {
-			event.getChannel().sendMessage(new EmbedBuilder().setImage(sciencepics[new Random().nextInt(sciencepics.length)]).setColor(0x419399).build()).queue();
+			event.getChannel().sendMessageEmbeds(new EmbedBuilder().setImage(sciencepics[new Random().nextInt(sciencepics.length)]).setColor(0x419399).build()).queue();
 		} catch (InsufficientPermissionException e) {
 			event.getChannel().sendMessage(sciencepics[new Random().nextInt(sciencepics.length)]).queue();
 		}

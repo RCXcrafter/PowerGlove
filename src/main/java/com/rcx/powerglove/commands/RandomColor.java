@@ -969,7 +969,7 @@ public class RandomColor extends Command {
 			new NamedColor(46, 79, 143, "YInMn Blue"),
 			new NamedColor(0, 20, 168, "Zaffre"),
 			new NamedColor(56, 166, 143, "Zomp"),
-			
+
 			//minecraft colours
 			new NamedColor(249, 255, 254, "White (Minecraft)"),
 			new NamedColor(249, 128, 29, "Orange (Minecraft)"),
@@ -1006,7 +1006,7 @@ public class RandomColor extends Command {
 				+ "\nBlue: " + color.getBlue(), true).setThumbnail("https://www.colorhexa.com/" + hex +".png").build();
 
 		try {
-			event.getChannel().sendMessage(returns).queue();
+			event.getChannel().sendMessageEmbeds(returns).queue();
 		} catch (InsufficientPermissionException e) {
 			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions."
 					+ "\nRandom color"

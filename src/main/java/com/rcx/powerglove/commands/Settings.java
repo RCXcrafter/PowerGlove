@@ -63,7 +63,7 @@ public class Settings extends Command {
 
 		if (arguments.length < 2) {
 			try {
-				event.getChannel().sendMessage(embed).queue();
+				event.getChannel().sendMessageEmbeds(embed).queue();
 			} catch (InsufficientPermissionException e) {
 				event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + embed.getDescription()).queue();
 			}

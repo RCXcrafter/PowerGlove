@@ -19,6 +19,7 @@ import org.apache.commons.io.FileUtils;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.utils.FileUpload;
 
 public class MakeMLG extends Command {
 
@@ -70,8 +71,8 @@ public class MakeMLG extends Command {
 				thisGuy = event.getJDA().getUserById(arguments[1]);
 			} catch (NumberFormatException e) {}
 
-			if (!event.getMessage().getMentionedUsers().isEmpty())
-				thisGuy = event.getMessage().getMentionedUsers().get(0);
+			if (!event.getMessage().getMentions().getUsers().isEmpty())
+				thisGuy = event.getMessage().getMentions().getUsers().get(0);
 		}
 
 		File avatar = null;
@@ -113,7 +114,7 @@ public class MakeMLG extends Command {
 			addRotOverlay(g, shades, 109, 64, rand.nextInt(70)-35);
 
 			ImageIO.write(combined, "PNG", avatar);
-			event.getChannel().sendFile(avatar).queue();
+			event.getChannel().sendFiles(FileUpload.fromData(avatar)).queue();
 			g.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();

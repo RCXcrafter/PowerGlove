@@ -15,6 +15,7 @@ import org.openscience.cdk.smiles.SmilesParser;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.utils.FileUpload;
 
 public class RenderSmiles extends Command {
 
@@ -60,7 +61,7 @@ public class RenderSmiles extends Command {
 						dptgen.depict(rec).writeTo("png", picture);
 					else
 						dptgen.depict(mol).writeTo("png", picture);
-					event.getChannel().sendFile(picture).queue();
+					event.getChannel().sendFiles(FileUpload.fromData(picture)).queue();
 				} catch (CDKException | IOException e) {
 					e.printStackTrace();
 				} catch (InsufficientPermissionException e) {

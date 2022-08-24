@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.utils.FileUpload;
 
 public class AbsolutelyDisgusting extends Command {
 
@@ -33,7 +34,7 @@ public class AbsolutelyDisgusting extends Command {
 			picture = File.createTempFile("disgusting", ".png");
 			if (arguments.length < 2) {
 				ImageIO.write(background, "PNG", picture);
-				event.getChannel().sendFile(picture).queue();
+				event.getChannel().sendFiles(FileUpload.fromData(picture)).queue();
 				picture.delete();
 				return;
 			}
@@ -57,7 +58,7 @@ public class AbsolutelyDisgusting extends Command {
 				x += img.getWidth();
 			}
 			ImageIO.write(combined, "PNG", picture);
-			event.getChannel().sendFile(picture).queue();
+			event.getChannel().sendFiles(FileUpload.fromData(picture)).queue();
 			g.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();

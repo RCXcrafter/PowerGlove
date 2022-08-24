@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 
 public class Help extends Command {
-	
+
 	Random rand = new Random();
 
 	public static String[] powerQuote = {
@@ -58,9 +58,9 @@ public class Help extends Command {
 			"Firepower",
 			"Horsepower"
 	};
-	
+
 	String description = "Prefix = \"" + PowerGlove.prefix + "\"";
-	
+
 	String lameversion = "\nHere's a list of all the commands:"
 			+ "\n\u2022 **help:** Displays this list, helpful isn't it?"
 			+ "\n\u2022 **settings:** Change the settings for this server."
@@ -103,7 +103,7 @@ public class Help extends Command {
 		else
 			newEmbed.appendDescription("Prefix for this server = \"" + settings.prefix + "\"\n" + description);
 		try {
-			event.getChannel().sendMessage(newEmbed.setTitle(powerQuote[Math.max(rand.nextInt(powerQuote.length + 10) - 10, 0)]).build()).queue();
+			event.getChannel().sendMessageEmbeds(newEmbed.setTitle(powerQuote[Math.max(rand.nextInt(powerQuote.length + 10) - 10, 0)]).build()).queue();
 		} catch (InsufficientPermissionException e) {
 			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + "Power Glove Help\n" + new String(newEmbed.getDescriptionBuilder()) + lameversion).queue();
 		}

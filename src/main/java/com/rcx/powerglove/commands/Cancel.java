@@ -44,7 +44,7 @@ public class Cancel extends Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
-		if (event.getMessage().getMentionedUsers().size() != 1) {
+		if (event.getMessage().getMentions().getUsers().size() != 1) {
 			event.getChannel().sendMessage("You must ping exactly one user to cancel.").queue();
 			return;
 		}
@@ -57,7 +57,7 @@ public class Cancel extends Command {
 			return;
 		}
 
-		User cancelledUser = event.getMessage().getMentionedUsers().get(0);
+		User cancelledUser = event.getMessage().getMentions().getUsers().get(0);
 		String cancelledName = event.getGuild().isMember(cancelledUser) ? event.getGuild().getMember(cancelledUser).getEffectiveName() : cancelledUser.getName();
 
 		if (immuneUsers.contains(cancelledUser.getId())) {

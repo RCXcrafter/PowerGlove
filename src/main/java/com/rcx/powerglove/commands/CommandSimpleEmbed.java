@@ -15,7 +15,7 @@ public class CommandSimpleEmbed extends Command {
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		try {
-			event.getChannel().sendMessage(returns).queue();
+			event.getChannel().sendMessageEmbeds(returns).queue();
 		} catch (InsufficientPermissionException e) {
 			event.getChannel().sendMessage("This looks terrible because the bot doesn't have embed permissions.\n" + returns.getDescription()).queue();
 		}
