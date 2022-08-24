@@ -1,8 +1,16 @@
 package com.rcx.powerglove.commands;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.rcx.powerglove.PowerGlove;
 
@@ -35,6 +43,7 @@ public class Cancel extends Command {
 			"I know you already lost your job and got kicked out of your house, but we've forgiven you.",
 	};
 
+	static JSONObject cancelConfig;
 	public static List<String> cancelledUsers = new ArrayList<String>();
 	public static List<String> immuneUsers = new ArrayList<String>();
 
@@ -43,9 +52,18 @@ public class Cancel extends Command {
 		immuneUsers.add("448759521981235211");
 		immuneUsers.add("96664175350149120");
 		immuneUsers.add(PowerGlove.id);
+
+		try {
+			cancelConfig = (JSONObject) new JSONParser().parse(new FileReader("cancelledusers.json"));
+		} catch (IOException | ParseException e) {
+			cancelConfig = new JSONObject();
+		}
+
+		reloadCancelledUsers();
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public void execute(String[] arguments, MessageReceivedEvent event) {
 		if (event.getMessage().getMentions().getUsers().size() != 1) {
 			event.getChannel().sendMessage("You must ping exactly one user to cancel.").queue();
@@ -69,17 +87,38 @@ public class Cancel extends Command {
 		}
 
 		if (cancellingUser.getId().equals(cancelledUser.getId())) {
-			cancelledUsers.add(cancellingUser.getId());
+			//cancelledUsers.add(cancellingUser.getId());
+			cancelConfig.putIfAbsent(cancellingUser.getId(), new JSONObject());
 			event.getChannel().sendMessage("Whoops, you cancelled yourself, no turning back now.").queue();
 			return;
 		}
 
 		if (cancelledUsers.contains(cancelledUser.getId())) {
-			cancelledUsers.remove(cancelledUser.getId());
+			cancelConfig.remove(cancelledUser.getId());
+			//cancelledUsers.remove(cancelledUser.getId());
 			event.getChannel().sendMessage(cancelledName + " is no longer cancelled, " + uncancelMessages[rand.nextInt(uncancelMessages.length)]).queue();
 		} else {
-			cancelledUsers.add(cancelledUser.getId());
+			cancelConfig.putIfAbsent(cancelledUser.getId(), new JSONObject());
+			//cancelledUsers.add(cancelledUser.getId());
 			event.getChannel().sendMessage(cancelledName + " has been cancelled, " + cancelMessages[rand.nextInt(cancelMessages.length)]).queue();
+		}
+
+		reloadCancelledUsers();
+	}
+
+	@SuppressWarnings("unchecked")
+	public void reloadCancelledUsers() {
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter("cancelledusers.json");
+			cancelledUsers = new ArrayList<String>();
+			for (String userID : (Set<String>) cancelConfig.keySet()) {
+				cancelledUsers.add(userID);
+			}
+			fileWriter.write(cancelConfig.toJSONString());
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

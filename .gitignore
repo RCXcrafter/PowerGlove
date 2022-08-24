@@ -28,4 +28,5 @@ SecretListener.java
 *.class
 config.json
 serversettings.json
+cancelledusers.json
 powerglove.jar
