@@ -46,6 +46,9 @@ public class CommandListener extends ListenerAdapter {
 	public void onGuildJoin(GuildJoinEvent event) {
 		//PowerGlove.servers.get("423797628040511490").getTextChannelById(448854472223883264l).sendMessage("Added to server: " + event.getGuild().getName() + " " + event.getGuild().getIconUrl() + " "  + event.getGuild().getId()).queue();
 		PowerGlove.servers.put(event.getGuild().getId(), event.getGuild());
+		if (PowerGlove.servers.size() > 50) { //limit amount of guilds to 50
+			event.getGuild().leave().queue();
+		}
 	}
 
 	@Override
