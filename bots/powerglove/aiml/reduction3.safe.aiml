@@ -4101,9 +4101,6 @@
 <category><pattern>WHAT DO YOU WANT TO LEARN</pattern>
 <template><srai>what is your goal</srai></template>
 </category>
-<category><pattern>WHAT DO YOU WANT TO TALK ABOUT</pattern>
-<template><srai>what do you like to talk about</srai></template>
-</category>
 <category><pattern>WHAT DO YOU WANT</pattern>
 <template><srai>what is your purpose</srai></template>
 </category>
