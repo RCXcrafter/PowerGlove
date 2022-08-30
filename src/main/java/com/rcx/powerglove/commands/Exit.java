@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDA.Status;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public class Exit extends Command {
+public class Exit implements Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {

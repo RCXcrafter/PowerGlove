@@ -17,7 +17,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.api.utils.FileUpload;
 
-public class RenderSmiles extends Command {
+public class RenderSmiles implements Command {
 
 	SmilesParser sp = new SmilesParser(SilentChemObjectBuilder.getInstance());
 	DepictionGenerator dptgen = new DepictionGenerator().withZoom(1.7).withAtomColors().withCarbonSymbols().withMolTitle().withTitleColor(Color.BLACK);

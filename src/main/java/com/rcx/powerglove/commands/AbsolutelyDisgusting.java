@@ -13,7 +13,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.api.utils.FileUpload;
 
-public class AbsolutelyDisgusting extends Command {
+public class AbsolutelyDisgusting implements Command {
 
 	BufferedImage background;
 	BufferedImage font;

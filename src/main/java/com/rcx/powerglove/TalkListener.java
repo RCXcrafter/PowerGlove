@@ -147,6 +147,10 @@ public class TalkListener {
 			if (content.toLowerCase().contains("look") && content.toLowerCase().contains("nothing")) {
 				message.addReaction(new RichCustomEmojiImpl(445609116145287169l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
 			}
+
+			if (content.toLowerCase().contains("btr")) {
+				message.addReaction(new RichCustomEmojiImpl(1014083585998864404l, (GuildImpl) PowerGlove.servers.get("423797628040511490"))).queue();
+			}
 		}
 
 		if (event.getAuthor().getId().equals("168410556942778368")) {

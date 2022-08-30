@@ -9,7 +9,7 @@ import java.io.File;
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
 
-public class Talk extends Command {
+public class Talk implements Command {
 
 	Bot bot;
 

@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 
-public class Science extends Command {
+public class Science implements Command {
 
 	String[] sciencepics = {
 			"https://i.imgur.com/s3IMBBE.png",

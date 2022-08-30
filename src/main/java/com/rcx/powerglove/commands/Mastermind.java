@@ -14,7 +14,7 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 
-public class Mastermind extends Command {
+public class Mastermind implements Command {
 
 	public static Map<String, MasterMindGame> games = new HashMap<String, MasterMindGame>();
 

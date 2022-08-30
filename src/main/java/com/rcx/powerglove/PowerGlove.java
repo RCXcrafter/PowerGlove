@@ -18,6 +18,7 @@ import com.rcx.powerglove.commands.CommandSimpleEmbed;
 import com.rcx.powerglove.commands.DongFont;
 import com.rcx.powerglove.commands.Empty;
 import com.rcx.powerglove.commands.Exit;
+import com.rcx.powerglove.commands.GifBPM;
 import com.rcx.powerglove.commands.Help;
 import com.rcx.powerglove.commands.MakeMLG;
 import com.rcx.powerglove.commands.Mastermind;
@@ -35,6 +36,9 @@ import net.dv8tion.jda.api.JDA.Status;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
+import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
@@ -89,6 +93,26 @@ public class PowerGlove {
 
 		api.addEventListener(new CommandListener());
 		new TalkListener();
+
+		api.getShardById(0).updateCommands()
+		.addCommands(Commands.slash("filebpm", "Change the bpm of a gif").addOptions(
+				new OptionData(OptionType.ATTACHMENT, "gif", "The gif in question", true),
+				new OptionData(OptionType.NUMBER, "bpm", "The bpm you want to change the gif to", true),
+				new OptionData(OptionType.INTEGER, "beats", "The amount of beats in the gif", true)))
+		.addCommands(Commands.slash("gifbpm", "Change the bpm of a gif").addOptions(
+				new OptionData(OptionType.STRING, "gif", "The url of the gif or an animated emote", true),
+				new OptionData(OptionType.NUMBER, "bpm", "The bpm you want to change the gif to", true),
+				new OptionData(OptionType.INTEGER, "beats", "The amount of beats in the gif", true))).queue();
+		/*.addCommands(Commands.slash("emotebpm", "Change the bpm of an animated emote").addOptions(
+				new OptionData(OptionType.MENTIONABLE, "gif", "The animated emote", true),
+				new OptionData(OptionType.NUMBER, "bpm", "The bpm you want to change the gif to", true),
+				new OptionData(OptionType.INTEGER, "beats", "The amount of beats in the gif", true))).queue();*/
+		//the client doesn't think emotes are mentionables >:(
+
+		GifBPM gifbpm = new GifBPM();
+		CommandListener.slashCommands.put("filebpm", gifbpm);
+		CommandListener.slashCommands.put("gifbpm", gifbpm);
+		CommandListener.slashCommands.put("emotebpm", gifbpm);
 
 		if (autoShutdown)
 			Executors.newScheduledThreadPool(1).schedule(new Runnable() {

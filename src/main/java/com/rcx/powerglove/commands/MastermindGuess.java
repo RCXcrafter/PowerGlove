@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public class MastermindGuess extends Command {
+public class MastermindGuess implements Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {

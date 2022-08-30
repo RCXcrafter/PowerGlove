@@ -4,13 +4,11 @@ import com.rcx.powerglove.commands.Settings.Setting;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public abstract class Command {
-	
-	public void execute(String[] arguments, MessageReceivedEvent event) {
-		
-	}
+public interface Command {
 
-	public void execute(String[] arguments, MessageReceivedEvent event, Setting settings) {
+	default public void execute(String[] arguments, MessageReceivedEvent event) {}
+
+	default public void execute(String[] arguments, MessageReceivedEvent event, Setting settings) {
 		execute(arguments, event);
 	}
 }

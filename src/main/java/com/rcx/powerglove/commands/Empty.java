@@ -1,5 +1,5 @@
 package com.rcx.powerglove.commands;
 
-public class Empty extends Command {
+public class Empty implements Command {
 
 }

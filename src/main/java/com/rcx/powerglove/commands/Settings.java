@@ -21,7 +21,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
 
-public class Settings extends Command {
+public class Settings implements Command {
 
 	public static Map<String, Setting> settings = new HashMap<String, Setting>();
 	static JSONObject config;

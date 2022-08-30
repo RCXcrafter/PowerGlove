@@ -7,7 +7,7 @@ import com.rcx.powerglove.PowerGlove;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public class Ventriloquism extends Command {
+public class Ventriloquism implements Command {
 
 	@Override
 	public void execute(String[] arguments, MessageReceivedEvent event) {

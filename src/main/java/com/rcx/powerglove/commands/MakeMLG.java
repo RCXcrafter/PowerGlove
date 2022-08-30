@@ -21,7 +21,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.api.utils.FileUpload;
 
-public class MakeMLG extends Command {
+public class MakeMLG implements Command {
 
 	BufferedImage rainbow;
 	BufferedImage guns;
@@ -114,7 +114,11 @@ public class MakeMLG extends Command {
 			addRotOverlay(g, shades, 109, 64, rand.nextInt(70)-35);
 
 			ImageIO.write(combined, "PNG", avatar);
-			event.getChannel().sendFiles(FileUpload.fromData(avatar)).queue();
+			event.getChannel().sendFiles(FileUpload.fromData(avatar)).complete();
+			in.close();
+			vatar.flush();
+			combined.flush();
+			site.disconnect();
 			g.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();

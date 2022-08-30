@@ -17,7 +17,7 @@ import com.rcx.powerglove.PowerGlove;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public class Cancel extends Command {
+public class Cancel implements Command {
 
 	public static Random rand = new Random();
 

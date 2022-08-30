@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 
-public class Afk extends Command {
+public class Afk implements Command {
 
 	public static Map<String, String> afkPeople = new HashMap<String, String>();
 
