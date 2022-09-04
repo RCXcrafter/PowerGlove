@@ -26,6 +26,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.interactions.InteractionHook;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.utils.FileUpload;
@@ -73,8 +74,14 @@ public class GifBPM implements SlashCommand {
 			}
 		} */
 
-		if (url == null)
+		if (url == null) {
 			event.reply("\u26A0 No gif url found").setEphemeral(true).queue();
+			return;
+		}
+
+		InteractionHook defer = event.deferReply().complete();
+
+
 
 		try {
 			File gif = null;
@@ -86,7 +93,7 @@ public class GifBPM implements SlashCommand {
 			site.connect();
 			InputStream in = new BufferedInputStream(site.getInputStream());
 			if (!URLConnection.guessContentTypeFromStream(in).equals("image/gif")) {
-				event.reply("\u26A0 Unable to find gif from <" + url + ">").setEphemeral(true).queue();
+				defer.editOriginal("\u26A0 Unable to find gif from <" + url + ">").queue();
 				return;
 			}
 
@@ -121,14 +128,16 @@ public class GifBPM implements SlashCommand {
 			double framecount = frames.size();
 			double delay = (100.0 / (bpm / 60.0)) / (framecount / beats);
 
-			System.out.println("frames: " + framecount);
-			System.out.println("delay ended up being: " + delay);
-			System.out.println("leftover frametime: " + delay % 1);
-			System.out.println("leftover total: " + (delay % 1) * framecount);
+			if (delay < 2) {
+				defer.editOriginal("\u26A0 Due to limitations of the gif format you can't make the gif this fast, try using double the amount of beats").queue();
+				return;
+			}
+			//System.out.println("frames: " + framecount);
+			//System.out.println("delay ended up being: " + delay);
+			//System.out.println("leftover frametime: " + delay % 1);
+			//System.out.println("leftover total: " + (delay % 1) * framecount);
 			double leftovers = Math.round((delay % 1) * framecount);
-			System.out.println("leftover final: " + ((delay % 1) * framecount - leftovers));
-
-
+			//System.out.println("leftover final: " + ((delay % 1) * framecount - leftovers));
 
 			double counter = 0;
 			for (int i = 0; i < framecount; i++) {
@@ -146,7 +155,7 @@ public class GifBPM implements SlashCommand {
 				IIOMetadataNode root = (IIOMetadataNode) meta.getAsTree(metaFormatName);
 
 				IIOMetadataNode graphicsControlExtensionNodes = getNode(root, "GraphicControlExtension");
-				graphicsControlExtensionNodes.setAttribute("delayTime", Integer.toString((int) delay + extra));
+				graphicsControlExtensionNodes.setAttribute("delayTime", Integer.toString(((int) delay) + extra));
 				meta.mergeTree(metaFormatName, root);
 
 				frame.setMetadata(meta);
@@ -154,7 +163,8 @@ public class GifBPM implements SlashCommand {
 			}
 			writer.endWriteSequence();
 
-			event.replyFiles(FileUpload.fromData(gif)).complete();
+			//defer.editOriginal("Offset: " + ((delay % 1) * framecount - leftovers) / 10.0 + " seconds").queue();
+			defer.editOriginalAttachments(FileUpload.fromData(gif)).complete();
 			input.close();
 			in.close();
 			output.close();
@@ -164,9 +174,9 @@ public class GifBPM implements SlashCommand {
 			writer.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();
-			event.reply("\u26A0 Unable to download gif from <" + url + ">").setEphemeral(true).queue();
+			defer.editOriginal("\u26A0 Unable to download gif from <" + url + ">").queue();
 		} catch (InsufficientPermissionException e) {
-			event.reply("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").setEphemeral(true).queue();
+			defer.editOriginal("\u26A0 This command normally results in an image, but I lack the permission to *Attach Files*").queue();
 		}
 	}
 
